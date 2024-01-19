@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		41948E7C2B5B3B5700ADD5D0 /* CalShareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41948E7B2B5B3B5700ADD5D0 /* CalShareApp.swift */; };
-		41948E7E2B5B3B5700ADD5D0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41948E7D2B5B3B5700ADD5D0 /* ContentView.swift */; };
 		41948E802B5B3B5800ADD5D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41948E7F2B5B3B5800ADD5D0 /* Assets.xcassets */; };
 		41948E832B5B3B5800ADD5D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41948E822B5B3B5800ADD5D0 /* Preview Assets.xcassets */; };
 		41948E8D2B5B3B5800ADD5D0 /* CalShareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41948E8C2B5B3B5800ADD5D0 /* CalShareTests.swift */; };
 		41948E972B5B3B5800ADD5D0 /* CalShareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41948E962B5B3B5800ADD5D0 /* CalShareUITests.swift */; };
 		41948E992B5B3B5800ADD5D0 /* CalShareUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41948E982B5B3B5800ADD5D0 /* CalShareUITestsLaunchTests.swift */; };
+		41948EA62B5B3CF000ADD5D0 /* LandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41948EA52B5B3CF000ADD5D0 /* LandingPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +36,6 @@
 /* Begin PBXFileReference section */
 		41948E782B5B3B5700ADD5D0 /* CalShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41948E7B2B5B3B5700ADD5D0 /* CalShareApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalShareApp.swift; sourceTree = "<group>"; };
-		41948E7D2B5B3B5700ADD5D0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		41948E7F2B5B3B5800ADD5D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41948E822B5B3B5800ADD5D0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		41948E882B5B3B5800ADD5D0 /* CalShareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalShareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +43,7 @@
 		41948E922B5B3B5800ADD5D0 /* CalShareUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalShareUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41948E962B5B3B5800ADD5D0 /* CalShareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalShareUITests.swift; sourceTree = "<group>"; };
 		41948E982B5B3B5800ADD5D0 /* CalShareUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalShareUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		41948EA52B5B3CF000ADD5D0 /* LandingPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				41948E7B2B5B3B5700ADD5D0 /* CalShareApp.swift */,
-				41948E7D2B5B3B5700ADD5D0 /* ContentView.swift */,
+				41948EA52B5B3CF000ADD5D0 /* LandingPage.swift */,
 				41948E7F2B5B3B5800ADD5D0 /* Assets.xcassets */,
 				41948E812B5B3B5800ADD5D0 /* Preview Content */,
 			);
@@ -257,8 +257,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41948E7E2B5B3B5700ADD5D0 /* ContentView.swift in Sources */,
 				41948E7C2B5B3B5700ADD5D0 /* CalShareApp.swift in Sources */,
+				41948EA62B5B3CF000ADD5D0 /* LandingPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

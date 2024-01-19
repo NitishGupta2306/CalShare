@@ -11,7 +11,7 @@ import SwiftUI
 struct CalShareApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LandingPage()
         }
     }
 }
