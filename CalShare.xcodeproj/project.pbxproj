@@ -1,0 +1,587 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		41948E7C2B5B3B5700ADD5D0 /* CalShareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41948E7B2B5B3B5700ADD5D0 /* CalShareApp.swift */; };
+		41948E7E2B5B3B5700ADD5D0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41948E7D2B5B3B5700ADD5D0 /* ContentView.swift */; };
+		41948E802B5B3B5800ADD5D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41948E7F2B5B3B5800ADD5D0 /* Assets.xcassets */; };
+		41948E832B5B3B5800ADD5D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41948E822B5B3B5800ADD5D0 /* Preview Assets.xcassets */; };
+		41948E8D2B5B3B5800ADD5D0 /* CalShareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41948E8C2B5B3B5800ADD5D0 /* CalShareTests.swift */; };
+		41948E972B5B3B5800ADD5D0 /* CalShareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41948E962B5B3B5800ADD5D0 /* CalShareUITests.swift */; };
+		41948E992B5B3B5800ADD5D0 /* CalShareUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41948E982B5B3B5800ADD5D0 /* CalShareUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		41948E892B5B3B5800ADD5D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 41948E702B5B3B5700ADD5D0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 41948E772B5B3B5700ADD5D0;
+			remoteInfo = CalShare;
+		};
+		41948E932B5B3B5800ADD5D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 41948E702B5B3B5700ADD5D0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 41948E772B5B3B5700ADD5D0;
+			remoteInfo = CalShare;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		41948E782B5B3B5700ADD5D0 /* CalShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		41948E7B2B5B3B5700ADD5D0 /* CalShareApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalShareApp.swift; sourceTree = "<group>"; };
+		41948E7D2B5B3B5700ADD5D0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		41948E7F2B5B3B5800ADD5D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		41948E822B5B3B5800ADD5D0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		41948E882B5B3B5800ADD5D0 /* CalShareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalShareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		41948E8C2B5B3B5800ADD5D0 /* CalShareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalShareTests.swift; sourceTree = "<group>"; };
+		41948E922B5B3B5800ADD5D0 /* CalShareUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalShareUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		41948E962B5B3B5800ADD5D0 /* CalShareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalShareUITests.swift; sourceTree = "<group>"; };
+		41948E982B5B3B5800ADD5D0 /* CalShareUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalShareUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		41948E752B5B3B5700ADD5D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41948E852B5B3B5800ADD5D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41948E8F2B5B3B5800ADD5D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		41948E6F2B5B3B5700ADD5D0 = {
+			isa = PBXGroup;
+			children = (
+				41948E7A2B5B3B5700ADD5D0 /* CalShare */,
+				41948E8B2B5B3B5800ADD5D0 /* CalShareTests */,
+				41948E952B5B3B5800ADD5D0 /* CalShareUITests */,
+				41948E792B5B3B5700ADD5D0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		41948E792B5B3B5700ADD5D0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				41948E782B5B3B5700ADD5D0 /* CalShare.app */,
+				41948E882B5B3B5800ADD5D0 /* CalShareTests.xctest */,
+				41948E922B5B3B5800ADD5D0 /* CalShareUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		41948E7A2B5B3B5700ADD5D0 /* CalShare */ = {
+			isa = PBXGroup;
+			children = (
+				41948E7B2B5B3B5700ADD5D0 /* CalShareApp.swift */,
+				41948E7D2B5B3B5700ADD5D0 /* ContentView.swift */,
+				41948E7F2B5B3B5800ADD5D0 /* Assets.xcassets */,
+				41948E812B5B3B5800ADD5D0 /* Preview Content */,
+			);
+			path = CalShare;
+			sourceTree = "<group>";
+		};
+		41948E812B5B3B5800ADD5D0 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				41948E822B5B3B5800ADD5D0 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		41948E8B2B5B3B5800ADD5D0 /* CalShareTests */ = {
+			isa = PBXGroup;
+			children = (
+				41948E8C2B5B3B5800ADD5D0 /* CalShareTests.swift */,
+			);
+			path = CalShareTests;
+			sourceTree = "<group>";
+		};
+		41948E952B5B3B5800ADD5D0 /* CalShareUITests */ = {
+			isa = PBXGroup;
+			children = (
+				41948E962B5B3B5800ADD5D0 /* CalShareUITests.swift */,
+				41948E982B5B3B5800ADD5D0 /* CalShareUITestsLaunchTests.swift */,
+			);
+			path = CalShareUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		41948E772B5B3B5700ADD5D0 /* CalShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41948E9C2B5B3B5800ADD5D0 /* Build configuration list for PBXNativeTarget "CalShare" */;
+			buildPhases = (
+				41948E742B5B3B5700ADD5D0 /* Sources */,
+				41948E752B5B3B5700ADD5D0 /* Frameworks */,
+				41948E762B5B3B5700ADD5D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CalShare;
+			productName = CalShare;
+			productReference = 41948E782B5B3B5700ADD5D0 /* CalShare.app */;
+			productType = "com.apple.product-type.application";
+		};
+		41948E872B5B3B5800ADD5D0 /* CalShareTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41948E9F2B5B3B5800ADD5D0 /* Build configuration list for PBXNativeTarget "CalShareTests" */;
+			buildPhases = (
+				41948E842B5B3B5800ADD5D0 /* Sources */,
+				41948E852B5B3B5800ADD5D0 /* Frameworks */,
+				41948E862B5B3B5800ADD5D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				41948E8A2B5B3B5800ADD5D0 /* PBXTargetDependency */,
+			);
+			name = CalShareTests;
+			productName = CalShareTests;
+			productReference = 41948E882B5B3B5800ADD5D0 /* CalShareTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		41948E912B5B3B5800ADD5D0 /* CalShareUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41948EA22B5B3B5800ADD5D0 /* Build configuration list for PBXNativeTarget "CalShareUITests" */;
+			buildPhases = (
+				41948E8E2B5B3B5800ADD5D0 /* Sources */,
+				41948E8F2B5B3B5800ADD5D0 /* Frameworks */,
+				41948E902B5B3B5800ADD5D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				41948E942B5B3B5800ADD5D0 /* PBXTargetDependency */,
+			);
+			name = CalShareUITests;
+			productName = CalShareUITests;
+			productReference = 41948E922B5B3B5800ADD5D0 /* CalShareUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		41948E702B5B3B5700ADD5D0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					41948E772B5B3B5700ADD5D0 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					41948E872B5B3B5800ADD5D0 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 41948E772B5B3B5700ADD5D0;
+					};
+					41948E912B5B3B5800ADD5D0 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 41948E772B5B3B5700ADD5D0;
+					};
+				};
+			};
+			buildConfigurationList = 41948E732B5B3B5700ADD5D0 /* Build configuration list for PBXProject "CalShare" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 41948E6F2B5B3B5700ADD5D0;
+			productRefGroup = 41948E792B5B3B5700ADD5D0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				41948E772B5B3B5700ADD5D0 /* CalShare */,
+				41948E872B5B3B5800ADD5D0 /* CalShareTests */,
+				41948E912B5B3B5800ADD5D0 /* CalShareUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		41948E762B5B3B5700ADD5D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41948E832B5B3B5800ADD5D0 /* Preview Assets.xcassets in Resources */,
+				41948E802B5B3B5800ADD5D0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41948E862B5B3B5800ADD5D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41948E902B5B3B5800ADD5D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		41948E742B5B3B5700ADD5D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41948E7E2B5B3B5700ADD5D0 /* ContentView.swift in Sources */,
+				41948E7C2B5B3B5700ADD5D0 /* CalShareApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41948E842B5B3B5800ADD5D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41948E8D2B5B3B5800ADD5D0 /* CalShareTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		41948E8E2B5B3B5800ADD5D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41948E992B5B3B5800ADD5D0 /* CalShareUITestsLaunchTests.swift in Sources */,
+				41948E972B5B3B5800ADD5D0 /* CalShareUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		41948E8A2B5B3B5800ADD5D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 41948E772B5B3B5700ADD5D0 /* CalShare */;
+			targetProxy = 41948E892B5B3B5800ADD5D0 /* PBXContainerItemProxy */;
+		};
+		41948E942B5B3B5800ADD5D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 41948E772B5B3B5700ADD5D0 /* CalShare */;
+			targetProxy = 41948E932B5B3B5800ADD5D0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		41948E9A2B5B3B5800ADD5D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		41948E9B2B5B3B5800ADD5D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		41948E9D2B5B3B5800ADD5D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CalShare/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = KG.CalShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		41948E9E2B5B3B5800ADD5D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CalShare/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = KG.CalShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		41948EA02B5B3B5800ADD5D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = KG.CalShareTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalShare.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CalShare";
+			};
+			name = Debug;
+		};
+		41948EA12B5B3B5800ADD5D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = KG.CalShareTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalShare.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CalShare";
+			};
+			name = Release;
+		};
+		41948EA32B5B3B5800ADD5D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = KG.CalShareUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CalShare;
+			};
+			name = Debug;
+		};
+		41948EA42B5B3B5800ADD5D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = KG.CalShareUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CalShare;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		41948E732B5B3B5700ADD5D0 /* Build configuration list for PBXProject "CalShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41948E9A2B5B3B5800ADD5D0 /* Debug */,
+				41948E9B2B5B3B5800ADD5D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		41948E9C2B5B3B5800ADD5D0 /* Build configuration list for PBXNativeTarget "CalShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41948E9D2B5B3B5800ADD5D0 /* Debug */,
+				41948E9E2B5B3B5800ADD5D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		41948E9F2B5B3B5800ADD5D0 /* Build configuration list for PBXNativeTarget "CalShareTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41948EA02B5B3B5800ADD5D0 /* Debug */,
+				41948EA12B5B3B5800ADD5D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		41948EA22B5B3B5800ADD5D0 /* Build configuration list for PBXNativeTarget "CalShareUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41948EA32B5B3B5800ADD5D0 /* Debug */,
+				41948EA42B5B3B5800ADD5D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 41948E702B5B3B5700ADD5D0 /* Project object */;
+}
