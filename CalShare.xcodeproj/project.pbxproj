@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		412F64102B747933005C68EA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 412F640F2B747933005C68EA /* GoogleService-Info.plist */; };
+		412F64132B7479FB005C68EA /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 412F64122B7479FB005C68EA /* FirebaseAnalytics */; };
+		412F64152B7479FB005C68EA /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 412F64142B7479FB005C68EA /* FirebaseAnalyticsOnDeviceConversion */; };
+		412F64172B7479FB005C68EA /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 412F64162B7479FB005C68EA /* FirebaseAnalyticsSwift */; };
+		412F64192B7479FB005C68EA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 412F64182B7479FB005C68EA /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		412F641B2B7479FB005C68EA /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 412F641A2B7479FB005C68EA /* FirebaseAppCheck */; };
 		41948E7C2B5B3B5700ADD5D0 /* CalShareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41948E7B2B5B3B5700ADD5D0 /* CalShareApp.swift */; };
 		41948E802B5B3B5800ADD5D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41948E7F2B5B3B5800ADD5D0 /* Assets.xcassets */; };
 		41948E832B5B3B5800ADD5D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41948E822B5B3B5800ADD5D0 /* Preview Assets.xcassets */; };
@@ -34,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		412F640F2B747933005C68EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41948E782B5B3B5700ADD5D0 /* CalShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41948E7B2B5B3B5700ADD5D0 /* CalShareApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalShareApp.swift; sourceTree = "<group>"; };
 		41948E7F2B5B3B5800ADD5D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +58,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				412F64172B7479FB005C68EA /* FirebaseAnalyticsSwift in Frameworks */,
+				412F64132B7479FB005C68EA /* FirebaseAnalytics in Frameworks */,
+				412F64152B7479FB005C68EA /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				412F641B2B7479FB005C68EA /* FirebaseAppCheck in Frameworks */,
+				412F64192B7479FB005C68EA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +109,7 @@
 				41948E7B2B5B3B5700ADD5D0 /* CalShareApp.swift */,
 				41948EA52B5B3CF000ADD5D0 /* LandingPage.swift */,
 				41948E7F2B5B3B5800ADD5D0 /* Assets.xcassets */,
+				412F640F2B747933005C68EA /* GoogleService-Info.plist */,
 				41948E812B5B3B5800ADD5D0 /* Preview Content */,
 			);
 			path = CalShare;
@@ -143,6 +156,13 @@
 			dependencies = (
 			);
 			name = CalShare;
+			packageProductDependencies = (
+				412F64122B7479FB005C68EA /* FirebaseAnalytics */,
+				412F64142B7479FB005C68EA /* FirebaseAnalyticsOnDeviceConversion */,
+				412F64162B7479FB005C68EA /* FirebaseAnalyticsSwift */,
+				412F64182B7479FB005C68EA /* FirebaseAnalyticsWithoutAdIdSupport */,
+				412F641A2B7479FB005C68EA /* FirebaseAppCheck */,
+			);
 			productName = CalShare;
 			productReference = 41948E782B5B3B5700ADD5D0 /* CalShare.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +235,9 @@
 				Base,
 			);
 			mainGroup = 41948E6F2B5B3B5700ADD5D0;
+			packageReferences = (
+				412F64112B7479FB005C68EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 41948E792B5B3B5700ADD5D0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -233,6 +256,7 @@
 			files = (
 				41948E832B5B3B5800ADD5D0 /* Preview Assets.xcassets in Resources */,
 				41948E802B5B3B5800ADD5D0 /* Assets.xcassets in Resources */,
+				412F64102B747933005C68EA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,7 +458,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = KG.CalShare;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CalShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -462,7 +486,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = KG.CalShare;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CalShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -480,7 +504,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = KG.CalShareTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CalShareTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -499,7 +523,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = KG.CalShareTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CalShareTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -516,7 +540,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = KG.CalShareUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CalShareUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -533,7 +557,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = KG.CalShareUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CalShareUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -582,6 +606,45 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		412F64112B7479FB005C68EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.21.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		412F64122B7479FB005C68EA /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 412F64112B7479FB005C68EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		412F64142B7479FB005C68EA /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 412F64112B7479FB005C68EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+		412F64162B7479FB005C68EA /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 412F64112B7479FB005C68EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		412F64182B7479FB005C68EA /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 412F64112B7479FB005C68EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		412F641A2B7479FB005C68EA /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 412F64112B7479FB005C68EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 41948E702B5B3B5700ADD5D0 /* Project object */;
 }
