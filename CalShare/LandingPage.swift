@@ -9,9 +9,7 @@ import SwiftUI
 
 struct LandingPage: View {
     var body: some View {
-        VStack {
-            Text("Fresh Start")
-        }
+        VStack{}
     }
 }
 
