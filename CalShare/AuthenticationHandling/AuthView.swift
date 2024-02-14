@@ -27,8 +27,9 @@ struct AuthView: View {
             
         }
         .navigationTitle("AuthView")
-        .navigationDestination(isPresented: $isSignIn){SignInView()}
-        .navigationDestination(isPresented: $isSignUp){SignInView()}
+        .navigationBarBackButtonHidden()
+        .navigationDestination(isPresented: $isSignIn){SignUpView()}
+        .navigationDestination(isPresented: $isSignUp){SignUpView()}
     }
 }
 

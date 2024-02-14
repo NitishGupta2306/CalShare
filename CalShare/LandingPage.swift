@@ -11,7 +11,7 @@ struct LandingPage: View {
     var body: some View {
         VStack{
             // Calling AuthView directly for now.
-            AuthView()
+            RootView()
         }
     }
 }

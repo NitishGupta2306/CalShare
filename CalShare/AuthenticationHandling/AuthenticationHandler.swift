@@ -26,6 +26,10 @@ final class AuthenticationHandler {
         return AuthResponseDetails(user: userFound)
     }
     
+    func signOut() throws{
+        try Auth.auth().signOut()
+    }
+    
 }
 
 // Response from FireBaseAuth CreateUser.

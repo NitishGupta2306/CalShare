@@ -7,42 +7,46 @@
 
 import SwiftUI
 
-final class SignInViewModel: ObservableObject{
+@MainActor
+final class SignUpViewModel: ObservableObject{
     @Published var email = ""
     @Published var password = ""
     
     func signIn() async throws{
         guard !email.isEmpty, password.count > 7 else{
             // error handling
-            return
+            throw AuthenticationError.signInError
         }
         
-       let userData = try await AuthenticationHandler.shared.createrNewUser(email: email, pass: password)
+        let user = try await AuthenticationHandler.shared.createrNewUser(email: email, pass: password)
+        print("USER CREATED, UID: \(user.uid)")
     }
 }
 
 
-struct SignInView: View {
-    @StateObject private var view = SignInViewModel()
+struct SignUpView: View {
+    @StateObject private var viewModel = SignUpViewModel()
     
     var body: some View {
         VStack{
-            TextField("Enter Email", text: $view.email)
+            TextField("Enter Email", text: $viewModel.email)
                 .padding()
                 .background(Color.gray.opacity(0.3))
                 .cornerRadius(12)
             
-            SecureField("Enter Password", text: $view.password)
+            SecureField("Enter Password", text: $viewModel.password)
                 .padding()
                 .background(Color.gray.opacity(0.3))
                 .cornerRadius(12)
             
             Button{
                 Task{
-                    try await view.signIn()
+                    try await viewModel.signIn()
                 }
+
+                
             } label: {
-                Text("Sign In")
+                Text("Sign Up")
                     .font(.headline)
                     .background(Color.blue)
                     .foregroundColor(.white)
@@ -51,12 +55,12 @@ struct SignInView: View {
                     .cornerRadius(12)
             }
             
-        }
+        } 
         .navigationTitle("Sign In Page:")
         .padding()
     }
 }
 
 #Preview {
-    SignInView()
+    SignUpView()
 }
