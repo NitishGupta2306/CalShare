@@ -20,6 +20,8 @@
 		412F64172B7479FB005C68EA /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 412F64162B7479FB005C68EA /* FirebaseAnalyticsSwift */; };
 		412F64192B7479FB005C68EA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 412F64182B7479FB005C68EA /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		412F641B2B7479FB005C68EA /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 412F641A2B7479FB005C68EA /* FirebaseAppCheck */; };
+		415684912B7C53680001C8E2 /* TesterCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415684902B7C53680001C8E2 /* TesterCode.swift */; };
+		415684932B7C54FB0001C8E2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 415684922B7C54FB0001C8E2 /* README.md */; };
 		41948E7C2B5B3B5700ADD5D0 /* CalShareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41948E7B2B5B3B5700ADD5D0 /* CalShareApp.swift */; };
 		41948E802B5B3B5800ADD5D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41948E7F2B5B3B5800ADD5D0 /* Assets.xcassets */; };
 		41948E832B5B3B5800ADD5D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41948E822B5B3B5800ADD5D0 /* Preview Assets.xcassets */; };
@@ -50,6 +52,8 @@
 		41066F402B75B0A1002780B9 /* ReadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadViewModel.swift; sourceTree = "<group>"; };
 		41066F4C2B75B8DF002780B9 /* WriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewModel.swift; sourceTree = "<group>"; };
 		412F640F2B747933005C68EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		415684902B7C53680001C8E2 /* TesterCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesterCode.swift; sourceTree = "<group>"; };
+		415684922B7C54FB0001C8E2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		41948E782B5B3B5700ADD5D0 /* CalShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41948E7B2B5B3B5700ADD5D0 /* CalShareApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalShareApp.swift; sourceTree = "<group>"; };
 		41948E7F2B5B3B5800ADD5D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 		41948E6F2B5B3B5700ADD5D0 = {
 			isa = PBXGroup;
 			children = (
+				415684922B7C54FB0001C8E2 /* README.md */,
 				41948E7A2B5B3B5700ADD5D0 /* CalShare */,
 				41948E8B2B5B3B5800ADD5D0 /* CalShareTests */,
 				41948E952B5B3B5800ADD5D0 /* CalShareUITests */,
@@ -120,11 +125,12 @@
 		41948E7A2B5B3B5700ADD5D0 /* CalShare */ = {
 			isa = PBXGroup;
 			children = (
+				41948E7F2B5B3B5800ADD5D0 /* Assets.xcassets */,
 				41948E7B2B5B3B5700ADD5D0 /* CalShareApp.swift */,
 				41948EA52B5B3CF000ADD5D0 /* LandingPage.swift */,
 				41066F402B75B0A1002780B9 /* ReadViewModel.swift */,
+				415684902B7C53680001C8E2 /* TesterCode.swift */,
 				41066F4C2B75B8DF002780B9 /* WriteViewModel.swift */,
-				41948E7F2B5B3B5800ADD5D0 /* Assets.xcassets */,
 				412F640F2B747933005C68EA /* GoogleService-Info.plist */,
 				41948E812B5B3B5800ADD5D0 /* Preview Content */,
 			);
@@ -292,6 +298,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				415684932B7C54FB0001C8E2 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +313,7 @@
 				41948EA62B5B3CF000ADD5D0 /* LandingPage.swift in Sources */,
 				41066F4D2B75B8DF002780B9 /* WriteViewModel.swift in Sources */,
 				41066F412B75B0A1002780B9 /* ReadViewModel.swift in Sources */,
+				415684912B7C53680001C8E2 /* TesterCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

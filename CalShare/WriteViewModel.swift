@@ -13,8 +13,7 @@ class WriteViewModel: ObservableObject {
     @Published var value: String?
     var ref = Database.database().reference()
     
-    func writeVal(){
-        
-        ref.child("something").setValue("Testing")
+    func writeVal(key: String, value: String){
+        ref.child(key).setValue(value)
     }
 }

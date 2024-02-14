@@ -13,10 +13,9 @@ class ReadViewModel: ObservableObject {
     @Published var value: String?
     var ref = Database.database().reference()
     
-    func readVal(){        
-        ref.child("KeyA").observeSingleEvent(of: .value){ snapshot in
+    func readVal(key: String){
+        ref.child(key).observeSingleEvent(of: .value){ snapshot in
             self.value = snapshot.value as? String
-            
         }
     }
 }
