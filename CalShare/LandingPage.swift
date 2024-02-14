@@ -9,7 +9,10 @@ import SwiftUI
 
 struct LandingPage: View {
     var body: some View {
-        VStack{}
+        VStack{
+            // Calling AuthView directly for now.
+            AuthView()
+        }
     }
 }
 

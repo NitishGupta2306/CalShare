@@ -16,4 +16,5 @@ class WriteViewModel: ObservableObject {
     func writeVal(key: String, value: String){
         ref.child(key).setValue(value)
     }
+    
 }
