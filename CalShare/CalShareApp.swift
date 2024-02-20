@@ -26,7 +26,8 @@ struct CalShareApp: App {
   var body: some Scene {
     WindowGroup {
       NavigationStack {
-        LandingPage()
+        //LandingPage()
+        SplashScreen()
       }
     }
   }
