@@ -3,7 +3,7 @@
 ## Current External Documentation:
 Notion Link : https://www.notion.so/Current-Tasks-9d6490f15bc24970921c349a6fdfaf95?pvs=4
 
-Figma Link : 
+Figma Link : https://www.figma.com/file/LdDJt5Q6lnb4CsLLT1BDb6/ECS189E-Project-UI?type=design&node-id=16-8&mode=design&t=PvkUh4eFckq1UKwL-0
 
 ---
 ## Rules for README:
