@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct LandingPage: View {
+  @EnvironmentObject var user: UserModel
+  
     var body: some View {
-        VStack{}
+        ZStack{
+            Color(.white)
+                .ignoresSafeArea()
+            
+            VStack{
+                Text("You are on the landing page.")
+                  .foregroundStyle(.black)
+            }
+            
+        }
     }
 }
 
 #Preview {
     LandingPage()
+    .environmentObject(UserModel())
 }

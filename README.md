@@ -47,3 +47,21 @@ Figma Link :
 ## Future Changes:
 
 - Files `WriteViewModel` and `ReadViewModel` will most likely be combined into a single `DBViewModel`. This will be done when the hiearchy for the DB and the security measures have been setup.
+
+## Using EventKit
+
+### You may not need to edit the Info.plist if `Privacy - Calendars Full Access Usage Description` 
+is already there then you are good.
+
+To have the current code run you may need to edit the Info.plist file in the project.
+To do that all you need to do is simply add the `NSCalendarsFullAccessUsageDescription` key
+with a message like "This app needs access to your full calendar data to continue."
+Here are some very useful links to Apples documentation and a short video explaining
+how EventKit works.
+
+Docs: https://developer.apple.com/documentation/eventkit
+Video/Code Examples: https://developer.apple.com/videos/play/wwdc2023/10052/?time=863
+
+The only way I have found to be able to have the allow access pop up to re-appear
+is to delete the app completely and redownload it. This makes sense because the 
+user shouldnt have to allow access everytime.
