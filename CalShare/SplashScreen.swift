@@ -9,29 +9,35 @@ import SwiftUI
 
 struct SplashScreen: View {
     @State private var isActive = false
-    @State private var size = 0.8
-    @State private var opacity = 0.3
-    let background = Color(red: 255, green: 252, blue: 246)
-    let buttonColor = Color(red: 255, green: 207, blue: 134)
 
     var body: some View {
-        if isActive {
-            LandingPage()
-        } else {
             ZStack {
-                Rectangle()
-                    .background(background)
+                backgroundColor
+                    .ignoresSafeArea()
+                VStack {
+                    Image("LogoImage")
+                        .resizable()
+                        .frame(width: 250, height: 250)
+                    Text("CalShare")
+                        .font(Font.custom("Seymour", size: 40))
+                        .foregroundColor(buttonColor)
+                        .fontWeight(.bold)
+                        .padding(.bottom, 20)
+                }
             }
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                    withAnimation {
-                        self.isActive = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        withAnimation {
+                            self.isActive.toggle()
+                        }
                     }
                 }
+            .navigationDestination(isPresented: $isActive) {
+                    SignInPage()
+                    .navigationBarBackButtonHidden(true)
             }
         }
     }
-}
 
 #Preview {
     SplashScreen()
