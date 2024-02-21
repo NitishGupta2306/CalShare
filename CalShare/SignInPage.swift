@@ -18,6 +18,10 @@ struct SignInPage: View {
                 .ignoresSafeArea()
             VStack {
                 Spacer()
+                Text("Welcome!")
+                    .font(Font.custom("Seymour", size: 60))
+                    .foregroundColor(textColor1)
+                    .padding(.bottom, 20)
                 Text("Sign In")
                     .font(Font.custom("Seymour", size: 40))
                     .foregroundColor(textColor1)

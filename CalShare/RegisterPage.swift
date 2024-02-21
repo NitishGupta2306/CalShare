@@ -38,6 +38,7 @@ struct RegisterPage: View {
         }
         .navigationDestination(isPresented: $goHomePage) {
             HomePage()
+                .navigationBarBackButtonHidden()
         }
         .navigationBarTitleDisplayMode(.inline)
                 .toolbar {

@@ -21,7 +21,7 @@ struct LoadingPage: View {
                     .scaleEffect(CGSize(width: 2.0, height: 2.0))
             }
             .onAppear() {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     if userAuthTokenExists {
                         goHomePage = true
                     } else {
