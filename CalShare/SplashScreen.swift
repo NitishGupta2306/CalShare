@@ -33,7 +33,7 @@ struct SplashScreen: View {
                     }
                 }
             .navigationDestination(isPresented: $isActive) {
-                    SignInPage()
+                    LoadingPage()
                     .navigationBarBackButtonHidden(true)
             }
         }

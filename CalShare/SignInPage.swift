@@ -46,6 +46,7 @@ struct SignInPage: View {
         }
         .navigationDestination(isPresented: $newUser) {
             RegisterPage()
+                .navigationBarBackButtonHidden()
         }
         .navigationDestination(isPresented: $goHomePage) {
             HomePage()

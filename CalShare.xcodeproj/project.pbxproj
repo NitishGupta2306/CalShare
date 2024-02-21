@@ -10,6 +10,7 @@
 		12BA0CAC2B84FEC5005FDF2E /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA0CAB2B84FEC5005FDF2E /* SplashScreen.swift */; };
 		12BA0CB02B85B5F5005FDF2E /* RegisterPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA0CAF2B85B5F5005FDF2E /* RegisterPage.swift */; };
 		12BA0CB22B85C373005FDF2E /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA0CB12B85C373005FDF2E /* HomePage.swift */; };
+		12BA0CB42B86588F005FDF2E /* LoadingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA0CB32B86588F005FDF2E /* LoadingPage.swift */; };
 		41066F412B75B0A1002780B9 /* ReadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41066F402B75B0A1002780B9 /* ReadViewModel.swift */; };
 		41066F432B75B2B5002780B9 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 41066F422B75B2B5002780B9 /* FirebaseDatabase */; };
 		41066F452B75B2B5002780B9 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 41066F442B75B2B5002780B9 /* FirebaseDatabaseSwift */; };
@@ -55,6 +56,7 @@
 		12BA0CAB2B84FEC5005FDF2E /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		12BA0CAF2B85B5F5005FDF2E /* RegisterPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPage.swift; sourceTree = "<group>"; };
 		12BA0CB12B85C373005FDF2E /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		12BA0CB32B86588F005FDF2E /* LoadingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPage.swift; sourceTree = "<group>"; };
 		41066F402B75B0A1002780B9 /* ReadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadViewModel.swift; sourceTree = "<group>"; };
 		41066F4C2B75B8DF002780B9 /* WriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewModel.swift; sourceTree = "<group>"; };
 		412F640F2B747933005C68EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				12BA0CAB2B84FEC5005FDF2E /* SplashScreen.swift */,
 				12BA0CAF2B85B5F5005FDF2E /* RegisterPage.swift */,
 				12BA0CB12B85C373005FDF2E /* HomePage.swift */,
+				12BA0CB32B86588F005FDF2E /* LoadingPage.swift */,
 				412F640F2B747933005C68EA /* GoogleService-Info.plist */,
 				41948E812B5B3B5800ADD5D0 /* Preview Content */,
 			);
@@ -318,6 +321,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12BA0CB42B86588F005FDF2E /* LoadingPage.swift in Sources */,
 				12BA0CAC2B84FEC5005FDF2E /* SplashScreen.swift in Sources */,
 				12BA0CB02B85B5F5005FDF2E /* RegisterPage.swift in Sources */,
 				41948E7C2B5B3B5700ADD5D0 /* CalShareApp.swift in Sources */,
