@@ -25,12 +25,14 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct CalShareApp: App {
   // register app delegate for Firebase setup
   @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-
+  @StateObject var curUser = UserModel()
   var body: some Scene {
     WindowGroup {
       NavigationStack {
         SplashScreen()
       }
     }
+    .environmentObject(curUser)
   }
 }
+

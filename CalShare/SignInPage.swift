@@ -7,11 +7,15 @@
 
 import SwiftUI
 
+
 struct SignInPage: View {
     @State var email: String = ""
     @State var password: String = ""
     @State var newUser: Bool = false
     @State var goHomePage: Bool = false
+    @EnvironmentObject var curUser: UserModel
+
+    
     var body: some View {
         ZStack {
             backgroundColor
@@ -26,7 +30,8 @@ struct SignInPage: View {
                     .font(Font.custom("Seymour", size: 40))
                     .foregroundColor(textColor1)
                 TextField("Enter e-mail address", text: $email)
-                TextField("Enter password", text: $password)
+                //TextField("Enter password", text: $password)
+                SecureField("Enter Password", text: $password)
                 Button {
                     print("We need to get a new user")
                     self.newUser.toggle()
@@ -36,6 +41,8 @@ struct SignInPage: View {
                 }
                 Button {
                     print("We need to get a new user")
+                    print(email)
+                    print(password)
                     self.goHomePage.toggle()
                 } label: {
                   Text("Log In")

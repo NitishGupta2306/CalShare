@@ -11,6 +11,8 @@ struct RegisterPage: View {
     @State var email: String = ""
     @State var password: String = ""
     @State var goHomePage: Bool = false
+    @EnvironmentObject var curUser: UserModel
+    
     var body: some View {
         ZStack {
             backgroundColor
