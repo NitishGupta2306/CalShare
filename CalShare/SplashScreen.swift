@@ -11,6 +11,7 @@ struct SplashScreen: View {
     @State private var isActive = false
 
     var body: some View {
+        NavigationStack {
             ZStack {
                 backgroundColor
                     .ignoresSafeArea()
@@ -25,19 +26,37 @@ struct SplashScreen: View {
                         .padding(.bottom, 20)
                 }
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color("PastelBeige"))
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Image("LogoImage")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 60, height: 60)
+                }
+                ToolbarItem(placement: .principal) {
+                    Text("CalShare")
+                        .foregroundStyle(Color("PastelOrange"))
+                }
+            }
+            .toolbarBackground(.visible, for: .navigationBar)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(Color("PastelBeige"))
             .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                        withAnimation {
-                            self.isActive.toggle()
-                        }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    withAnimation {
+                        self.isActive.toggle()
                     }
                 }
+            }
             .navigationDestination(isPresented: $isActive) {
-                    LoadingPage()
+                LoadingPage()
                     .navigationBarBackButtonHidden(true)
             }
         }
     }
+}
 
 #Preview {
     SplashScreen()
