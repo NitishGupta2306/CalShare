@@ -42,3 +42,5 @@ struct AuthResponseDetails{
         self.email = email
     }
 }
+
+// Database Push

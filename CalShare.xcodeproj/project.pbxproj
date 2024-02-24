@@ -32,7 +32,6 @@
 		41948E992B5B3B5800ADD5D0 /* CalShareUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41948E982B5B3B5800ADD5D0 /* CalShareUITestsLaunchTests.swift */; };
 		41948EA62B5B3CF000ADD5D0 /* SignInPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41948EA52B5B3CF000ADD5D0 /* SignInPage.swift */; };
 		41B6570F2B8A9F33003D12ED /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B6570E2B8A9F33003D12ED /* ErrorHandling.swift */; };
-		41B657112B8A9F49003D12ED /* AuthenticationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B657102B8A9F49003D12ED /* AuthenticationHandler.swift */; };
 		41B657132B8A9F8F003D12ED /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 41B657122B8A9F8F003D12ED /* FirebaseAnalytics */; };
 		41B657152B8A9F8F003D12ED /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 41B657142B8A9F8F003D12ED /* FirebaseAnalyticsSwift */; };
 		41B657172B8A9F8F003D12ED /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 41B657162B8A9F8F003D12ED /* FirebaseAppCheck */; };
@@ -40,6 +39,7 @@
 		41B6571B2B8A9F8F003D12ED /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 41B6571A2B8A9F8F003D12ED /* FirebaseDatabase */; };
 		41B6571D2B8A9F8F003D12ED /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 41B6571C2B8A9F8F003D12ED /* FirebaseDatabaseSwift */; };
 		41B6571F2B8A9F8F003D12ED /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 41B6571E2B8A9F8F003D12ED /* FirebaseFirestore */; };
+		41B657212B8AA143003D12ED /* AuthenticationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B657202B8AA143003D12ED /* AuthenticationHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +78,7 @@
 		41948E982B5B3B5800ADD5D0 /* CalShareUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalShareUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		41948EA52B5B3CF000ADD5D0 /* SignInPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInPage.swift; sourceTree = "<group>"; };
 		41B6570E2B8A9F33003D12ED /* ErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
-		41B657102B8A9F49003D12ED /* AuthenticationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthenticationHandler.swift; path = CalShare/AuthenticationHandler.swift; sourceTree = SOURCE_ROOT; };
+		41B657202B8AA143003D12ED /* AuthenticationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,7 +151,6 @@
 				41948E7B2B5B3B5700ADD5D0 /* CalShareApp.swift */,
 				41B6570E2B8A9F33003D12ED /* ErrorHandling.swift */,
 				41C48C672B8A961B00B6C714 /* DatabaseAPI */,
-				41C48C662B8A960800B6C714 /* CalendarAPI */,
 				41C48C652B8A95CF00B6C714 /* UI_Views */,
 				412F640F2B747933005C68EA /* GoogleService-Info.plist */,
 				41948E812B5B3B5800ADD5D0 /* Preview Content */,
@@ -197,17 +196,10 @@
 			path = UI_Views;
 			sourceTree = "<group>";
 		};
-		41C48C662B8A960800B6C714 /* CalendarAPI */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CalendarAPI;
-			sourceTree = "<group>";
-		};
 		41C48C672B8A961B00B6C714 /* DatabaseAPI */ = {
 			isa = PBXGroup;
 			children = (
-				41B657102B8A9F49003D12ED /* AuthenticationHandler.swift */,
+				41B657202B8AA143003D12ED /* AuthenticationHandler.swift */,
 			);
 			path = DatabaseAPI;
 			sourceTree = "<group>";
@@ -369,9 +361,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				12BA0CB42B86588F005FDF2E /* LoadingPage.swift in Sources */,
-				41B657112B8A9F49003D12ED /* AuthenticationHandler.swift in Sources */,
 				12BA0CAC2B84FEC5005FDF2E /* SplashScreen.swift in Sources */,
 				12BA0CB02B85B5F5005FDF2E /* RegisterPage.swift in Sources */,
+				41B657212B8AA143003D12ED /* AuthenticationHandler.swift in Sources */,
 				41948E7C2B5B3B5700ADD5D0 /* CalShareApp.swift in Sources */,
 				41948EA62B5B3CF000ADD5D0 /* SignInPage.swift in Sources */,
 				41B6570F2B8A9F33003D12ED /* ErrorHandling.swift in Sources */,
