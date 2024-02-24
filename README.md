@@ -61,5 +61,6 @@ This method fetches the users calendar data and updates the CalendarViewModels
 events array with a sorted array of events by their start time in a specified
 date range.
 - hasFullAccess()
+
 This method returns a bool indicating if the user has allowed access to their
 calendar data.
