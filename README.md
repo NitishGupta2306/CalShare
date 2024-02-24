@@ -41,3 +41,25 @@
 #### Issue: Max User cap:
 - Since this is a to consumer application. Max user expectation is 8 people.
 
+#### Using EventKit
+You may not need to edit the Info.plist if Privacy - Calendars Full Access Usage Description
+is already there then you are good.
+
+To have the current code run you may need to edit the Info.plist file in the project. To do that all you need to do is simply add the NSCalendarsFullAccessUsageDescription key with a message like "This app needs access to your full calendar data to continue." Here are some very useful links to Apples documentation and a short video explaining how EventKit works.
+
+Docs: https://developer.apple.com/documentation/eventkit Video/Code Examples: https://developer.apple.com/videos/play/wwdc2023/10052/?time=863
+
+The only way I have found to be able to have the allow access pop up to re-appear is to delete the app completely and redownload it. This makes sense because the user shouldnt have to allow access everytime.
+
+Currently there are three methods in the CalendarViewModel.
+- requestAccess()
+
+This method prompts the user to allow access to their calendar data
+- fetchEvents()
+
+This method fetches the users calendar data and updates the CalendarViewModels
+events array with a sorted array of events by their start time in a specified
+date range.
+- hasFullAccess()
+This method returns a bool indicating if the user has allowed access to their
+calendar data.

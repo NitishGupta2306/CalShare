@@ -157,14 +157,14 @@
 		41948E7A2B5B3B5700ADD5D0 /* CalShare */ = {
 			isa = PBXGroup;
 			children = (
-				401910532B8AB021006EF454 /* CalendarApi */,
-				41948E7F2B5B3B5800ADD5D0 /* Assets.xcassets */,
+				412F640F2B747933005C68EA /* GoogleService-Info.plist */,
 				41948E7B2B5B3B5700ADD5D0 /* CalShareApp.swift */,
 				41B6570E2B8A9F33003D12ED /* ErrorHandling.swift */,
+				41948E7F2B5B3B5800ADD5D0 /* Assets.xcassets */,
+				401910532B8AB021006EF454 /* CalendarApi */,
 				41C48C672B8A961B00B6C714 /* DatabaseAPI */,
-				41C48C652B8A95CF00B6C714 /* UI_Views */,
-				412F640F2B747933005C68EA /* GoogleService-Info.plist */,
 				41948E812B5B3B5800ADD5D0 /* Preview Content */,
+				41C48C652B8A95CF00B6C714 /* UI_Views */,
 			);
 			path = CalShare;
 			sourceTree = "<group>";
