@@ -12,6 +12,7 @@
 		12BA0CB22B85C373005FDF2E /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA0CB12B85C373005FDF2E /* HomePage.swift */; };
 		12BA0CB42B86588F005FDF2E /* LoadingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA0CB32B86588F005FDF2E /* LoadingPage.swift */; };
 		12BA0CB62B865C87005FDF2E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA0CB52B865C87005FDF2E /* UserModel.swift */; };
+		401910552B8AB04B006EF454 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401910542B8AB04B006EF454 /* CalendarViewModel.swift */; };
 		41066F432B75B2B5002780B9 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 41066F422B75B2B5002780B9 /* FirebaseDatabase */; };
 		41066F452B75B2B5002780B9 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 41066F442B75B2B5002780B9 /* FirebaseDatabaseSwift */; };
 		41066F472B75B2B5002780B9 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 41066F462B75B2B5002780B9 /* FirebaseFirestoreSwift */; };
@@ -65,6 +66,7 @@
 		12BA0CB12B85C373005FDF2E /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		12BA0CB32B86588F005FDF2E /* LoadingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPage.swift; sourceTree = "<group>"; };
 		12BA0CB52B865C87005FDF2E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		401910542B8AB04B006EF454 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		412F640F2B747933005C68EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		415684922B7C54FB0001C8E2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		41948E782B5B3B5700ADD5D0 /* CalShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +125,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		401910532B8AB021006EF454 /* CalendarApi */ = {
+			isa = PBXGroup;
+			children = (
+				401910542B8AB04B006EF454 /* CalendarViewModel.swift */,
+			);
+			path = CalendarApi;
+			sourceTree = "<group>";
+		};
 		41948E6F2B5B3B5700ADD5D0 = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +157,7 @@
 		41948E7A2B5B3B5700ADD5D0 /* CalShare */ = {
 			isa = PBXGroup;
 			children = (
+				401910532B8AB021006EF454 /* CalendarApi */,
 				41948E7F2B5B3B5800ADD5D0 /* Assets.xcassets */,
 				41948E7B2B5B3B5700ADD5D0 /* CalShareApp.swift */,
 				41B6570E2B8A9F33003D12ED /* ErrorHandling.swift */,
@@ -364,6 +375,7 @@
 				12BA0CAC2B84FEC5005FDF2E /* SplashScreen.swift in Sources */,
 				12BA0CB02B85B5F5005FDF2E /* RegisterPage.swift in Sources */,
 				41B657212B8AA143003D12ED /* AuthenticationHandler.swift in Sources */,
+				401910552B8AB04B006EF454 /* CalendarViewModel.swift in Sources */,
 				41948E7C2B5B3B5700ADD5D0 /* CalShareApp.swift in Sources */,
 				41948EA62B5B3CF000ADD5D0 /* SignInPage.swift in Sources */,
 				41B6570F2B8A9F33003D12ED /* ErrorHandling.swift in Sources */,
