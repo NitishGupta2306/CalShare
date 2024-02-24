@@ -1,9 +1,10 @@
 # CalShare:
 
 ## Current External Documentation:
-Notion Link : https://www.notion.so/Current-Tasks-9d6490f15bc24970921c349a6fdfaf95?pvs=4
 
-Figma Link : https://www.figma.com/file/LdDJt5Q6lnb4CsLLT1BDb6/ECS189E-Project-UI?type=design&node-id=16-8&mode=design&t=PvkUh4eFckq1UKwL-0
+[Figma Link](https://www.figma.com/file/LdDJt5Q6lnb4CsLLT1BDb6/ECS189E-Project-UI?type=design&node-id=01&mode=design&t=z8j25F6VY80fcINF-0)
+
+[Github Issues](https://github.com/NitishGupta2306/CalShare/issues)
 
 ---
 ## Rules for README:
@@ -13,37 +14,30 @@ Figma Link : https://www.figma.com/file/LdDJt5Q6lnb4CsLLT1BDb6/ECS189E-Project-U
 4. Use highlights for the key points in description.
 
 ---
-## Current CodeBase and Files:
 
-1. [CalShareApp](#calshareapp)
-2. [LandingPage](#landingpage)
-3. [ReadViewModel](#readviewmodel)
-4. [TesterCode](#testercode)
-5. [WriteViewModel](#writeviewmodel)
+## Current Issues + Ideas:
 
-### CalShareApp
-- Imports `Firebase` and sets the base app configurations needed.
-- Inherited `navigationStack` startpoint.
+#### Issue: Storing uid : calendarData
+##### Table1 in database
+- Store it in firebase as a dictonary structure. `Uid` is the `key` and the `calendarData` is the Value
 
-### LandingPage
-- Currently empty.
+#### Issue: Users connected to a Group
+##### Table2 in database
+- `GroupID` as a `key`. Array of `Uids` as value. All members are added to the group.
 
-### ReadViewModel
-- Defines a class ReadViewModel
-- Creates a reference to our database
-- Creates a `readVal` function that reads data from the database given a specific `key`
+- `GroupID` stored locally on user machine.
+                    
+- On `re-login` or `re-download`, uid is searched against all uids in groups to restore the locally stored `groupId`
 
-### TesterCode
-- File for storing any tester code that is added to the application.
-- This file isnt called unless manually specified by the developer.
-- Must be deleted before deploying application.
 
-### WriteViewModel
-- Defines a class WriteViewModel
-- Creates a reference to our database
-- Creates a `readVal` function that reads data from the database given a specific `key`
+#### Issue: Forming Groups and doing computation
+- Using the `GroupID` we pull each `uid` and the calendar data saved to them. 
+- We then do concurrent computation of the calendars on the local machine. (Simple math, shouldnt be too intensive)
 
----
-## Future Changes:
+#### Issue: Date Range of information pulled
+- 7 days of Calendar data. Sunday to Saturday.
+- Groups auto delete in 7 days. (Unless you pay lol)
 
-- Files `WriteViewModel` and `ReadViewModel` will most likely be combined into a single `DBViewModel`. This will be done when the hiearchy for the DB and the security measures have been setup.
+#### Issue: Max User cap:
+- Since this is a to consumer application. Max user expectation is 8 people.
+
