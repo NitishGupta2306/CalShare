@@ -15,15 +15,19 @@
 	<key>STORAGE_BUCKET</key>
 	<string>calshared-ceb3d.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.500712914827-4qhbo858nts7n7k8f0iqlsd347480hq5</string>
+	<key>CLIENT_ID</key>
+	<string>500712914827-4qhbo858nts7n7k8f0iqlsd347480hq5.apps.googleusercontent.com</string>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:378890547553:ios:38af6eaf76217218a51520</string>
 </dict>
