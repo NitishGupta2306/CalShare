@@ -31,6 +31,8 @@
 		41948EA62B5B3CF000ADD5D0 /* LandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41948EA52B5B3CF000ADD5D0 /* LandingPage.swift */; };
 		DDCD62182B845C4D00904A24 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = DDCD62172B845C4D00904A24 /* GoogleSignIn */; };
 		DDCD621A2B845C4D00904A24 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DDCD62192B845C4D00904A24 /* GoogleSignInSwift */; };
+		DDCD621C2B845D5200904A24 /* GoogleCalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCD621B2B845D5200904A24 /* GoogleCalendarManager.swift */; };
+		DDCD621E2B84652600904A24 /* GoogleProject stuff.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DDCD621D2B84652600904A24 /* GoogleProject stuff.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,9 @@
 		41948E962B5B3B5800ADD5D0 /* CalShareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalShareUITests.swift; sourceTree = "<group>"; };
 		41948E982B5B3B5800ADD5D0 /* CalShareUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalShareUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		41948EA52B5B3CF000ADD5D0 /* LandingPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPage.swift; sourceTree = "<group>"; };
+		DDCD621B2B845D5200904A24 /* GoogleCalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCalendarManager.swift; sourceTree = "<group>"; };
+		DDCD621D2B84652600904A24 /* GoogleProject stuff.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "GoogleProject stuff.rtf"; sourceTree = "<group>"; };
+		DDCD621F2B84682100904A24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,14 +134,17 @@
 		41948E7A2B5B3B5700ADD5D0 /* CalShare */ = {
 			isa = PBXGroup;
 			children = (
+				DDCD621F2B84682100904A24 /* Info.plist */,
 				41948E7F2B5B3B5800ADD5D0 /* Assets.xcassets */,
 				41948E7B2B5B3B5700ADD5D0 /* CalShareApp.swift */,
 				41948EA52B5B3CF000ADD5D0 /* LandingPage.swift */,
 				41066F402B75B0A1002780B9 /* ReadViewModel.swift */,
 				415684902B7C53680001C8E2 /* TesterCode.swift */,
 				41066F4C2B75B8DF002780B9 /* WriteViewModel.swift */,
+				DDCD621B2B845D5200904A24 /* GoogleCalendarManager.swift */,
 				412F640F2B747933005C68EA /* GoogleService-Info.plist */,
 				41948E812B5B3B5800ADD5D0 /* Preview Content */,
+				DDCD621D2B84652600904A24 /* GoogleProject stuff.rtf */,
 			);
 			path = CalShare;
 			sourceTree = "<group>";
@@ -289,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41948E832B5B3B5800ADD5D0 /* Preview Assets.xcassets in Resources */,
+				DDCD621E2B84652600904A24 /* GoogleProject stuff.rtf in Resources */,
 				41948E802B5B3B5800ADD5D0 /* Assets.xcassets in Resources */,
 				412F64102B747933005C68EA /* GoogleService-Info.plist in Resources */,
 			);
@@ -320,6 +329,7 @@
 				41948EA62B5B3CF000ADD5D0 /* LandingPage.swift in Sources */,
 				41066F4D2B75B8DF002780B9 /* WriteViewModel.swift in Sources */,
 				41066F412B75B0A1002780B9 /* ReadViewModel.swift in Sources */,
+				DDCD621C2B845D5200904A24 /* GoogleCalendarManager.swift in Sources */,
 				415684912B7C53680001C8E2 /* TesterCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -486,6 +496,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"CalShare/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CalShare/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -514,6 +525,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"CalShare/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CalShare/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
