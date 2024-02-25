@@ -20,9 +20,8 @@ struct SplashScreen: View {
                         .resizable()
                         .frame(width: 250, height: 250)
                     Text("CalShare")
-                        .font(Font.custom("Seymour", size: 40))
-                        .foregroundColor(buttonColor)
-                        .fontWeight(.bold)
+                        .font(Font.custom("SeymourOne-Regular", size: 40))
+                        .foregroundColor(Color("PastelOrange"))
                         .padding(.bottom, 20)
                 }
             }

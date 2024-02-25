@@ -12,6 +12,8 @@
 		12BA0CB22B85C373005FDF2E /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA0CB12B85C373005FDF2E /* HomePage.swift */; };
 		12BA0CB42B86588F005FDF2E /* LoadingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA0CB32B86588F005FDF2E /* LoadingPage.swift */; };
 		12BA0CB62B865C87005FDF2E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA0CB52B865C87005FDF2E /* UserModel.swift */; };
+		2362356C2B8BBD0400283D3D /* Seymour_One in Resources */ = {isa = PBXBuildFile; fileRef = 2362356B2B8BBD0300283D3D /* Seymour_One */; };
+		2362356E2B8BBD1300283D3D /* Poppins in Resources */ = {isa = PBXBuildFile; fileRef = 2362356D2B8BBD1300283D3D /* Poppins */; };
 		401910552B8AB04B006EF454 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401910542B8AB04B006EF454 /* CalendarViewModel.swift */; };
 		41066F432B75B2B5002780B9 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 41066F422B75B2B5002780B9 /* FirebaseDatabase */; };
 		41066F452B75B2B5002780B9 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 41066F442B75B2B5002780B9 /* FirebaseDatabaseSwift */; };
@@ -66,6 +68,9 @@
 		12BA0CB12B85C373005FDF2E /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		12BA0CB32B86588F005FDF2E /* LoadingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPage.swift; sourceTree = "<group>"; };
 		12BA0CB52B865C87005FDF2E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		2362356B2B8BBD0300283D3D /* Seymour_One */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Seymour_One; sourceTree = "<group>"; };
+		2362356D2B8BBD1300283D3D /* Poppins */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Poppins; sourceTree = "<group>"; };
+		2362356F2B8BBD4B00283D3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		401910542B8AB04B006EF454 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		412F640F2B747933005C68EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		415684922B7C54FB0001C8E2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
@@ -125,6 +130,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		236235682B8BBCD400283D3D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2362356B2B8BBD0300283D3D /* Seymour_One */,
+				2362356D2B8BBD1300283D3D /* Poppins */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+			usesTabs = 0;
+		};
 		401910532B8AB021006EF454 /* CalendarApi */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +172,8 @@
 		41948E7A2B5B3B5700ADD5D0 /* CalShare */ = {
 			isa = PBXGroup;
 			children = (
+				2362356F2B8BBD4B00283D3D /* Info.plist */,
+				236235682B8BBCD400283D3D /* Fonts */,
 				412F640F2B747933005C68EA /* GoogleService-Info.plist */,
 				41948E7B2B5B3B5700ADD5D0 /* CalShareApp.swift */,
 				41B6570E2B8A9F33003D12ED /* ErrorHandling.swift */,
@@ -343,9 +360,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2362356E2B8BBD1300283D3D /* Poppins in Resources */,
 				41948E832B5B3B5800ADD5D0 /* Preview Assets.xcassets in Resources */,
 				41948E802B5B3B5800ADD5D0 /* Assets.xcassets in Resources */,
 				412F64102B747933005C68EA /* GoogleService-Info.plist in Resources */,
+				2362356C2B8BBD0400283D3D /* Seymour_One in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,8 +563,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CalShare/Preview Content\"";
+				DEVELOPMENT_TEAM = SV7R952F3F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CalShare/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -557,7 +578,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.CalShare;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CalShare1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -573,8 +594,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CalShare/Preview Content\"";
+				DEVELOPMENT_TEAM = SV7R952F3F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CalShare/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -586,7 +609,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.CalShare;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CalShare1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
