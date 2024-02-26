@@ -17,106 +17,122 @@ struct SignInPage: View {
 
     
     var body: some View {
-        ZStack {
-            backgroundColor
-                .ignoresSafeArea()
-            VStack {
-                Spacer()
-                Text("Welcome!")
-                    .font(Font.custom("Seymour", size: 60))
-                    .foregroundColor(textColor1)
-                    .padding(.bottom, 20)
-                Text("Sign In")
-                    .font(Font.custom("Seymour", size: 40))
-                    .foregroundColor(textColor1)
-                
-                TextField("", text: $email)
-                    .foregroundColor(Color("TextColor"))
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color("TextColor"), lineWidth: 0.5)
-                            //.padding(10)
-                    )
-                    .frame(width: 300)
-                    .overlay(
-                            HStack {
-                                Image(systemName: "envelope")
-                                    .foregroundColor(Color("TextColor"))
-                                    .padding(.leading, 10)
-                                
-                                Text("Enter e-mail address")
-                                    .foregroundColor(Color.gray)
-                                    .padding(.leading, 5)
-                                
-                                Spacer() // Pushes the image and text to the leading edge
-                            }
-                        )
-
-                SecureField("", text: $password)
-                    .foregroundColor(Color("TextColor"))
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color("TextColor"), lineWidth: 0.5)
-                    )
-                    .frame(width: 300)
-                    .overlay(
-                            HStack {
-                                Image(systemName: "lock")
-                                    .foregroundColor(Color("TextColor"))
-                                    .padding(.leading, 10)
-                                
-                                Text("Enter Password")
-                                    .foregroundColor(Color.gray)
-                                    .padding(.leading, 10)
-                                
-                                Spacer() // Pushes the image and text to the leading edge
-                            }
-                    )
-                
-                Button {
-                    print("We need to get a new user")
-                    self.newUser.toggle()
-                } label: {
-                  Text("New User?")
-                        .foregroundColor(Color("TextColor"))
+        NavigationStack{
+            GeometryReader { _ in
+                ZStack {
+//                    backgroundColor
+//                        .ignoresSafeArea()
+                    VStack {
+                        Spacer()
+                        Text("Welcome!")
+                            .font(Font.custom("SeymourOne-Regular", size: 60))
+                            .foregroundColor(textColor1)
+                            .padding(.bottom, 20)
+                        
+                        Text("Sign In")
+                            .font(Font.custom("SeymourOne-Regular", size: 40))
+                            .foregroundColor(textColor1)
+                            .bold()
+                        
+                        TextField("Enter e-mail address", text: $email)
+                            .foregroundColor(Color("TextColor"))
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color("TextColor"), lineWidth: 0.5)
+//                                .padding(10)
+                            )
+                            .frame(width: 300)
+                            .overlay(
+                                HStack {
+                                    Image(systemName: "envelope")
+                                        .foregroundColor(Color("TextColor"))
+                                        .padding(.leading, 10)
+                                    
+//                                    Text("Enter e-mail address")
+//                                        .foregroundColor(Color.gray)
+//                                        .padding(.leading, 5)
+                                    
+                                    Spacer() // Pushes the image and text to the leading edge
+                                }
+                            )
+                            .multilineTextAlignment(.center) // Center-align the entered text
+                        
+                        SecureField("Enter Password", text: $password)
+                            .foregroundColor(Color("TextColor"))
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color("TextColor"), lineWidth: 0.5)
+                            )
+                            .frame(width: 300)
+                            .overlay(
+                                HStack {
+                                    Image(systemName: "lock")
+                                        .foregroundColor(Color("TextColor"))
+                                        .padding(.leading, 10)
+                                    
+//                                    Text("Enter Password")
+//                                        .foregroundColor(Color.gray)
+//                                        .padding(.leading, 10)
+                                    
+                                    Spacer() // Pushes the image and text to the leading edge
+                                }
+                            )
+                            .multilineTextAlignment(.center) // Center-align the entered text
+                        
+                        Button {
+                            print("We need to get a new user")
+                            self.newUser.toggle()
+                        } label: {
+                            Text("New User?")
+                                .foregroundColor(Color("TextColor"))
+                        }
+                        
+                        Button ("Log In") {
+                            print("We need to get a new user")
+                            print(email)
+                            print(password)
+                            self.goHomePage.toggle()
+                        }
+                        .padding(20)
+                        .background(Color("PastelOrange"))
+                        .foregroundColor(Color("PastelBeige"))
+                        .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
+                        .frame(width:400, height: 200)
+                        Spacer()
+                    }
                 }
-                
-                Button ("Log In") {
-                    print("We need to get a new user")
-                    print(email)
-                    print(password)
-                    self.goHomePage.toggle()
-                }
-                .padding(20)
-                .background(Color("PastelOrange"))
-                .foregroundColor(Color("PastelBeige"))
-                .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
-                .frame(width:400, height: 200)
-                Spacer()
             }
-        }
-        .navigationDestination(isPresented: $newUser) {
-            RegisterPage()
+            .navigationDestination(isPresented: $newUser) {
+                RegisterPage()
                 //.navigationBarBackButtonHidden()
-        }
-        .navigationDestination(isPresented: $goHomePage) {
-            HomePage()
-                .navigationBarBackButtonHidden()
-        }
-        .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Image("LogoImage")
-                            .resizable()
-                            .frame(width:60, height: 60)
-                    }
-                    ToolbarItem(placement: .principal) {
-                            Text("CalShare").font(Font.custom("SeymourOne-Regular", size: 20))
-                                .padding(.horizontal)
-                                .foregroundColor(buttonColor)
-                                .fontWeight(.bold)
-                    }
+            }
+            .navigationDestination(isPresented: $goHomePage) {
+                HomePage()
+                    .navigationBarBackButtonHidden()
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Image("LogoImage")
+                        .resizable()
+                        .frame(width:60, height: 60)
                 }
+                ToolbarItem(placement: .principal) {
+                    Text("CalShare").font(Font.custom("SeymourOne-Regular", size: 20))
+                        .padding(.horizontal)
+                        .foregroundColor(buttonColor)
+                        .fontWeight(.bold)
+                }
+            }
+            .onTapGesture {
+                //Dismisses the keyboard if you click away
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            }
+            .ignoresSafeArea(.keyboard)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .edgesIgnoringSafeArea(.all)
+            .background(Color("PastelBeige"))
+        }
     }
 }
 
