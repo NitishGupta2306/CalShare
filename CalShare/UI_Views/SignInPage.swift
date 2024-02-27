@@ -25,13 +25,8 @@ struct SignInPage: View {
                     VStack {
                         Spacer()
                         Text("Welcome!")
-                            .font(Font.custom("SeymourOne-Regular", size: 60))
-                            .foregroundColor(textColor1)
-                            .padding(.bottom, 20)
-                        
-                        Text("Sign In")
                             .font(Font.custom("SeymourOne-Regular", size: 40))
-                            .foregroundColor(textColor1)
+                            .foregroundColor(Color("TextColor"))
                             .bold()
                         
                         TextField("Enter e-mail address", text: $email)

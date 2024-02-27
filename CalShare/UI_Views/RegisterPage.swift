@@ -11,6 +11,7 @@ struct RegisterPage: View {
     @State var email: String = ""
     @State var password: String = ""
     @State var goHomePage: Bool = false
+    @State var goLogInPage: Bool = false
     @EnvironmentObject var curUser: UserModel
     
     var body: some View {
@@ -23,7 +24,7 @@ struct RegisterPage: View {
                         Spacer()
                         Text("Register Now")
                             .font(Font.custom("SeymourOne-Regular", size: 40))
-                            .foregroundColor(textColor1)
+                            .foregroundColor(Color("TextColor"))
                         
                         TextField("Enter e-mail address", text: $email)
                             .foregroundColor(Color("TextColor"))
@@ -72,6 +73,14 @@ struct RegisterPage: View {
                             .ignoresSafeArea(.keyboard)
                             .multilineTextAlignment(.center) // Center-align the entered text
                         
+                        Button {
+                            print("We need to get a new user")
+                            self.goLogInPage.toggle()
+                        } label: {
+                            Text("Already have an account?")
+                                .foregroundColor(Color("TextColor"))
+                        }
+                        
                         Button ("Log In") {
                             print("We need to get a new user")
                             self.goHomePage.toggle()
@@ -89,6 +98,10 @@ struct RegisterPage: View {
             }
             .navigationDestination(isPresented: $goHomePage) {
                 HomePage()
+                    .navigationBarBackButtonHidden()
+            }
+            .navigationDestination(isPresented: $goLogInPage) {
+                SignInPage()
                     .navigationBarBackButtonHidden()
             }
             .navigationBarTitleDisplayMode(.inline)

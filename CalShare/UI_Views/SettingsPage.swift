@@ -1,22 +1,18 @@
 //
-//  HomePage.swift
+//  SettingsPage.swift
 //  CalShare
 //
-//  Created by Chitra Mukherjee on 2/20/24.
+//  Created by Shubhada Martha on 2/27/24.
 //
 
 import SwiftUI
 
-struct HomePage: View {
+struct SettingsPage: View {
     var body: some View {
         NavigationStack {
             GeometryReader { _ in
                 ZStack {
-                    VStack {
-                        Text("Landing Page!")
-                            .font(Font.custom("SeymourOne-Regular", size: 40))
-                            .foregroundColor(textColor1)
-                    }
+                    Text("Settings Page!")
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -46,5 +42,5 @@ struct HomePage: View {
 }
 
 #Preview {
-    HomePage()
+    SettingsPage()
 }
