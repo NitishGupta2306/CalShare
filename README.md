@@ -88,4 +88,6 @@ is to make interacting with and displaying calendar data as simple and easy
 as possible.
 
 The EventListView relies on having access to an instance of the CalendarViewModel.
-on my example branch I created an environment object on the homescreen.
+on my example branch I created an environment object on the homescreen. Below
+is a link to the branch used for testing the api and views together.
+https://github.com/NitishGupta2306/CalShare/tree/updated-calendar-api
