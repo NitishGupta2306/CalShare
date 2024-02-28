@@ -45,13 +45,21 @@
 You may not need to edit the Info.plist if Privacy - Calendars Full Access Usage Description
 is already there then you are good.
 
-To have the current code run you may need to edit the Info.plist file in the project. To do that all you need to do is simply add the NSCalendarsFullAccessUsageDescription key with a message like "This app needs access to your full calendar data to continue." Here are some very useful links to Apples documentation and a short video explaining how EventKit works.
+To have the current code run you may need to edit the Info.plist file in the
+project. To do that all you need to do is simply add the NSCalendarsFullAccessUsageDescription
+key with a message like "This app needs access to your full calendar data to continue." 
+Here are some very useful links to Apples documentation and a short video 
+explaining how EventKit works.
 
 Docs: https://developer.apple.com/documentation/eventkit Video/Code Examples: https://developer.apple.com/videos/play/wwdc2023/10052/?time=863
 
-The only way I have found to be able to have the allow access pop up to re-appear is to delete the app completely and redownload it. This makes sense because the user shouldnt have to allow access everytime.
+The only way I have found to be able to have the allow access pop up to 
+re-appear is to delete the app completely and redownload it. 
+This makes sense because the user shouldnt have to allow access everytime.
 
-Currently there are three methods in the CalendarViewModel.
+##### CalendarViewModel
+
+Currently there are four methods in the CalendarViewModel.
 - requestAccess()
 
 This method prompts the user to allow access to their calendar data
@@ -60,7 +68,24 @@ This method prompts the user to allow access to their calendar data
 This method fetches the users calendar data and updates the CalendarViewModels
 events array with a sorted array of events by their start time in a specified
 date range.
+
+- fetchCurrentWeekEvents()
+
+This method is exactly the same as the above one except it has some pre filled
+in values and makes interacting with the api smoother since we know we only 
+want the current weeks events.
 - hasFullAccess()
 
 This method returns a bool indicating if the user has allowed access to their
 calendar data.
+
+##### EventListView
+
+This file contains a bare bones ui implementation of how to interact with the
+CalendarViewModel on the UI side. Each event is layed out in a scrolling view
+and the dates are formatted using a simple formatting function. The goal here
+is to make interacting with and displaying calendar data as simple and easy
+as possible.
+
+The EventListView relies on having access to an instance of the CalendarViewModel.
+on my example branch I created an environment object on the homescreen.
