@@ -16,6 +16,7 @@
 		231202922B8E54E700BAF8E7 /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231202912B8E54E700BAF8E7 /* SettingsPage.swift */; };
 		231202942B8E552200BAF8E7 /* CreateViewGroupsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231202932B8E552200BAF8E7 /* CreateViewGroupsPage.swift */; };
 		231202962B8E554800BAF8E7 /* CreateCalendarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231202952B8E554800BAF8E7 /* CreateCalendarPage.swift */; };
+		231202982B8EADFD00BAF8E7 /* ContentViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231202972B8EADFD00BAF8E7 /* ContentViewPage.swift */; };
 		2362356C2B8BBD0400283D3D /* Seymour_One in Resources */ = {isa = PBXBuildFile; fileRef = 2362356B2B8BBD0300283D3D /* Seymour_One */; };
 		2362356E2B8BBD1300283D3D /* Poppins in Resources */ = {isa = PBXBuildFile; fileRef = 2362356D2B8BBD1300283D3D /* Poppins */; };
 		401910552B8AB04B006EF454 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401910542B8AB04B006EF454 /* CalendarViewModel.swift */; };
@@ -76,6 +77,7 @@
 		231202912B8E54E700BAF8E7 /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
 		231202932B8E552200BAF8E7 /* CreateViewGroupsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewGroupsPage.swift; sourceTree = "<group>"; };
 		231202952B8E554800BAF8E7 /* CreateCalendarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCalendarPage.swift; sourceTree = "<group>"; };
+		231202972B8EADFD00BAF8E7 /* ContentViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewPage.swift; sourceTree = "<group>"; };
 		2362356B2B8BBD0300283D3D /* Seymour_One */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Seymour_One; sourceTree = "<group>"; };
 		2362356D2B8BBD1300283D3D /* Poppins */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Poppins; sourceTree = "<group>"; };
 		2362356F2B8BBD4B00283D3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -222,15 +224,16 @@
 		41C48C652B8A95CF00B6C714 /* UI_Views */ = {
 			isa = PBXGroup;
 			children = (
+				12BA0CB52B865C87005FDF2E /* UserModel.swift */,
+				12BA0CAB2B84FEC5005FDF2E /* SplashScreen.swift */,
 				12BA0CAF2B85B5F5005FDF2E /* RegisterPage.swift */,
 				41948EA52B5B3CF000ADD5D0 /* SignInPage.swift */,
-				12BA0CAB2B84FEC5005FDF2E /* SplashScreen.swift */,
-				12BA0CB12B85C373005FDF2E /* HomePage.swift */,
 				12BA0CB32B86588F005FDF2E /* LoadingPage.swift */,
-				12BA0CB52B865C87005FDF2E /* UserModel.swift */,
+				231202972B8EADFD00BAF8E7 /* ContentViewPage.swift */,
+				12BA0CB12B85C373005FDF2E /* HomePage.swift */,
+				231202932B8E552200BAF8E7 /* CreateViewGroupsPage.swift */,
 				2312028F2B8E54D800BAF8E7 /* NotificationsPage.swift */,
 				231202912B8E54E700BAF8E7 /* SettingsPage.swift */,
-				231202932B8E552200BAF8E7 /* CreateViewGroupsPage.swift */,
 				231202952B8E554800BAF8E7 /* CreateCalendarPage.swift */,
 			);
 			path = UI_Views;
@@ -405,6 +408,7 @@
 				231202962B8E554800BAF8E7 /* CreateCalendarPage.swift in Sources */,
 				12BA0CB42B86588F005FDF2E /* LoadingPage.swift in Sources */,
 				231202922B8E54E700BAF8E7 /* SettingsPage.swift in Sources */,
+				231202982B8EADFD00BAF8E7 /* ContentViewPage.swift in Sources */,
 				12BA0CAC2B84FEC5005FDF2E /* SplashScreen.swift in Sources */,
 				12BA0CB02B85B5F5005FDF2E /* RegisterPage.swift in Sources */,
 				41B657212B8AA143003D12ED /* AuthenticationHandler.swift in Sources */,

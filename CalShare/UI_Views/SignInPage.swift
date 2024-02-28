@@ -102,7 +102,9 @@ struct SignInPage: View {
                 //.navigationBarBackButtonHidden()
             }
             .navigationDestination(isPresented: $goHomePage) {
-                HomePage()
+                //HomePage()
+                    //.navigationBarBackButtonHidden()
+                ContentViewPage()
                     .navigationBarBackButtonHidden()
             }
             .navigationBarTitleDisplayMode(.inline)

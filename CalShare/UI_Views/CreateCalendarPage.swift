@@ -10,11 +10,15 @@ import SwiftUI
 struct CreateCalendarPage: View {
     var body: some View {
         NavigationStack {
-            GeometryReader { _ in
+            //GeometryReader { _ in
                 ZStack {
-                    Text("Create Calendar Page!")
+                    VStack {
+                        Text("Create Calendar Page!")
+                            .font(Font.custom("SeymourOne-Regular", size: 40))
+                            .foregroundColor(textColor1)
+                    }
                 }
-            }
+            //}
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
