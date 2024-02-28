@@ -8,14 +8,19 @@
 import Foundation
 import EventKit
 
+struct IdentifiableEvent: Identifiable {
+  let id = UUID()
+  let event: EKEvent
+}
+
 @MainActor class CalendarViewModel: ObservableObject {
-  @Published var calendarEvents: [EKEvent]?
+  @Published var events: [IdentifiableEvent]
   let store: EKEventStore
     
   init() {
     
     self.store = EKEventStore()
-    
+    self.events = []
   }
       
   func requestAccess() async {
@@ -38,8 +43,15 @@ import EventKit
                                                   end: interval.end,
                                                   calendars: calendars)
     
-    self.calendarEvents = self.store.events(matching: predicate).sorted(by: {$0.startDate < $1.startDate})
-    print(self.calendarEvents ?? "nil")
+    let fetchedEvents = self.store.events(matching: predicate).sorted(by: {$0.startDate < $1.startDate})
+    
+    self.events = fetchedEvents.map{ IdentifiableEvent(event: $0) }
+    
+  }
+  
+  func fetchCurrentWeekEvents(){
+    
+    self.fetchEvents(interval: .weekOfMonth, startDate: Date(), calendars: nil)
     
   }
   
