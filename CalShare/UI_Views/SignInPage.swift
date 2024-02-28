@@ -99,11 +99,9 @@ struct SignInPage: View {
             }
             .navigationDestination(isPresented: $newUser) {
                 RegisterPage()
-                //.navigationBarBackButtonHidden()
+                    .navigationBarBackButtonHidden()
             }
             .navigationDestination(isPresented: $goHomePage) {
-                //HomePage()
-                    //.navigationBarBackButtonHidden()
                 ContentViewPage()
                     .navigationBarBackButtonHidden()
             }
@@ -115,10 +113,11 @@ struct SignInPage: View {
                         .frame(width:60, height: 60)
                 }
                 ToolbarItem(placement: .principal) {
-                    Text("CalShare").font(Font.custom("SeymourOne-Regular", size: 20))
-                        .padding(.horizontal)
-                        .foregroundColor(buttonColor)
-                        .fontWeight(.bold)
+    //                    Text("CalShare")
+    //                        .foregroundStyle(Color("PastelOrange"))
+                    Image("CalShare")
+                        .resizable()
+                        .frame(width: 130, height: 20)
                 }
             }
             .onTapGesture {

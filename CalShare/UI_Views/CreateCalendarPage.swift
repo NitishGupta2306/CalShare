@@ -15,7 +15,7 @@ struct CreateCalendarPage: View {
                     VStack {
                         Text("Create Calendar Page!")
                             .font(Font.custom("SeymourOne-Regular", size: 40))
-                            .foregroundColor(textColor1)
+                        .foregroundColor(Color("TextColor"))
                     }
                 }
             //}

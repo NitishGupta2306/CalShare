@@ -44,7 +44,6 @@ struct ContentViewPage: View {
                 }
                 .tag(3)
         }
-        .foregroundColor(Color("White"))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
@@ -53,10 +52,11 @@ struct ContentViewPage: View {
                     .frame(width:60, height: 60)
             }
             ToolbarItem(placement: .principal) {
-                Text("CalShare").font(Font.custom("SeymourOne-Regular", size: 20))
-                    .padding(.horizontal)
-                    .foregroundColor(buttonColor)
-                    .fontWeight(.bold)
+//                    Text("CalShare")
+//                        .foregroundStyle(Color("PastelOrange"))
+                Image("CalShare")
+                    .resizable()
+                    .frame(width: 130, height: 20)
             }
         }
     }

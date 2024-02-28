@@ -81,7 +81,7 @@ struct RegisterPage: View {
                                 .foregroundColor(Color("TextColor"))
                         }
                         
-                        Button ("Log In") {
+                        Button ("Get Started") {
                             print("We need to get a new user")
                             self.goHomePage.toggle()
                             // Dismisses the keyboard when the "Send Code" button is tapped
@@ -97,7 +97,7 @@ struct RegisterPage: View {
                 }
             }
             .navigationDestination(isPresented: $goHomePage) {
-                HomePage()
+                ContentViewPage()
                     .navigationBarBackButtonHidden()
             }
             .navigationDestination(isPresented: $goLogInPage) {
@@ -112,10 +112,11 @@ struct RegisterPage: View {
                         .frame(width:60, height: 60)
                 }
                 ToolbarItem(placement: .principal) {
-                    Text("CalShare").font(Font.custom("SeymourOne-Regular", size: 20))
-                        .padding(.horizontal)
-                        .foregroundColor(buttonColor)
-                        .fontWeight(.bold)
+    //                    Text("CalShare")
+    //                        .foregroundStyle(Color("PastelOrange"))
+                    Image("CalShare")
+                        .resizable()
+                        .frame(width: 130, height: 20)
                 }
             }
             .onTapGesture {

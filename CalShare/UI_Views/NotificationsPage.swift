@@ -15,7 +15,7 @@ struct NotificationsPage: View {
                     VStack {
                         Text("Notifications Page!")
                             .font(Font.custom("SeymourOne-Regular", size: 40))
-                            .foregroundColor(textColor1)
+                            .foregroundColor(Color("TextColor"))
                     }
                 }
             //}
