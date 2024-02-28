@@ -9,14 +9,14 @@ import SwiftUI
 
 @MainActor class UserModel: ObservableObject {
     @Published var authToken: String?
-    @Published var curUser: User?
+    @Published var currentUser: User?
     
-    private func setEmail(email_string: String?) {
-        self.curUser?.email = email_string
+    func setEmail(email_string: String?) {
+        self.currentUser?.email = email_string
     }
     
-    private func setPassword(password_string: String?) {
-        self.curUser?.email = password_string
+    func setPassword(password_string: String?) {
+        self.currentUser?.email = password_string
     }
 }
 

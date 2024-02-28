@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SplashScreen: View {
     @State private var isActive = false
+    @StateObject var userModel = UserModel()
 
     var body: some View {
         NavigationStack {
@@ -38,6 +39,7 @@ struct SplashScreen: View {
                     .navigationBarBackButtonHidden(true)
             }
         }
+        .environmentObject(userModel)
     }
 }
 

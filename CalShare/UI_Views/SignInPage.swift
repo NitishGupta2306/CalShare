@@ -83,9 +83,9 @@ struct SignInPage: View {
                         }
                         
                         Button ("Log In") {
-                            print("We need to get a new user")
-                            print(email)
-                            print(password)
+                            //print("We are getting a new User and setting their information")
+                            curUser.setEmail(email_string: email)
+                            curUser.setPassword(password_string: password)
                             self.goHomePage.toggle()
                         }
                         .padding(20)

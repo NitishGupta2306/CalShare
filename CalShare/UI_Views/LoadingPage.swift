@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoadingPage: View {
-    //@EnvironmentObject var curUser: UserViewModel //creating first instance of environment variable
+    @EnvironmentObject var curUser: UserModel 
     @State var userAuthTokenExists: Bool = false
     @State var goHomePage: Bool = false
     @State var goWelcomePage: Bool = false
@@ -23,6 +23,8 @@ struct LoadingPage: View {
             .onAppear() {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     if userAuthTokenExists {
+                        //if the userAuthToken exists, we need to load the user
+                        
                         goHomePage = true
                     } else {
                         //otherwise, we are going to get the auth token from the user by prompting them for phone number
