@@ -14,8 +14,8 @@ struct HomePage: View {
                 ZStack {
                     VStack {
                         Text("Landing Page!")
-                            .font(Font.custom("SeymourOne-Regular", size: 40))
-                            .foregroundColor(textColor1)
+                            .font(.custom(fontTwo, size: 40))
+                            .foregroundColor(Color("TextColor"))
                     }
                 }
             //}

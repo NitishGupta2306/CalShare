@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+let fontOne = "SeymourOne-Regular"
+let fontTwo = "Poppins-Regular"
+
 struct ContentViewPage: View {
     @State var currentTab = 0
     
