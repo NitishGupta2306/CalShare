@@ -27,10 +27,9 @@ struct CreateCalendarPage: View {
                         .frame(width:60, height: 60)
                 }
                 ToolbarItem(placement: .principal) {
-                    Text("CalShare").font(Font.custom("SeymourOne-Regular", size: 20))
-                        .padding(.horizontal)
-                        .foregroundColor(buttonColor)
-                        .fontWeight(.bold)
+                    Image("CalShare")
+                        .resizable()
+                        .frame(width: 130, height: 20)
                 }
             }
             .onTapGesture {
