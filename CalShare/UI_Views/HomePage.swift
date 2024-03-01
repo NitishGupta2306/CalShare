@@ -44,38 +44,37 @@ struct HomePage: View {
                             .font(.custom(fontTwo, size: 40))
                             .foregroundColor(Color("TextColor"))
                       
-                      Button {
-            
-                        Task {
-                          await calendar.requestAccess()
-                        }
-                        
-                      } label: {
-                        Text("Request Calendar Data Access")
-                          .frame(maxWidth: .infinity)
-                          .frame(height: 40)
-                          .font(.system(size: 20))
-                          .foregroundColor(.black)
-                          .background(.green)
-                          .clipShape(RoundedRectangle(cornerRadius: 5.0))
-                          .padding([.leading, .trailing], 20)
-                      }
+                        Button {
               
-                      Button {
-            
-                        calendar.fetchCurrentWeekEvents()
-            
-                      } label: {
-                        Text("Request Calendar Data")
-                          .frame(maxWidth: .infinity)
-                          .frame(height: 40)
-                          .font(.system(size: 20))
-                          .foregroundColor(.black)
-                          .background(.green)
-                          .clipShape(RoundedRectangle(cornerRadius: 5.0))
-                          .padding([.leading, .trailing], 20)
-                      }
-                        
+                          Task {
+                            await calendar.requestAccess()
+                          }
+                          
+                        } label: {
+                          Text("Request Calendar Data Access")
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 40)
+                            .font(.system(size: 20))
+                            .foregroundColor(.black)
+                            .background(.green)
+                            .clipShape(RoundedRectangle(cornerRadius: 5.0))
+                            .padding([.leading, .trailing], 20)
+                        }
+              
+                        Button {
+              
+                          calendar.fetchCurrentWeekEvents()
+              
+                        } label: {
+                          Text("Request Calendar Data")
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 40)
+                            .font(.system(size: 20))
+                            .foregroundColor(.black)
+                            .background(.green)
+                            .clipShape(RoundedRectangle(cornerRadius: 5.0))
+                            .padding([.leading, .trailing], 20)
+                        }
                     }
                 }
                 .navigationDestination(isPresented: $addCal) {
@@ -89,7 +88,6 @@ struct HomePage: View {
                 .environmentObject(calendar)
                 .ignoresSafeArea(.keyboard)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .edgesIgnoringSafeArea(.all)
                 .background(Color("PastelBeige"))
         }
       
