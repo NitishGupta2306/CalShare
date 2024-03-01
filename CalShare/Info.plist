@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSCalendarsFullAccessUsageDescription</key>
-	<string>This app needs access to your calendar data.</string>
+	<string>This app requires access to calendar data.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Fonts/Seymour_One/SeymourOne-Regular.ttf</string>

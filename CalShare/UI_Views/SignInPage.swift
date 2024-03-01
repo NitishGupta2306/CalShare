@@ -19,59 +19,64 @@ struct SignInPage: View {
         NavigationStack{
             GeometryReader { _ in
                 ZStack {
-//                    backgroundColor
-//                        .ignoresSafeArea()
-                    VStack {
+                    VStack(alignment: .center) {
                         Spacer()
                         Text("Welcome!")
-                            .font(Font.custom("SeymourOne-Regular", size: 40))
+                            .font(.custom(fontTwo, size: 30.0))
                             .foregroundColor(Color("TextColor"))
-                            .bold()
+                            .fontWeight(.semibold)
+                            .padding()
                         
-                        TextField("Enter e-mail address", text: $email)
-                            .foregroundColor(Color("TextColor"))
-                            .background(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color("TextColor"), lineWidth: 0.5)
-//                                .padding(10)
-                            )
-                            .frame(width: 300)
-                            .overlay(
-                                HStack {
-                                    Image(systemName: "envelope")
-                                        .foregroundColor(Color("TextColor"))
-                                        .padding(.leading, 10)
-                                    
-//                                    Text("Enter e-mail address")
-//                                        .foregroundColor(Color.gray)
-//                                        .padding(.leading, 5)
-                                    
-                                    Spacer() // Pushes the image and text to the leading edge
-                                }
-                            )
-                            .multilineTextAlignment(.center) // Center-align the entered text
-                        
-                        SecureField("Enter Password", text: $password)
-                            .foregroundColor(Color("TextColor"))
-                            .background(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color("TextColor"), lineWidth: 0.5)
-                            )
-                            .frame(width: 300)
-                            .overlay(
-                                HStack {
-                                    Image(systemName: "lock")
-                                        .foregroundColor(Color("TextColor"))
-                                        .padding(.leading, 10)
-                                    
-//                                    Text("Enter Password")
-//                                        .foregroundColor(Color.gray)
-//                                        .padding(.leading, 10)
-                                    
-                                    Spacer() // Pushes the image and text to the leading edge
-                                }
-                            )
-                            .multilineTextAlignment(.center) // Center-align the entered text
+                        VStack(alignment: .leading, spacing: 5) {
+                            Text("E-mail Address")
+                                .font(.custom(fontTwo, size: 14.0))
+                                .foregroundColor(Color("PastelGray"))
+                                .fontWeight(.regular)
+                            
+                            TextField("*****@gmail.com", text: $email)
+                                .foregroundColor(Color("TextColor"))
+                                .autocorrectionDisabled()
+                                .background(
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke(Color("TextColor"), lineWidth: 0.5)
+                                        .frame(height: 40)
+                                )
+                                .frame(width: 300)
+                                .overlay(
+                                    HStack {
+                                        Image(systemName: "envelope")
+                                            .foregroundColor(Color("TextColor"))
+                                            .padding(.leading, 10)
+                                        Spacer() // Pushes the image and text to the leading edge
+                                    }
+                                )
+                                .multilineTextAlignment(.center) // Center-align the entered text
+                                .padding()
+                            
+                            Text("Password")
+                                .font(.custom(fontTwo, size: 14.0))
+                                .foregroundColor(Color("PastelGray"))
+                                .fontWeight(.regular)
+                            
+                            SecureField("**********", text: $password)
+                                .foregroundColor(Color("TextColor"))
+                                .background(
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke(Color("TextColor"), lineWidth: 0.5)
+                                        .frame(height: 40)
+                                )
+                                .frame(width: 300)
+                                .overlay(
+                                    HStack {
+                                        Image(systemName: "lock")
+                                            .foregroundColor(Color("TextColor"))
+                                            .padding(.leading, 10)
+                                        Spacer() // Pushes the image and text to the leading edge
+                                    }
+                                )
+                                .multilineTextAlignment(.center) // Center-align the entered text
+                                .padding()
+                        }
                         
                         Button {
                             print("We need to get a new user")
@@ -82,27 +87,26 @@ struct SignInPage: View {
                         }
                         
                         Button ("Log In") {
-                            print("We need to get a new user")
-                            print(email)
-                            print(password)
+                            //print("We are getting a new User and setting their information")
+                            curUser.setEmail(email_string: email)
+                            curUser.setPassword(password_string: password)
                             self.goHomePage.toggle()
                         }
-                        .padding(20)
+                        .padding(.horizontal, 150)
+                        .padding(.vertical, 20)
                         .background(Color("PastelOrange"))
                         .foregroundColor(Color("PastelBeige"))
                         .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
-                        .frame(width:400, height: 200)
+                        .frame(width: 400, height: 100)
                         Spacer()
                     }
                 }
             }
             .navigationDestination(isPresented: $newUser) {
                 RegisterPage()
-                //.navigationBarBackButtonHidden()
+                    .navigationBarBackButtonHidden()
             }
             .navigationDestination(isPresented: $goHomePage) {
-                //HomePage()
-                    //.navigationBarBackButtonHidden()
                 ContentViewPage()
                     .navigationBarBackButtonHidden()
             }
@@ -114,20 +118,19 @@ struct SignInPage: View {
                         .frame(width:60, height: 60)
                 }
                 ToolbarItem(placement: .principal) {
-                    Text("CalShare").font(Font.custom("SeymourOne-Regular", size: 20))
-                        .padding(.horizontal)
-                        .foregroundColor(buttonColor)
-                        .fontWeight(.bold)
+                    Image("CalShare")
+                        .resizable()
+                        .frame(width: 130, height: 20)
                 }
-            }
-            .onTapGesture {
-                //Dismisses the keyboard if you click away
-                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }
             .ignoresSafeArea(.keyboard)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .edgesIgnoringSafeArea(.all)
             .background(Color("PastelBeige"))
+        }
+        .onTapGesture {
+            //Dismisses the keyboard if you click away
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
     }
 }

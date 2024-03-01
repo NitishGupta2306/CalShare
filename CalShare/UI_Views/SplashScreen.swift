@@ -9,39 +9,24 @@ import SwiftUI
 
 struct SplashScreen: View {
     @State private var isActive = false
+    @StateObject var userModel = UserModel()
 
     var body: some View {
         NavigationStack {
             ZStack {
-                backgroundColor
-                    .ignoresSafeArea()
+//                backgroundColor
+//                    .ignoresSafeArea()
                 VStack {
                     Image("LogoImage")
                         .resizable()
-                        .frame(width: 250, height: 250)
-                    Text("CalShare")
-                        .font(Font.custom("SeymourOne-Regular", size: 40))
-                        .foregroundColor(Color("PastelOrange"))
-                        .padding(.bottom, 20)
+                        .frame(width: 240, height: 253)
+                    Image("CalShare")
+                        .resizable()
+                        .frame(width: 270, height: 40)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color("PastelBeige"))
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Image("LogoImage")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 60, height: 60)
-                }
-                ToolbarItem(placement: .principal) {
-                    Text("CalShare")
-                        .foregroundStyle(Color("PastelOrange"))
-                }
-            }
-            .toolbarBackground(.visible, for: .navigationBar)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(Color("PastelBeige"))
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                     withAnimation {
@@ -54,6 +39,7 @@ struct SplashScreen: View {
                     .navigationBarBackButtonHidden(true)
             }
         }
+        .environmentObject(userModel)
     }
 }
 
