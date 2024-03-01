@@ -34,11 +34,12 @@
 
 #### Issue: Users connected to a Group
 ##### Group Table for Database
-- `GroupID` as a `key`. Array of `Uids` as value. All members are added to the group.
+- `GroupID` as a `key`. Entries of `Uids` as value. All members are added to the group.
+- Have an extra entry for `NumOfUsersInGroup`
 
-|   GroupID  | UserID0 | UserID1 | UserID2 | UserID3 | UserID4 | UserID5 | UserID6 | UserID7 |
-|------------|---------|---------|---------|---------|---------|---------|---------|---------|
-|RandomString|d544bhn42|d32dfbn42|d390jmn78|         |         |         |         |         |
+|   GroupID  |NumOfUsersInGroup| UserID0 | UserID1 | UserID2 | UserID3 | UserID4 | UserID5 | UserID6 | UserID7 |
+|------------|-----------------|---------|---------|---------|---------|---------|---------|---------|---------|
+|RandomString|        3        |d544bhn42|d32dfbn42|d390jmn78|         |         |         |         |         |
 
 - To get what get what group a user in, just search through UserID0-7 and see if their userID is in that row. If it is then return that groupID to the user. Should be fairly simple and quick using a SQL query.
 
@@ -49,13 +50,22 @@
 - On `re-login` or `re-download`, uid is searched against all uids in groups to restore the locally stored `groupId`
 
 
-#### Issue: Forming Groups and doing computation
-- Using the `GroupID` we pull each `uid` and the calendar data saved to them. 
-- We then do concurrent computation of the calendars on the local machine. (Simple math, shouldnt be too intensive)
+#### Issue: Forming Groups, event computation, and general flow
+1. Getting userData flow
+ * Get userID from user by either signing in or from device(previous sign in)
+ * Get the groups a user is in by searching the Group Table
+ * Once user has the groupID's they are in, then also retreive all the userIDs that are in every group from the Group Table. 
+ * When selecting a group on user side, retrieve all the data from every user in that group from the UserData Table. Every user should have their information in that table if they signed in.
+ 
+2. We then do concurrent computation of the calendars on the local machine. (Simple math, shouldnt be too intensive)
+
+3. For adding people to groups, will just need to share the groupID to the user's who want to join and then add them to the row of that GroupID in the Group Table.
+ * To make it work with QRCodes, will need to have it open up app (or send to appStore to download) and then do the group join feature with the provided groupID. Maybe use a query string in url to store groupID???
+4. For this to work, cannot save the group data and user data before hand. Will have to refetch the data on every open so that it is not desynced. However a user's UserID will never change so that can be stored on the device if the user has signed in before.
 
 #### Issue: Date Range of information pulled
 - 7 days of Calendar data. Sunday to Saturday.
-- Groups auto delete in 7 days. (Unless you pay lol)
+- Groups auto delete in 7 days. (Unless you pay lol). Will need to add a date of the time the group was created for this to work to the Group Table
 
 #### Issue: Max User cap:
 - Since this is a to consumer application. Max user expectation is 8 people.
