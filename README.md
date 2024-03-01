@@ -70,6 +70,8 @@
 #### Issue: Max User cap:
 - Since this is a to consumer application. Max user expectation is 8 people.
 
+----
+
 #### Using EventKit
 You may not need to edit the Info.plist if Privacy - Calendars Full Access Usage Description
 is already there then you are good.
@@ -120,3 +122,31 @@ The EventListView relies on having access to an instance of the CalendarViewMode
 on my example branch I created an environment object on the homescreen. Below
 is a link to the branch used for testing the api and views together.
 https://github.com/NitishGupta2306/CalShare/tree/updated-calendar-api
+
+---
+
+#### Using AuthenticationHandler:
+
+##### Functions and Uses:
+  - `createNewUser` : Sends prompt to firebase authenticatio and creates a new user with a unique UID.
+  - `signInUser` : Send prompt to firebase to see if a user already exsists. Gets their details if user exsists.
+  - `checkAuthenticatedUser` : Checks if a user already exsists on out local instace of the Firebase SDK. Sets their details if they exsist.
+  - `signOut` : removes data from local instance of Firebase SDK.
+  - `passReset` : sends an email to the user with a password reset link.
+  - `updatePass` : allows user to update the password within the application.
+
+##### Current places functions are used:
+Note: Created viewModels for each page that currently has authentication uses.
+###### RegisterPage:
+- Calls `createNewUser` in a `signIn` function. Allows us to set up new user details. Handles all errors.
+
+###### SignInPage:
+- Calls `signInUser` in a `signIn` function. Allows to check user and set their details. Handles all errors.
+
+###### SettingPage:
+- Allows call to all maintaince functions. This allows us to logout, request a password reset, and update password. Will be adding email updates later.
+
+
+
+
+
