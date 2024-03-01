@@ -118,11 +118,5 @@ as possible.
 
 The EventListView relies on having access to an instance of the CalendarViewModel.
 on my example branch I created an environment object on the homescreen. Below
-is a link to the branch used for testing the api and views together. Please 
-check it out and play with it to see if there need to be any changes to allow for
-smooth intigration with the main codebase.
-
+is a link to the branch used for testing the api and views together.
 https://github.com/NitishGupta2306/CalShare/tree/updated-calendar-api
-
-## If you cannot get the prompt for collecting the calendar data to pop up you likely need to edit the plist. Instructions on how to do that are in the Using EventKit section above
-
