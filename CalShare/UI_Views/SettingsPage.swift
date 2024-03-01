@@ -9,7 +9,9 @@ import SwiftUI
 
 @MainActor
 final class SettingViewModel: ObservableObject{
-    var email = "" // figure out how to get email from curUser
+    var email = ""
+    var password = ""
+    var errMsg = ""
     func logOut(){
         Task{
             do{
@@ -22,8 +24,25 @@ final class SettingViewModel: ObservableObject{
     }
     
     func resetPass() async throws {
+        let currentUser = try AuthenticationHandler.shared.checkAuthenticatedUser()
+        
+        guard let email = currentUser.email else {
+            throw AuthenticationError.getUserFail
+        }
+        
         do{
             try await AuthenticationHandler.shared.passReset(email: email)
+        } catch {
+            throw AuthenticationError.passResetError
+        }
+    }
+    
+    func updatePass() async throws{
+        if(self.password.count > 7){
+            try await AuthenticationHandler.shared.updatePass(password: self.password)
+        }
+        else{
+            self.errMsg = "Not a valid password."
         }
     }
     
@@ -37,22 +56,40 @@ struct SettingsPage: View {
     var body: some View {
         NavigationStack{
             ZStack{
-                List{
-                    // Logout Button
-                    Button{
-                        viewModel.logOut()
-                        isSignedOut.toggle()
-                        
-                    }label: {
-                        Text("Logout")
-                            .foregroundColor(Color("TextColor"))
+                VStack{
+                    VStack(alignment: .leading, spacing: 5) {
+                        List{
+                            // Logout Button
+                            Button{
+                                viewModel.logOut()
+                                isSignedOut.toggle()
+                                
+                            }label: {
+                                Text("Logout")
+                                    .foregroundColor(Color("TextColor"))
+                            }
+                            
+                            // Reset password
+                            Button{
+                                Task{
+                                    try await viewModel.resetPass()
+                                }
+                            }label: {
+                                Text("Reset Password")
+                                    .foregroundColor(Color("TextColor"))
+                            }
+                        }
                     }
                 }
-            }            
+                .background(Color("PastelBeige"))
+
+            }
             .navigationDestination(isPresented: $isSignedOut) {
                 SignInPage()
                     .navigationBarBackButtonHidden()
             }
+            .ignoresSafeArea(.keyboard)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 }

@@ -42,6 +42,14 @@ final class AuthenticationHandler {
         try await Auth.auth().sendPasswordReset(withEmail: email)
     }
     
+    func updatePass(password: String) async throws{
+        guard let currUser = Auth.auth().currentUser else{
+            throw AuthenticationError.getUserFail
+        }
+        
+        try await currUser.updatePassword(to: password)
+    }
+    
 }
 
 // Response from FireBaseAuth CreateUser.
