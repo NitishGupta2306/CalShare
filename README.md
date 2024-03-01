@@ -52,15 +52,15 @@
 
 #### Issue: Forming Groups, event computation, and general flow
 1. Getting userData flow
- * Get userID from user by either signing in or from device(previous sign in)
- * Get the groups a user is in by searching the Group Table
- * Once user has the groupID's they are in, then also retreive all the userIDs that are in every group from the Group Table. 
- * When selecting a group on user side, retrieve all the data from every user in that group from the UserData Table. Every user should have their information in that table if they signed in.
+  * Get userID from user by either signing in or from device(previous sign in)
+  * Get the groups a user is in by searching the Group Table
+  * Once user has the groupID's they are in, then also retreive all the userIDs that are in every group from the Group Table. 
+  * When selecting a group on user side, retrieve all the data from every user in that group from the UserData Table. Every user should have their information in that table if they signed in.
  
 2. We then do concurrent computation of the calendars on the local machine. (Simple math, shouldnt be too intensive)
 
 3. For adding people to groups, will just need to share the groupID to the user's who want to join and then add them to the row of that GroupID in the Group Table.
- * To make it work with QRCodes, will need to have it open up app (or send to appStore to download) and then do the group join feature with the provided groupID. Maybe use a query string in url to store groupID???
+  * To make it work with QRCodes, will need to have it open up app (or send to appStore to download) and then do the group join feature with the provided groupID. Maybe use a query string in url to store groupID???
 4. For this to work, cannot save the group data and user data before hand. Will have to refetch the data on every open so that it is not desynced. However a user's UserID will never change so that can be stored on the device if the user has signed in before.
 
 #### Issue: Date Range of information pulled
