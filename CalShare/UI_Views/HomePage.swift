@@ -37,12 +37,14 @@ struct HomePage: View {
                                 .padding(.leading, 10)
                                 .font(.system(size: 30))
                         }
-                        
-                        EventListView()
                       
                         Text("Landing Page!")
                             .font(.custom(fontTwo, size: 40))
                             .foregroundColor(Color("TextColor"))
+                      
+                        EventListView()
+                      
+                        Spacer()
                       
                         Button {
               
@@ -56,7 +58,7 @@ struct HomePage: View {
                             .frame(height: 40)
                             .font(.system(size: 20))
                             .foregroundColor(.black)
-                            .background(.green)
+                            .background(Color("PastelOrange"))
                             .clipShape(RoundedRectangle(cornerRadius: 5.0))
                             .padding([.leading, .trailing], 20)
                         }
@@ -71,9 +73,10 @@ struct HomePage: View {
                             .frame(height: 40)
                             .font(.system(size: 20))
                             .foregroundColor(.black)
-                            .background(.green)
+                            .background(Color("PastelOrange"))
                             .clipShape(RoundedRectangle(cornerRadius: 5.0))
                             .padding([.leading, .trailing], 20)
+                            .padding(.bottom, 50)
                         }
                     }
                 }
