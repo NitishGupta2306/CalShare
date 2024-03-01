@@ -21,9 +21,24 @@
 ##### Table1 in database
 - Store it in firebase as a dictonary structure. `Uid` is the `key` and the `calendarData` is the Value
 
+|  UserID  |    [CalendarData]    |
+|----------|----------------------|
+|d324bbn423|[(startTime1, endTime1),(startTime2, endTime2)]|
+
+- UserID will be the user's ID that they get when they sign in/create account
+
+- The Calender Data is a variable array that stores tuples where the first element in the tuple is the start time of an event and the 2nd element of the tuple is the end time of an event. No need to store any more information like the name of the event because it will not be displayed anyways.
+
+- The times will be stored as 64 Bit integers representing their time in Unix time(sec since Jan 1, 1970) so that the memory load is relatively small. On the user side, these ints will be converted to a readable date format.
+
+
 #### Issue: Users connected to a Group
 ##### Table2 in database
 - `GroupID` as a `key`. Array of `Uids` as value. All members are added to the group.
+
+|   GroupID  | UserID0 | UserID1 | UserID2 | UserID3 | UserID4 | UserID5 | UserID6 | UserID7 |
+|------------|---------|---------|---------|---------|---------|---------|---------|---------|
+|RandomString|d544bhn42|d32dfbn42|d390jmn78|         |         |         |         |         |
 
 - `GroupID` stored locally on user machine.
                     
