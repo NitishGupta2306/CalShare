@@ -17,7 +17,7 @@ struct addFriendsPage: View {
                 ZStack {
                     VStack {
                         Text("Add Friends Page!")
-                            .font(Font.custom("SeymourOne-Regular", size: 40))
+                            .font(Font.custom("fontTwo", size: 40))
                         .foregroundColor(Color("TextColor"))
                         
                         HStack {
@@ -25,23 +25,23 @@ struct addFriendsPage: View {
                                 //print("We are getting a new User and setting their information")
                                 self.addedFriend.toggle()
                             }
-                            .padding(.horizontal, 150)
-                            .padding(.vertical, 20)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 10)
                             .background(Color("PastelOrange"))
                             .foregroundColor(Color("PastelBeige"))
                             .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
-                            .frame(width: 400, height: 100)
+                            .frame(width: 150, height: 50)
                             
                             Button ("Cancel") {
                                 //print("We are getting a new User and setting their information")
                                 self.cancel.toggle()
                             }
-                            .padding(.horizontal, 150)
-                            .padding(.vertical, 20)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 10)
                             .background(Color("PastelOrange"))
                             .foregroundColor(Color("PastelBeige"))
                             .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
-                            .frame(width: 400, height: 100)
+                            .frame(width: 150, height: 50)
                         }
                     }
                 }

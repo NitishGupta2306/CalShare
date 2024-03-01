@@ -24,6 +24,7 @@ struct RegisterPage: View {
                             .font(.custom(fontTwo, size: 30.0))
                             .foregroundColor(Color("TextColor"))
                             .fontWeight(.semibold)
+                            .padding()
                         
                         VStack(alignment: .leading, spacing: 5) {
                             Text("E-mail Address")
@@ -127,14 +128,14 @@ struct RegisterPage: View {
                         .frame(width: 130, height: 20)
                 }
             }
-            .onTapGesture {
-                //Dismisses the keyboard if you click away
-                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-            }
             .ignoresSafeArea(.keyboard)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .edgesIgnoringSafeArea(.all)
             .background(Color("PastelBeige"))
+        }
+        .onTapGesture {
+            //Dismisses the keyboard if you click away
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
     }
 }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomePage: View {
+    @State var addCal: Bool = false
+    
     var body: some View {
         NavigationStack {
             //GeometryReader { _ in
@@ -42,6 +44,10 @@ struct HomePage: View {
                     }
                 }
             //}
+                .navigationDestination(isPresented: $addCal) {
+                    CreateCalendarPage()
+                        .navigationBarBackButtonHidden()
+                }
             .onTapGesture {
                 //Dismisses the keyboard if you click away
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)

@@ -124,14 +124,14 @@ struct SignInPage: View {
                         .frame(width: 130, height: 20)
                 }
             }
-            .onTapGesture {
-                //Dismisses the keyboard if you click away
-                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-            }
             .ignoresSafeArea(.keyboard)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .edgesIgnoringSafeArea(.all)
             .background(Color("PastelBeige"))
+        }
+        .onTapGesture {
+            //Dismisses the keyboard if you click away
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
     }
 }
