@@ -19,6 +19,7 @@
 		231202982B8EADFD00BAF8E7 /* ContentViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231202972B8EADFD00BAF8E7 /* ContentViewPage.swift */; };
 		2362356C2B8BBD0400283D3D /* Seymour_One in Resources */ = {isa = PBXBuildFile; fileRef = 2362356B2B8BBD0300283D3D /* Seymour_One */; };
 		2362356E2B8BBD1300283D3D /* Poppins in Resources */ = {isa = PBXBuildFile; fileRef = 2362356D2B8BBD1300283D3D /* Poppins */; };
+		4004B5622B8FE28B001416C9 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4004B5612B8FE28B001416C9 /* EventListView.swift */; };
 		237EC7552B902DE700F188C2 /* addFriendsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237EC7542B902DE700F188C2 /* addFriendsPage.swift */; };
 		401910552B8AB04B006EF454 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401910542B8AB04B006EF454 /* CalendarViewModel.swift */; };
 		41066F432B75B2B5002780B9 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 41066F422B75B2B5002780B9 /* FirebaseDatabase */; };
@@ -82,6 +83,7 @@
 		2362356B2B8BBD0300283D3D /* Seymour_One */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Seymour_One; sourceTree = "<group>"; };
 		2362356D2B8BBD1300283D3D /* Poppins */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Poppins; sourceTree = "<group>"; };
 		2362356F2B8BBD4B00283D3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4004B5612B8FE28B001416C9 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
 		237EC7542B902DE700F188C2 /* addFriendsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addFriendsPage.swift; sourceTree = "<group>"; };
 		401910542B8AB04B006EF454 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		412F640F2B747933005C68EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				2312028F2B8E54D800BAF8E7 /* NotificationsPage.swift */,
 				231202912B8E54E700BAF8E7 /* SettingsPage.swift */,
 				231202952B8E554800BAF8E7 /* CreateCalendarPage.swift */,
+				4004B5612B8FE28B001416C9 /* EventListView.swift */,
 				237EC7542B902DE700F188C2 /* addFriendsPage.swift */,
 			);
 			path = UI_Views;
@@ -416,6 +419,7 @@
 				12BA0CAC2B84FEC5005FDF2E /* SplashScreen.swift in Sources */,
 				12BA0CB02B85B5F5005FDF2E /* RegisterPage.swift in Sources */,
 				41B657212B8AA143003D12ED /* AuthenticationHandler.swift in Sources */,
+				4004B5622B8FE28B001416C9 /* EventListView.swift in Sources */,
 				231202942B8E552200BAF8E7 /* CreateViewGroupsPage.swift in Sources */,
 				231202902B8E54D800BAF8E7 /* NotificationsPage.swift in Sources */,
 				401910552B8AB04B006EF454 /* CalendarViewModel.swift in Sources */,
@@ -587,7 +591,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CalShare/Preview Content\"";
-				DEVELOPMENT_TEAM = SV7R952F3F;
+				DEVELOPMENT_TEAM = ASB8WN4QRC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CalShare/Info.plist;
@@ -602,7 +606,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.CalShare1;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.ucdavis.ecs189e;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -618,7 +622,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CalShare/Preview Content\"";
-				DEVELOPMENT_TEAM = SV7R952F3F;
+				DEVELOPMENT_TEAM = ASB8WN4QRC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CalShare/Info.plist;
@@ -633,7 +637,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.CalShare1;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.ucdavis.ecs189e;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

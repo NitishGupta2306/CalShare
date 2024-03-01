@@ -14,8 +14,7 @@ struct SignInPage: View {
     @State var newUser: Bool = false
     @State var goHomePage: Bool = false
     @EnvironmentObject var curUser: UserModel
-
-    
+  
     var body: some View {
         NavigationStack{
             GeometryReader { _ in
