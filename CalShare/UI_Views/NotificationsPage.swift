@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct NotificationsPage: View {
-    @EnvironmentObject var curUser: UserModel
     var body: some View {
         NavigationStack {
             //GeometryReader { _ in

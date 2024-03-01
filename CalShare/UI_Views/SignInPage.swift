@@ -7,13 +7,28 @@
 
 import SwiftUI
 
+@MainActor
+final class SignInPageViewModel: ObservableObject{
+    @Published var email = ""
+    @Published var password = ""
+    
+    func signIn() async throws{
+        guard !email.isEmpty, password.count > 7 else{
+            // error handling
+            throw AuthenticationError.signInError
+        }
+        
+        try await AuthenticationHandler.shared.signInUser(email: email, pass: password)
+    }
+}
 
 struct SignInPage: View {
-    @State var email: String = ""
-    @State var password: String = ""
+    @StateObject private var viewModel = SignInPageViewModel()
+    
     @State var newUser: Bool = false
     @State var goHomePage: Bool = false
-    @EnvironmentObject var curUser: UserModel
+    @State var errorMsg = ""
+
   
     var body: some View {
         NavigationStack{
@@ -33,7 +48,7 @@ struct SignInPage: View {
                                 .foregroundColor(Color("PastelGray"))
                                 .fontWeight(.regular)
                             
-                            TextField("*****@gmail.com", text: $email)
+                            TextField("*****@gmail.com", text: $viewModel.email)
                                 .foregroundColor(Color("TextColor"))
                                 .autocorrectionDisabled()
                                 .background(
@@ -58,7 +73,8 @@ struct SignInPage: View {
                                 .foregroundColor(Color("PastelGray"))
                                 .fontWeight(.regular)
                             
-                            SecureField("**********", text: $password)
+                            
+                            SecureField("**********", text: $viewModel.password)
                                 .foregroundColor(Color("TextColor"))
                                 .background(
                                     RoundedRectangle(cornerRadius: 20)
@@ -76,6 +92,11 @@ struct SignInPage: View {
                                 )
                                 .multilineTextAlignment(.center) // Center-align the entered text
                                 .padding()
+                            
+                            Text(errorMsg)
+                                .font(.custom(fontTwo, size: 14.0))
+                                .foregroundColor(Color.red)
+                                .fontWeight(.regular)
                         }
                         
                         Button {
@@ -87,10 +108,17 @@ struct SignInPage: View {
                         }
                         
                         Button ("Log In") {
-                            //print("We are getting a new User and setting their information")
-                            curUser.setEmail(email_string: email)
-                            curUser.setPassword(password_string: password)
-                            self.goHomePage.toggle()
+                            Task{
+                                do{
+                                    try await viewModel.signIn()
+                                    self.goHomePage.toggle()
+                                }
+                                catch{
+                                    errorMsg = "Email or Password incorrect"
+                                    throw AuthenticationError.signInError
+                                }
+                            }
+
                         }
                         .padding(.horizontal, 150)
                         .padding(.vertical, 20)

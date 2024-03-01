@@ -7,10 +7,66 @@
 
 import SwiftUI
 
+@MainActor
+final class SettingViewModel: ObservableObject{
+    var email = "" // figure out how to get email from curUser
+    func logOut(){
+        Task{
+            do{
+                try AuthenticationHandler.shared.signOut()
+            }
+            catch{
+                throw AuthenticationError.signOutError
+            }
+        }
+    }
+    
+    func resetPass() async throws {
+        do{
+            try await AuthenticationHandler.shared.passReset(email: email)
+        }
+    }
+    
+}
+
 struct SettingsPage: View {
+    @StateObject private var viewModel = SettingViewModel()
+    
+    @State var isSignedOut: Bool = false
+    
+    var body: some View {
+        NavigationStack{
+            ZStack{
+                List{
+                    // Logout Button
+                    Button{
+                        viewModel.logOut()
+                        isSignedOut.toggle()
+                        
+                    }label: {
+                        Text("Logout")
+                            .foregroundColor(Color("TextColor"))
+                    }
+                }
+            }            
+            .navigationDestination(isPresented: $isSignedOut) {
+                SignInPage()
+                    .navigationBarBackButtonHidden()
+            }
+        }
+    }
+}
+
+/*
+struct SettingsPage: View {
+    @StateObject private var viewModel = SettingViewModel()
     @EnvironmentObject var curUser: UserModel
+    
     @State var email: String = ""
     @State var password: String = ""
+    @State var isSignedOut: Bool = false
+
+    
     let username = "Sarah"
     var body: some View {
         NavigationStack {
@@ -105,6 +161,25 @@ struct SettingsPage: View {
                                 .padding()
                         }
                         Spacer()
+                        //LOGOUT:
+                        VStack{
+                            Button{
+                                viewModel.logOut()
+                                isSignedOut.toggle()
+                                
+                            }label: {
+                                Text("Logout")
+                                    .foregroundColor(Color("TextColor"))
+                            }
+                        }
+                        .padding(.horizontal, 120)
+                        .padding(.vertical, 20)
+                        .background(Color("PastelOrange"))
+                        .foregroundColor(Color("PastelBeige"))
+                        .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
+                        .frame(width: 400, height: 100)
+                        Spacer()
+                        Spacer()
                     }
                 }
             //}
@@ -112,6 +187,10 @@ struct SettingsPage: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color("PastelBeige"))
             Spacer()
+            .navigationDestination(isPresented: $isSignedOut) {
+                SignInPage()
+                    .navigationBarBackButtonHidden()
+            }
         }
         .onTapGesture {
             //Dismisses the keyboard if you click away
@@ -120,6 +199,7 @@ struct SettingsPage: View {
         .edgesIgnoringSafeArea(.all)
     }
 }
+ */
 
 #Preview {
     SettingsPage()

@@ -7,12 +7,26 @@
 
 import SwiftUI
 
+@MainActor
+final class RegisterPageViewModel: ObservableObject{
+    @Published var email = ""
+    @Published var password = ""
+    
+    func signIn() async throws{
+        guard !email.isEmpty, password.count > 7 else{
+            throw AuthenticationError.signUpError
+        }
+        
+        try await AuthenticationHandler.shared.createrNewUser(email: email, pass: password)
+    }
+}
+
 struct RegisterPage: View {
-    @State var email: String = ""
-    @State var password: String = ""
     @State var goHomePage: Bool = false
     @State var goLogInPage: Bool = false
-    @EnvironmentObject var curUser: UserModel
+    @State var errorMsg = ""
+    
+    @StateObject private var viewModel = RegisterPageViewModel()
     
     var body: some View {
         NavigationStack {
@@ -32,7 +46,7 @@ struct RegisterPage: View {
                                 .foregroundColor(Color("PastelGray"))
                                 .fontWeight(.regular)
                             
-                            TextField("*****@gmail.com", text: $email)
+                            TextField("*****@gmail.com", text: $viewModel.email)
                                 .foregroundColor(Color("PastelGray"))
                                 .background(
                                     RoundedRectangle(cornerRadius: 20)
@@ -59,7 +73,7 @@ struct RegisterPage: View {
                                 .fontWeight(.regular)
                             
                             
-                            SecureField("**********", text: $password)
+                            SecureField("**********", text: $viewModel.password)
                                 .foregroundColor(Color("PastelGray"))
                                 .background(
                                     RoundedRectangle(cornerRadius: 20)
@@ -79,19 +93,32 @@ struct RegisterPage: View {
                                 .ignoresSafeArea(.keyboard)
                                 .multilineTextAlignment(.center) // Center-align the entered text
                                 .padding()
+                            
+                            Text(errorMsg)
+                                .font(.custom(fontTwo, size: 14.0))
+                                .foregroundColor(Color.red)
+                                .fontWeight(.regular)
                         }
                         
                         Button {
-                            print("We need to get a new user")
                             self.goLogInPage.toggle()
                         } label: {
                             Text("Already have an account?")
                                 .foregroundColor(Color("TextColor"))
                         }
                         
+                        // SIGN UP BUTTON
                         Button ("Get Started") {
-                            print("We need to get a new user")
-                            self.goHomePage.toggle()
+                            Task{
+                                do{
+                                    try await viewModel.signIn()
+                                    self.goHomePage.toggle()
+                                } catch {
+                                    errorMsg = "This email is already linked to a user."
+                                    throw AuthenticationError.signUpError
+                                }
+
+                            }
                             // Dismisses the keyboard when the "Send Code" button is tapped
                             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                         }
@@ -121,8 +148,6 @@ struct RegisterPage: View {
                         .frame(width:60, height: 60)
                 }
                 ToolbarItem(placement: .principal) {
-    //                    Text("CalShare")
-    //                        .foregroundStyle(Color("PastelOrange"))
                     Image("CalShare")
                         .resizable()
                         .frame(width: 130, height: 20)

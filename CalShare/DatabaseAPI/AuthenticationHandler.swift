@@ -13,9 +13,17 @@ final class AuthenticationHandler {
     static let shared = AuthenticationHandler()
     private init(){ }
     
+    @discardableResult
     func createrNewUser(email: String, pass: String) async throws -> AuthResponseDetails{
         // Asynchrnous createUser from FirebaseAuth
         let AuthResp = try await Auth.auth().createUser(withEmail: email, password: pass)
+        return AuthResponseDetails(uid: AuthResp.user.uid, email: AuthResp.user.email)
+    }
+    
+    @discardableResult
+    func signInUser(email: String, pass: String) async throws -> AuthResponseDetails{
+        // Asynchrnous createUser from FirebaseAuth
+        let AuthResp = try await Auth.auth().signIn(withEmail: email, password: pass)
         return AuthResponseDetails(uid: AuthResp.user.uid, email: AuthResp.user.email)
     }
     
@@ -28,6 +36,10 @@ final class AuthenticationHandler {
     
     func signOut() throws{
         try Auth.auth().signOut()
+    }
+    
+    func passReset(email: String) async throws{
+        try await Auth.auth().sendPasswordReset(withEmail: email)
     }
     
 }
