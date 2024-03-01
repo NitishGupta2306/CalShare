@@ -21,7 +21,7 @@ struct CreateCalendarPage: View {
                         .foregroundColor(Color("TextColor"))
                         
                         HStack {
-                            Button ("Add Friend") {
+                            Button ("Add Calendar") {
                                 //print("We are getting a new User and setting their information")
                                 self.addedFriend.toggle()
                             }
@@ -43,11 +43,14 @@ struct CreateCalendarPage: View {
                             .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
                             .frame(width: 150, height: 50)
                         }
-                        Spacer()
                     }
                 }
             //}
-                .navigationDestination(isPresented: $goCreateViewGroupsPage) {
+                .navigationDestination(isPresented: $cancel) {
+                    CreateViewGroupsPage()
+                        .navigationBarBackButtonHidden()
+                }
+                .navigationDestination(isPresented: $addedFriend) {
                     CreateViewGroupsPage()
                         .navigationBarBackButtonHidden()
                 }
