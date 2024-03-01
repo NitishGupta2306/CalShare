@@ -18,7 +18,7 @@
 ## Current Issues + Ideas:
 
 #### Issue: Storing uid : calendarData
-##### Table1 in database
+##### UserData Table For database
 - Store it in firebase as a dictonary structure. `Uid` is the `key` and the `calendarData` is the Value
 
 |  UserID  |    [CalendarData]    |
@@ -33,12 +33,16 @@
 
 
 #### Issue: Users connected to a Group
-##### Table2 in database
+##### Group Table for Database
 - `GroupID` as a `key`. Array of `Uids` as value. All members are added to the group.
 
 |   GroupID  | UserID0 | UserID1 | UserID2 | UserID3 | UserID4 | UserID5 | UserID6 | UserID7 |
 |------------|---------|---------|---------|---------|---------|---------|---------|---------|
 |RandomString|d544bhn42|d32dfbn42|d390jmn78|         |         |         |         |         |
+
+- To get what get what group a user in, just search through UserID0-7 and see if their userID is in that row. If it is then return that groupID to the user. Should be fairly simple and quick using a SQL query.
+
+- Will need a way of generating **unique** GroupID's. One possible way is generate random string and check if it already exists in the table. If it does not then, use that string. If it already exists then generate another and check again. Reason for doing it this way is so that people cant try to get consecutive groupID's by just increasing the last char.
 
 - `GroupID` stored locally on user machine.
                     
