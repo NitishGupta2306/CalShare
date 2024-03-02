@@ -28,9 +28,9 @@ class DBViewModel {
     }
     
     // Should return array of 1 item bc groupIds are unique
-    func getGroupData(groupID: String) async -> Group {
+    func getGroupData(groupID: String) async throws -> Group {
         do {
-            var groupData: Group
+            var groupData: Group = Group()
             
             let querySnapshot = try await db.collection("Groups").whereField("Document ID", isEqualTo: groupID)
                 .getDocuments()
@@ -39,15 +39,14 @@ class DBViewModel {
             }
             
             return groupData
-        // TODO Throw error instead
         } catch {
             print("Could not get group data of group: " + groupID)
-            return nil
+            throw AuthenticationError.getGroupDataError
         }
     }
     
     //Should return array of 1 or more items
-    func getAllGroupsUserIsIn() -> [Group] {
+    func getAllGroupsUserIsIn() async throws -> [Group] {
         do {
             var groupsUserIsIn: [Group] = []
             
@@ -63,14 +62,19 @@ class DBViewModel {
             ])).getDocuments()
             
             for document in querySnapshot.documents {
-                groupsUserIsIn.append(document.data(as: Group.self))
+                let group = try document.data(as: Group.self)
+                groupsUserIsIn.append(group)
             }
             
             return groupsUserIsIn
         } catch {
-            print("Could not get groups user is in.")
-            return nil
+            throw AuthenticationError.getGroupsUserIsInError
         }
+    }
+    
+    
+    func addUserDataToGroup() async throws {
+        
     }
 }
 
@@ -79,15 +83,15 @@ struct User: Codable {
 }
 
 struct Group: Codable {
-    @DocumentID var id: String?
-    var NumOfUsers: Int
-    var User0: String
-    var User1: String
-    var User2: String
-    var User3: String
-    var User4: String
-    var User5: String
-    var User6: String
-    var User7: String
-    var Events: [Int]
+    @DocumentID var id: String? = ""
+    var NumOfUsers: Int = 0
+    var User0: String = ""
+    var User1: String = ""
+    var User2: String = ""
+    var User3: String = ""
+    var User4: String = ""
+    var User5: String = ""
+    var User6: String = ""
+    var User7: String = ""
+    var Events: [Int] = []
 }
