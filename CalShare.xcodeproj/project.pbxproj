@@ -31,6 +31,7 @@
 		412F64172B7479FB005C68EA /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 412F64162B7479FB005C68EA /* FirebaseAnalyticsSwift */; };
 		412F64192B7479FB005C68EA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 412F64182B7479FB005C68EA /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		412F641B2B7479FB005C68EA /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 412F641A2B7479FB005C68EA /* FirebaseAppCheck */; };
+		414966342B93B06B008B18C9 /* DataBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414966332B93B06B008B18C9 /* DataBaseViewModel.swift */; };
 		415684932B7C54FB0001C8E2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 415684922B7C54FB0001C8E2 /* README.md */; };
 		415E83152B91AD94001967EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 415E83142B91AD94001967EC /* GoogleService-Info.plist */; };
 		41948E7C2B5B3B5700ADD5D0 /* CalShareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41948E7B2B5B3B5700ADD5D0 /* CalShareApp.swift */; };
@@ -84,6 +85,7 @@
 		4004B5612B8FE28B001416C9 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
 		401910542B8AB04B006EF454 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		4109D4B92B91BD4000A0304A /* HomePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		414966332B93B06B008B18C9 /* DataBaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseViewModel.swift; sourceTree = "<group>"; };
 		415684922B7C54FB0001C8E2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		415E83142B91AD94001967EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41948E782B5B3B5700ADD5D0 /* CalShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -246,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				41B657202B8AA143003D12ED /* AuthenticationHandler.swift */,
+				414966332B93B06B008B18C9 /* DataBaseViewModel.swift */,
 			);
 			path = DatabaseAPI;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				231202942B8E552200BAF8E7 /* CreateViewGroupsPage.swift in Sources */,
 				231202902B8E54D800BAF8E7 /* NotificationsPage.swift in Sources */,
 				401910552B8AB04B006EF454 /* CalendarViewModel.swift in Sources */,
+				414966342B93B06B008B18C9 /* DataBaseViewModel.swift in Sources */,
 				41948E7C2B5B3B5700ADD5D0 /* CalShareApp.swift in Sources */,
 				41948EA62B5B3CF000ADD5D0 /* SignInPage.swift in Sources */,
 				41B6570F2B8A9F33003D12ED /* ErrorHandling.swift in Sources */,
@@ -587,7 +591,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CalShare/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = N3VN58J5QX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CalShare/Info.plist;
@@ -597,6 +601,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -618,7 +623,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CalShare/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = N3VN58J5QX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CalShare/Info.plist;
@@ -628,6 +633,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

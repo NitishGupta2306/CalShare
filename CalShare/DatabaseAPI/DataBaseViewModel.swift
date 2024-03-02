@@ -11,20 +11,45 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 class DBViewModel {
-    var UID: String
+    static let shared = DBViewModel()
+    var UID: String?
     var groups: [String]
     var db: Firestore
     
     // TODO get groups user is in through mem or db
-    init(UID: String) {
+    init() {
         //FirebaseApp.configure()
         self.db = Firestore.firestore()
-        self.UID = UID
         self.groups = []
     }
     
     func addUserDataToDB(events: [(Int, Int)]) async{
         
+    }
+    
+    func addUser(groupId: String) async{
+        let env = "Groups"
+        
+        Task{
+            do{
+                // Getting User and Group Data
+                var group = try await getGroupData(groupID: groupId)
+                let currUser = try AuthenticationHandler.shared.checkAuthenticatedUser()
+                
+                let userID = currUser.uid
+                let currGroup = db.collection(env).document(groupId)
+                
+                group.NumOfUsers += 1
+                try await currGroup.updateData(
+                    ["User" + String(group.NumOfUsers) : userID,
+                     "NumOfUsers" : group.NumOfUsers ]
+                )
+                
+            }
+            catch{
+                throw GroupError.SetGroupDataFail
+            }
+        }
     }
     
     // Should return array of 1 item bc groupIds are unique
@@ -41,7 +66,7 @@ class DBViewModel {
             return groupData
         } catch {
             print("Could not get group data of group: " + groupID)
-            throw AuthenticationError.getGroupDataError
+            throw GroupError.getGroupDataError
         }
     }
     
@@ -68,11 +93,11 @@ class DBViewModel {
             
             return groupsUserIsIn
         } catch {
-            throw AuthenticationError.getGroupsUserIsInError
+            throw GroupError.getGroupsUserIsInError
         }
     }
     
-    func createNewGroup() async throws
+    //func createNewGroup() async throws
     
     func addUserDataToGroup(userData: [Int], groupID: String) async throws {
         

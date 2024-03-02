@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "4270F8D9-7620-4EEA-B40C-74321E11DBF5"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "66E3004C-1DAD-47C2-AC40-037021D8132F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CalShare/DatabaseAPI/DataBaseViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "getAllGroupsUserIsIn()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "66E3004C-1DAD-47C2-AC40-037021D8132F - 63ecea9f24b51618"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CalShare.DBViewModel.getAllGroupsUserIsIn() async throws -&gt; Swift.Array&lt;CalShare.Group&gt;"
+                  moduleName = "CalShare"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nat/Desktop/CalShare/CalShare/DatabaseAPI/DataBaseViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  uuid = "66E3004C-1DAD-47C2-AC40-037021D8132F - 1738e87f74e14f86"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for CalShare.DBViewModel.getAllGroupsUserIsIn() async throws -&gt; Swift.Array&lt;CalShare.Group&gt;"
+                  moduleName = "CalShare"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nat/Desktop/CalShare/CalShare/DatabaseAPI/DataBaseViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "66E3004C-1DAD-47C2-AC40-037021D8132F - 63ecea9f24b51639"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CalShare.DBViewModel.getAllGroupsUserIsIn() async throws -&gt; Swift.Array&lt;CalShare.Group&gt;"
+                  moduleName = "CalShare"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nat/Desktop/CalShare/CalShare/DatabaseAPI/DataBaseViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  uuid = "66E3004C-1DAD-47C2-AC40-037021D8132F - 1738e87f74e14fa7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for CalShare.DBViewModel.getAllGroupsUserIsIn() async throws -&gt; Swift.Array&lt;CalShare.Group&gt;"
+                  moduleName = "CalShare"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nat/Desktop/CalShare/CalShare/DatabaseAPI/DataBaseViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "66E3004C-1DAD-47C2-AC40-037021D8132F - 63ecea9f24b517f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CalShare.DBViewModel.getAllGroupsUserIsIn() async throws -&gt; Swift.Array&lt;CalShare.Group&gt;"
+                  moduleName = "CalShare"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nat/Desktop/CalShare/CalShare/DatabaseAPI/DataBaseViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  uuid = "66E3004C-1DAD-47C2-AC40-037021D8132F - 1738e87f74e14e69"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for CalShare.DBViewModel.getAllGroupsUserIsIn() async throws -&gt; Swift.Array&lt;CalShare.Group&gt;"
+                  moduleName = "CalShare"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nat/Desktop/CalShare/CalShare/DatabaseAPI/DataBaseViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
