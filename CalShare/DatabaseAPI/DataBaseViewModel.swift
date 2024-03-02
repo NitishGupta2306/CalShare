@@ -17,7 +17,7 @@ class DBViewModel {
     
     // TODO get groups user is in through mem or db
     init(UID: String) {
-        FirebaseApp.configure()
+        //FirebaseApp.configure()
         self.db = Firestore.firestore()
         self.UID = UID
         self.groups = []
@@ -73,7 +73,7 @@ class DBViewModel {
     }
     
     
-    func addUserDataToGroup() async throws {
+    func addUserDataToGroup(userData: [Int], groupID: String) async throws {
         
     }
 }
