@@ -23,15 +23,17 @@ class DBViewModel {
         self.groups = []
     }
     
-    func addUserDataToDB(events: [(Int, Int)]) async{
-        
-    }
-    
+    // TODO: get calendar data and format it properly. Move to own function
     func addUser(groupId: String) async{
         let env = "Groups"
+
         
         Task{
             do{
+                var calendar = await CalendarViewModel()
+                //let calData = calendar.fetchCurrentWeekEvents()
+                let calData = [1709409600, 1709411400, 1709339400, 1709342100]
+                
                 // Getting User and Group Data
                 var group = try await getGroupData(groupID: groupId)
                 let currUser = try AuthenticationHandler.shared.checkAuthenticatedUser()
@@ -40,10 +42,13 @@ class DBViewModel {
                 let currGroup = db.collection(env).document(groupId)
                 
                 group.NumOfUsers += 1
+                // Desyncing issue when multiple users add to db at around the same time. ie multiple users pulling at same time will be old data. Each user will overwrite entire array.
                 try await currGroup.updateData(
                     ["User" + String(group.NumOfUsers) : userID,
-                     "NumOfUsers" : group.NumOfUsers ]
+                     "NumOfUsers" : group.NumOfUsers,
+                     "Events" : group.Events.append(contentsOf: calData)]
                 )
+                print("Successfully added user data")
                 
             }
             catch{
