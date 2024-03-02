@@ -16,7 +16,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
             endingLineNumber = "74"
-            landmarkName = "getAllGroupsUserIsIn()"
+            landmarkName = "getGroupData(groupID:)"
             landmarkType = "7">
             <Locations>
                <Location

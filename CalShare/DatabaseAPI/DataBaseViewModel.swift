@@ -32,7 +32,7 @@ class DBViewModel {
             do{
                 var calendar = await CalendarViewModel()
                 //let calData = calendar.fetchCurrentWeekEvents()
-                let calData = [1709409600, 1709411400, 1709339400, 1709342100]
+                let calData = await calendar.convertDataToInt()
                 
                 // Getting User and Group Data
                 var group = try await getGroupData(groupID: groupId)
@@ -124,5 +124,5 @@ struct Group: Codable {
     var User5: String = ""
     var User6: String = ""
     var User7: String = ""
-    var Events: [Int] = []
+    var Events: [[Double]] = [[]]
 }
