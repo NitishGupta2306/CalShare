@@ -9,8 +9,6 @@ import SwiftUI
 
 struct HomePage: View {
     @State var addCal: Bool = false
-    @StateObject var calendar = CalendarViewModel()
-
     
     var body: some View {
         NavigationStack {
@@ -49,7 +47,7 @@ struct HomePage: View {
                         Button {
               
                           Task {
-                            await calendar.requestAccess()
+                            await CalendarViewModel.shared.requestAccess()
                           }
                           
                         } label: {
@@ -65,7 +63,7 @@ struct HomePage: View {
               
                         Button {
               
-                          calendar.fetchCurrentWeekEvents()
+                            CalendarViewModel.shared.fetchCurrentWeekEvents()
               
                         } label: {
                           Text("Request Calendar Data")
@@ -78,6 +76,25 @@ struct HomePage: View {
                             .padding([.leading, .trailing], 20)
                             .padding(.bottom, 50)
                         }
+                        
+                        Button {
+              
+                            Task{
+                                try await DBViewModel.shared.addUser(groupId: "TestGroup")
+                            }
+              
+                        } label: {
+                          Text("Try DB addUser")
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 40)
+                            .font(.system(size: 20))
+                            .foregroundColor(.black)
+                            .background(Color("PastelOrange"))
+                            .clipShape(RoundedRectangle(cornerRadius: 5.0))
+                            .padding([.leading, .trailing], 20)
+                            .padding(.bottom, 50)
+                        }
+                        
                     }
                 }
                 .navigationDestination(isPresented: $addCal) {
@@ -88,7 +105,6 @@ struct HomePage: View {
                     //Dismisses the keyboard if you click away
                     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
                 }
-                .environmentObject(calendar)
                 .ignoresSafeArea(.keyboard)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color("PastelBeige"))

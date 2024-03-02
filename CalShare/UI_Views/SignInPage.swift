@@ -111,7 +111,6 @@ struct SignInPage: View {
                             Task{
                                 do{
                                     try await viewModel.signIn()
-                                    try await DBViewModel.shared.addUser(groupId: "TestGroup")
                                     self.goHomePage.toggle()
                                 }
                                 catch{

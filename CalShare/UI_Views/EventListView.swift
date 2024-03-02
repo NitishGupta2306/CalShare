@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct EventListView: View {
-  @EnvironmentObject var calendar: CalendarViewModel
-  
 //Unix time:
 //
     
   var body: some View {
       ScrollView {
-          ForEach(calendar.events) { idEvent in
+          ForEach(CalendarViewModel.shared.events) { idEvent in
             VStack(alignment: .center) {
                   Text("Event: \(idEvent.event.title)").bold()
                   Text("Date: \(formatDate(idEvent.event.startDate, format: "MM d, yyyy"))")

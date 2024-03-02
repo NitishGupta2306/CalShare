@@ -30,13 +30,16 @@ class DBViewModel {
         
         Task{
             do{
-                var calendar = await CalendarViewModel()
+                let calendar = await CalendarViewModel()
                 //let calData = calendar.fetchCurrentWeekEvents()
                 let calData = await calendar.convertDataToInt()
                 
                 // Getting User and Group Data
                 var group = try await getGroupData(groupID: groupId)
                 let currUser = try AuthenticationHandler.shared.checkAuthenticatedUser()
+                
+                //appending new user data
+                group.Events.append(contentsOf: calData)
                 
                 let userID = currUser.uid
                 let currGroup = db.collection(env).document(groupId)
@@ -46,7 +49,7 @@ class DBViewModel {
                 try await currGroup.updateData(
                     ["User" + String(group.NumOfUsers) : userID,
                      "NumOfUsers" : group.NumOfUsers,
-                     "Events" : group.Events.append(contentsOf: calData)]
+                     "Events" : group.Events]
                 )
                 print("Successfully added user data")
                 
@@ -124,5 +127,5 @@ struct Group: Codable {
     var User5: String = ""
     var User6: String = ""
     var User7: String = ""
-    var Events: [[Double]] = [[]]
+    var Events: [Double] = []
 }
