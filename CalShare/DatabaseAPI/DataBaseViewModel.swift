@@ -72,6 +72,7 @@ class DBViewModel {
         }
     }
     
+    func createNewGroup() async throws
     
     func addUserDataToGroup(userData: [Int], groupID: String) async throws {
         
