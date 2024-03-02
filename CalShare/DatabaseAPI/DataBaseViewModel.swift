@@ -28,29 +28,49 @@ class DBViewModel {
     }
     
     // Should return array of 1 item bc groupIds are unique
-    func getGroupData(groupID: String) -> [Group] {
-        @FirestoreQuery(
-            collectionPath: "Groups",
-            predicates: [.where("Document ID", isEqualTo: groupID)]
-        ) var groupData: [Group]
-        return groupData
+    func getGroupData(groupID: String) async -> Group {
+        do {
+            var groupData: Group
+            
+            let querySnapshot = try await db.collection("Groups").whereField("Document ID", isEqualTo: groupID)
+                .getDocuments()
+            for document in querySnapshot.documents {
+                groupData = try document.data(as: Group.self)
+            }
+            
+            return groupData
+        // TODO Throw error instead
+        } catch {
+            print("Could not get group data of group: " + groupID)
+            return nil
+        }
     }
     
     //Should return array of 1 or more items
     func getAllGroupsUserIsIn() -> [Group] {
-        @FirestoreQuery(
-            collectionPath: "Groups"
-            predicates: [.where(Filter.or(
-                Filter.equalTo("User0", self.UID),
-                Filter.equalTo("User1", self.UID),
-                Filter.equalTo("User2", self.UID),
-                Filter.equalTo("User3", self.UID),
-                Filter.equalTo("User4", self.UID),
-                Filter.equalTo("User5", self.UID),
-                Filter.equalTo("User6", self.UID),
-                Filter.equalTo("User7", self.UID)
-                )]
-        ) var allGroupsUserIsIn: [Group]
+        do {
+            var groupsUserIsIn: [Group] = []
+            
+            let querySnapshot = try await db.collection("Groups").whereFilter(Filter.orFilter([
+                Filter.whereField("User0", isEqualTo: self.UID),
+                Filter.whereField("User1", isEqualTo: self.UID),
+                Filter.whereField("User2", isEqualTo: self.UID),
+                Filter.whereField("User3", isEqualTo: self.UID),
+                Filter.whereField("User4", isEqualTo: self.UID),
+                Filter.whereField("User5", isEqualTo: self.UID),
+                Filter.whereField("User6", isEqualTo: self.UID),
+                Filter.whereField("User7", isEqualTo: self.UID),
+            ])).getDocuments()
+            
+            for document in querySnapshot.documents {
+                groupsUserIsIn.append(document.data(as: Group.self))
+            }
+            
+            return groupsUserIsIn
+        } catch {
+            print("Could not get groups user is in.")
+            return nil
+        }
     }
 }
 
@@ -59,6 +79,7 @@ struct User: Codable {
 }
 
 struct Group: Codable {
+    @DocumentID var id: String?
     var NumOfUsers: Int
     var User0: String
     var User1: String

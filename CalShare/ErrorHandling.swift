@@ -17,4 +17,6 @@ struct AuthenticationError: Error {
     static let signUpError = AuthenticationError(errorCode: "sign_up_failed", message: "Could not signup user")
     static let signInError = AuthenticationError(errorCode: "sign_in_failed", message: "Could not signin user")
     static let passResetError = AuthenticationError(errorCode: "passReset_Failed", message: "Could not send reset email")
+    static let getGroupDataError = AuthenticationError(errorCode: "getGroupData_failed", message: "Could not fetch group data of that group")
+    static let getGroupsUserIsInError = AuthenticationError(errorCode: "getGroupsUsersIsInFailed", message: "Could not fetch groups that users is in")
 }
