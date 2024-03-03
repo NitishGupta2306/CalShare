@@ -55,7 +55,7 @@ class DBViewModel {
                 
             }
             catch{
-                throw GroupError.SetGroupDataFail
+                throw GroupError.setGroupDataFail
             }
         }
     }
@@ -106,7 +106,34 @@ class DBViewModel {
         }
     }
     
-    //func createNewGroup() async throws
+    // Will create a new group and add the user that created it.
+    //  Will then return the groupID of the group that was made
+    func createNewGroupAndAddCurrUser() async throws -> String {
+        let env = "Groups"
+        
+        
+        do {
+            let calData = await CalendarViewModel.shared.convertDataToInt()
+            let currUser = try AuthenticationHandler.shared.checkAuthenticatedUser()
+            
+            let ref = try await db.collection(env).addDocument(data: [
+                "Events" : calData,
+                "NumOfUsers" : 1,
+                "User0" : currUser.uid,
+                "User1" : "",
+                "User2" : "",
+                "User3" : "",
+                "User4" : "",
+                "User5" : "",
+                "User6" : "",
+                "User7" : ""
+            ])
+            print("Document added with ID: \(ref.documentID)")
+            return ref.documentID
+        } catch {
+            throw GroupError.createGroupFail
+        }
+    }
     
 
 }
