@@ -35,23 +35,25 @@ class DBViewModel {
                 let calData = await calendar.convertDataToInt()
                 
                 // Getting User and Group Data
-                var group = try await getGroupData(groupID: groupId)
+                var groupData = try await getGroupData(groupID: groupId)
                 let currUser = try AuthenticationHandler.shared.checkAuthenticatedUser()
                 
                 //appending new user data
-                group.Events.append(contentsOf: calData)
+                groupData.Events.append(contentsOf: calData)
                 
                 let userID = currUser.uid
-                let currGroup = db.collection(env).document(groupId)
+                let currGroupRef = db.collection(env).document(groupId)
                 
-                if ()
+                if (groupData.NumOfUsers >= 8) {
+                    throw GroupError.tooManyUsersInGroup
+                }
                 
-                group.NumOfUsers += 1
+                groupData.NumOfUsers += 1
                 // Desyncing issue when multiple users add to db at around the same time. ie multiple users pulling at same time will be old data. Each user will overwrite entire array.
-                try await currGroup.updateData(
-                    ["User" + String(group.NumOfUsers) : userID,
-                     "NumOfUsers" : group.NumOfUsers,
-                     "Events" : group.Events]
+                try await currGroupRef.updateData(
+                    ["User" + String(groupData.NumOfUsers) : userID,
+                     "NumOfUsers" : groupData.NumOfUsers,
+                     "Events" : groupData.Events]
                 )
                 print("Successfully added user data")
                 
