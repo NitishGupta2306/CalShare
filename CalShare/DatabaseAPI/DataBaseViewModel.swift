@@ -81,7 +81,7 @@ class DBViewModel {
         }
     }
     
-    //Should return array of 1 or more items
+    //Should return array of 0 or more items
     func getAllGroupsUserIsIn() async throws -> [Group] {
         do {
             var groupsUserIsIn: [Group] = []
