@@ -82,16 +82,17 @@ class DBViewModel {
     func getAllGroupsUserIsIn() async throws -> [Group] {
         do {
             var groupsUserIsIn: [Group] = []
+            let currUser = try AuthenticationHandler.shared.checkAuthenticatedUser()
             
             let querySnapshot = try await db.collection("Groups").whereFilter(Filter.orFilter([
-                Filter.whereField("User0", isEqualTo: self.UID),
-                Filter.whereField("User1", isEqualTo: self.UID),
-                Filter.whereField("User2", isEqualTo: self.UID),
-                Filter.whereField("User3", isEqualTo: self.UID),
-                Filter.whereField("User4", isEqualTo: self.UID),
-                Filter.whereField("User5", isEqualTo: self.UID),
-                Filter.whereField("User6", isEqualTo: self.UID),
-                Filter.whereField("User7", isEqualTo: self.UID),
+                Filter.whereField("User0", isEqualTo: currUser.uid),
+                Filter.whereField("User1", isEqualTo: currUser.uid),
+                Filter.whereField("User2", isEqualTo: currUser.uid),
+                Filter.whereField("User3", isEqualTo: currUser.uid),
+                Filter.whereField("User4", isEqualTo: currUser.uid),
+                Filter.whereField("User5", isEqualTo: currUser.uid),
+                Filter.whereField("User6", isEqualTo: currUser.uid),
+                Filter.whereField("User7", isEqualTo: currUser.uid),
             ])).getDocuments()
             
             for document in querySnapshot.documents {
@@ -107,9 +108,7 @@ class DBViewModel {
     
     //func createNewGroup() async throws
     
-    func addUserDataToGroup(userData: [Int], groupID: String) async throws {
-        
-    }
+
 }
 
 struct User: Codable {
