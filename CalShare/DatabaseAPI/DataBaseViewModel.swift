@@ -24,7 +24,7 @@ class DBViewModel {
     }
     
     // TODO: get calendar data and format it properly. Move to own function
-    func addUser(groupId: String) async{
+    func addUserToGroup(groupId: String) async{
         let env = "Groups"
 
         
