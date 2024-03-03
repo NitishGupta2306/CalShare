@@ -80,7 +80,7 @@ struct HomePage: View {
                         Button {
               
                             Task{
-                                await DBViewModel.shared.addUserToGroup(groupId: "TestGroup")
+                                await DBViewModel.shared.addUserToGroup(groupID: "TestGroup")
                             }
               
                         } label: {
