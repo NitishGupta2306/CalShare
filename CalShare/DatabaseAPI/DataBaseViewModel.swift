@@ -44,6 +44,8 @@ class DBViewModel {
                 let userID = currUser.uid
                 let currGroup = db.collection(env).document(groupId)
                 
+                if ()
+                
                 group.NumOfUsers += 1
                 // Desyncing issue when multiple users add to db at around the same time. ie multiple users pulling at same time will be old data. Each user will overwrite entire array.
                 try await currGroup.updateData(
@@ -157,6 +159,18 @@ class DBViewModel {
             return ref.documentID
         } catch {
             throw GroupError.createGroupFail
+        }
+    }
+    
+    // TODO: Check to see if this actually deletes everything, bc of
+    //  {Warning: Deleting a document does not delete its subcollections!}
+    func deleteGroup(groupID: String) async throws {
+        let env = "Groups"
+        do {
+            try await db.collection(env).document(groupID).delete()
+            print("Document successfully removed!")
+        } catch {
+            throw GroupError.deleteGroupFail
         }
     }
     

@@ -28,6 +28,7 @@ struct GroupError: Error {
     static let getGroupsUserIsInError = AuthenticationError(errorCode: "get_groups_user_is_in_failed", message: "Could not fetch groups that users is in")
     static let setGroupDataFail = AuthenticationError(errorCode: "Set_Group_Data_Fail", message: "Could not set user in group")
     static let createGroupFail = AuthenticationError(errorCode: "create_group_fail", message: "Could not create group")
+    static let deleteGroupFail = AuthenticationError(errorCode: "delete_group_fail", message: "Could not delete group")
     
 
 }
