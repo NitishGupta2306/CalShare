@@ -173,6 +173,16 @@ class DBViewModel {
         }
     }
     
+    func userInGroup(UID: String, group: Group) -> Bool {
+        return group.User0 == UID ||
+            group.User1 == UID ||
+            group.User2 == UID ||
+            group.User3 == UID ||
+            group.User4 == UID ||
+            group.User5 == UID ||
+            group.User6 == UID ||
+            group.User7 == UID
+    }
 
 }
 
