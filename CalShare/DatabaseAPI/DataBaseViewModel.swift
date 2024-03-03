@@ -135,6 +135,31 @@ class DBViewModel {
         }
     }
     
+    // IF YOU WISH TO USE THIS FUNCTION, DO NOT LOSE THE GROUPID IT RETURNS BECAUSE THEN THE GROUPID/GROUP WILL BE LOST
+    // Will have to add a user to this group with the other function to not lose it
+    func createNewGroup_DO_NOT_USE_THIS_FUNCTION() async throws -> String {
+        let env = "Groups"
+        
+        do {
+            let ref = try await db.collection(env).addDocument(data: [
+                "Events" : [],
+                "NumOfUsers" : 0,
+                "User0" : "",
+                "User1" : "",
+                "User2" : "",
+                "User3" : "",
+                "User4" : "",
+                "User5" : "",
+                "User6" : "",
+                "User7" : ""
+            ])
+            print("Document added with ID: \(ref.documentID)")
+            return ref.documentID
+        } catch {
+            throw GroupError.createGroupFail
+        }
+    }
+    
 
 }
 
