@@ -30,13 +30,15 @@ class DBViewModel {
         
         Task{
             do{
-                let calendar = await CalendarViewModel()
-                //let calData = calendar.fetchCurrentWeekEvents()
-                let calData = await calendar.convertDataToInt()
+                let calData = await CalendarViewModel.shared.convertDataToInt()
                 
                 // Getting User and Group Data
                 var groupData = try await getGroupData(groupID: groupId)
                 let currUser = try AuthenticationHandler.shared.checkAuthenticatedUser()
+                
+                //ERROR TESTING: CURRENTLY RETURNING EMPTY
+                print(group.Events)
+                
                 
                 //appending new user data
                 groupData.Events.append(contentsOf: calData)

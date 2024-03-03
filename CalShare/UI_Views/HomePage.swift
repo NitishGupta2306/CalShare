@@ -80,11 +80,29 @@ struct HomePage: View {
                         Button {
               
                             Task{
-                                try await DBViewModel.shared.addUserToGroup(groupId: "TestGroup")
+                                await DBViewModel.shared.addUserToGroup(groupId: "TestGroup")
                             }
               
                         } label: {
                           Text("Try DB addUser")
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 40)
+                            .font(.system(size: 20))
+                            .foregroundColor(.black)
+                            .background(Color("PastelOrange"))
+                            .clipShape(RoundedRectangle(cornerRadius: 5.0))
+                            .padding([.leading, .trailing], 20)
+                            .padding(.bottom, 50)
+                        }
+                        
+                        Button {
+              
+                            Task{
+                                try await DBViewModel.shared.createNewGroupAndAddCurrUser()
+                            }
+              
+                        } label: {
+                          Text("Try DB new group")
                             .frame(maxWidth: .infinity)
                             .frame(height: 40)
                             .font(.system(size: 20))
