@@ -24,7 +24,7 @@ class DBViewModel {
     }
     
     // TODO: get calendar data and format it properly. Move to own function
-    func addUserToGroup(groupId: String) async{
+    func addUserToGroup(groupID: String) async{
         let env = "Groups"
 
         
@@ -33,18 +33,18 @@ class DBViewModel {
                 let calData = await CalendarViewModel.shared.convertDataToInt()
                 
                 // Getting User and Group Data
-                var groupData = try await getGroupData(groupID: groupId)
+                var groupData = try await getGroupData(groupID: groupID)
                 let currUser = try AuthenticationHandler.shared.checkAuthenticatedUser()
                 
                 //ERROR TESTING: CURRENTLY RETURNING EMPTY
-                print(group.Events)
+                print(groupData.Events)
                 
                 
                 //appending new user data
                 groupData.Events.append(contentsOf: calData)
                 
                 let userID = currUser.uid
-                let currGroupRef = db.collection(env).document(groupId)
+                let currGroupRef = db.collection(env).document(groupID)
                 
                 if (groupData.NumOfUsers >= 8) {
                     throw GroupError.tooManyUsersInGroup
@@ -68,15 +68,10 @@ class DBViewModel {
     
     // Should return array of 1 item bc groupIds are unique
     func getGroupData(groupID: String) async throws -> Group {
+        let env = "Groups"
+        let docRef = db.collection(env).document(groupID)
         do {
-            var groupData: Group = Group()
-            
-            let querySnapshot = try await db.collection("Groups").whereField("Document ID", isEqualTo: groupID)
-                .getDocuments()
-            for document in querySnapshot.documents {
-                groupData = try document.data(as: Group.self)
-            }
-            
+            let groupData =  try await docRef.getDocument(as: Group.self)
             return groupData
         } catch {
             print("Could not get group data of group: " + groupID)
