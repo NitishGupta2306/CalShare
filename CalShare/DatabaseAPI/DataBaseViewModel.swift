@@ -48,6 +48,8 @@ class DBViewModel {
                 
                 if (groupData.NumOfUsers >= 8) {
                     throw GroupError.tooManyUsersInGroup
+                } else if userInGroup(UID: userID, group: groupData) {
+                    throw GroupError.userAlreadyInGroup
                 }
                 
                 groupData.NumOfUsers += 1
