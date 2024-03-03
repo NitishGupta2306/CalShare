@@ -30,6 +30,7 @@ struct GroupError: Error {
     static let createGroupFail = AuthenticationError(errorCode: "create_group_fail", message: "Could not create group")
     static let deleteGroupFail = AuthenticationError(errorCode: "delete_group_fail", message: "Could not delete group")
     static let tooManyUsersInGroup = AuthenticationError(errorCode: "too_many_users_in_group", message: "Could not delete group")
+    static let userAlreadyInGroup = AuthenticationError(errorCode: "user_already_in_group", message: "User is already in the group")
     
 
 }
