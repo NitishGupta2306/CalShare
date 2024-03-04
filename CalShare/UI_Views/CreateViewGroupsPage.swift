@@ -14,10 +14,13 @@ import SwiftUI
 struct CreateViewGroupsPage: View {
     @State var addCal: Bool = false
     @State var addFriend: Bool = false
-    @State private var generateQR = false
+    @State private var gotQR = false
     @State private var scanQR = false
-    let testString = "testString00123"
-    let testScannedString = "testString00123"
+    @State private var generatedQRImage: UIImage?
+//    let testString = "testString00123"
+//    let testScannedString = "testString00123"
+    @State private var scannedString: String?
+    @State private var generatedQR: String?
     
     let context = CIContext()
     let filter = CIFilter.qrCodeGenerator()
@@ -68,9 +71,20 @@ struct CreateViewGroupsPage: View {
                             .fontWeight(.regular)
                         
                         
+                        //GENERATES A NEW GROUP ID EVERY SINGLE TIME THIS BUTTON IS PRESSED
                         Button(action: {
                             print("Generate QR")
-                            self.generateQR.toggle()
+//                            self.generateQR.toggle()
+                            Task {
+                                do {
+                                    let generatedQR = try await DBViewModel.shared.createNewGroupAndAddCurrUser()
+                                    self.generatedQRImage = generateQRCode(from: "\(generatedQR)")
+                                    self.generatedQR = generatedQR
+                                } catch {
+                                    // Handle error
+                                    print("Error: \(error)")
+                                }
+                            }
                             
                         }) {
                             HStack {
@@ -89,9 +103,10 @@ struct CreateViewGroupsPage: View {
                             .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
                             .frame(width: 400, height: 100)
                         }
+
                         
-                        if generateQR {
-                            Image(uiImage: generateQRCode(from: "\(testString)"))
+                        if let generatedQRImage = generatedQRImage {
+                            Image(uiImage: generatedQRImage)
                                 .resizable()
                                 .interpolation(.none)
                                 .scaledToFit()
@@ -119,10 +134,21 @@ struct CreateViewGroupsPage: View {
                             .frame(width: 400, height: 100)
                         }
                         
+                        if gotQR {
+                            Text("Got QR")
+                                .onAppear {
+                                    Task {
+                                        if let scannedString = scannedString{
+                                            await DBViewModel.shared.addUserToGroup(groupID: scannedString)
+                                        }
+                                        scanQR = false
+                                    }
+                                }
+                        }
+                        
                         Spacer()
                     }
                 }
-            //}
                 .navigationDestination(isPresented: $addCal) {
                     CreateCalendarPage()
                         .navigationBarBackButtonHidden()
@@ -132,7 +158,14 @@ struct CreateViewGroupsPage: View {
                         .navigationBarBackButtonHidden()
                 }
                 .sheet(isPresented: $scanQR) {
-                    CodeScannerView(codeTypes: [.qr], simulatedData: "\(testScannedString)", completion: handleScan)
+                    CodeScannerView(codeTypes: [.qr]) { response in
+                        if case let .success(result) = response {
+                            scannedString = result.string
+                            print(scannedString ?? "Not scanned")
+                        }
+                        gotQR = true
+                        scanQR = false
+                    }
                 }
             .onTapGesture {
                 //Dismisses the keyboard if you click away
@@ -159,21 +192,6 @@ struct CreateViewGroupsPage: View {
         
         print("didn't generateQRCode")
         return UIImage(systemName: "xmark.circle") ?? UIImage()
-    }
-    
-    func handleScan(result: Result<ScanResult, ScanError>) {
-        scanQR = true
-        
-        switch result {
-        case .success(let result):
-            let details = result.string.components(separatedBy: "")
-            guard details.count == 1 else {return}
-            
-            let string = details[0]
-            print(string)
-        case .failure(let error):
-            print("scan failed: \(error.localizedDescription)")
-        }
     }
 }
 
