@@ -100,7 +100,7 @@ struct SignInPage: View {
                         }
                         
                         Button {
-                            print("We need to get a new user")
+                            print("Going to New User Page.")
                             self.newUser.toggle()
                         } label: {
                             Text("New User?")

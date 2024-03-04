@@ -14,7 +14,8 @@ struct HomePage: View {
         NavigationStack {
                 ZStack {
                     VStack {
-                        HStack { //WILL NEED TO CHANGE THIS to take the groups and put them here
+                        HStack { 
+                            //WILL NEED TO CHANGE THIS to take the groups and put them here
                             Image(systemName: "person.3.fill")
                                 .font(.system(size: 30))
                                 .foregroundColor(Color("PastelOrange"))
@@ -36,7 +37,7 @@ struct HomePage: View {
                                 .font(.system(size: 30))
                         }
                       
-                        Text("Landing Page!")
+                        Text("Home Page!")
                             .font(.custom(fontTwo, size: 40))
                             .foregroundColor(Color("TextColor"))
                       
@@ -44,23 +45,6 @@ struct HomePage: View {
                       
                         Spacer()
                       
-                        Button {
-              
-                          Task {
-                            await CalendarViewModel.shared.requestAccess()
-                          }
-                          
-                        } label: {
-                          Text("Request Calendar Data Access")
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 40)
-                            .font(.system(size: 20))
-                            .foregroundColor(.black)
-                            .background(Color("PastelOrange"))
-                            .clipShape(RoundedRectangle(cornerRadius: 5.0))
-                            .padding([.leading, .trailing], 20)
-                        }
-              
                         Button {
               
                             CalendarViewModel.shared.fetchCurrentWeekEvents()
@@ -76,43 +60,6 @@ struct HomePage: View {
                             .padding([.leading, .trailing], 20)
                             .padding(.bottom, 50)
                         }
-                        
-                        Button {
-              
-                            Task{
-                                await DBViewModel.shared.addUserToGroup(groupID: "TestGroup")
-                            }
-              
-                        } label: {
-                          Text("Try DB addUser")
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 40)
-                            .font(.system(size: 20))
-                            .foregroundColor(.black)
-                            .background(Color("PastelOrange"))
-                            .clipShape(RoundedRectangle(cornerRadius: 5.0))
-                            .padding([.leading, .trailing], 20)
-                            .padding(.bottom, 50)
-                        }
-                        
-                        Button {
-              
-                            Task{
-                                try await DBViewModel.shared.createNewGroupAndAddCurrUser()
-                            }
-              
-                        } label: {
-                          Text("Try DB new group")
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 40)
-                            .font(.system(size: 20))
-                            .foregroundColor(.black)
-                            .background(Color("PastelOrange"))
-                            .clipShape(RoundedRectangle(cornerRadius: 5.0))
-                            .padding([.leading, .trailing], 20)
-                            .padding(.bottom, 50)
-                        }
-                        
                     }
                 }
                 .navigationDestination(isPresented: $addCal) {

@@ -23,7 +23,7 @@ class DBViewModel {
         self.groups = []
     }
     
-    // TODO: get calendar data and format it properly. Move to own function
+    // <Completed: Works> TODO: get calendar data and format it properly. Move to own function
     func addUserToGroup(groupID: String) async{
         let env = "Groups"
 
@@ -31,14 +31,8 @@ class DBViewModel {
         Task{
             do{
                 let calData = await CalendarViewModel.shared.convertDataToInt()
-                
-                // Getting User and Group Data
                 var groupData = try await getGroupData(groupID: groupID)
                 let currUser = try AuthenticationHandler.shared.checkAuthenticatedUser()
-                
-                //ERROR TESTING: CURRENTLY RETURNING EMPTY
-                print(groupData.Events)
-                
                 
                 //appending new user data
                 groupData.Events.append(contentsOf: calData)
@@ -55,7 +49,7 @@ class DBViewModel {
                 groupData.NumOfUsers += 1
                 // Desyncing issue when multiple users add to db at around the same time. ie multiple users pulling at same time will be old data. Each user will overwrite entire array.
                 try await currGroupRef.updateData(
-                    ["User" + String(groupData.NumOfUsers) : userID,
+                    ["User" + String(groupData.NumOfUsers - 1) : userID,
                      "NumOfUsers" : groupData.NumOfUsers,
                      "Events" : groupData.Events]
                 )
@@ -81,7 +75,6 @@ class DBViewModel {
         }
     }
     
-    //Should return array of 0 or more items
     func getAllGroupsUserIsIn() async throws -> [Group] {
         do {
             var groupsUserIsIn: [Group] = []
@@ -114,8 +107,8 @@ class DBViewModel {
     func createNewGroupAndAddCurrUser() async throws -> String {
         let env = "Groups"
         
-        
         do {
+            
             let calData = await CalendarViewModel.shared.convertDataToInt()
             let currUser = try AuthenticationHandler.shared.checkAuthenticatedUser()
             
@@ -163,7 +156,7 @@ class DBViewModel {
         }
     }
     
-    // TODO: Check to see if this actually deletes everything, bc of
+    // <Completed: Works> TODO: Check to see if this actually deletes everything, bc of
     //  {Warning: Deleting a document does not delete its subcollections!}
     func deleteGroup(groupID: String) async throws {
         let env = "Groups"

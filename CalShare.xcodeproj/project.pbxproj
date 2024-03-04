@@ -32,6 +32,7 @@
 		412F64192B7479FB005C68EA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 412F64182B7479FB005C68EA /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		412F641B2B7479FB005C68EA /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 412F641A2B7479FB005C68EA /* FirebaseAppCheck */; };
 		414966342B93B06B008B18C9 /* DataBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414966332B93B06B008B18C9 /* DataBaseViewModel.swift */; };
+		414966372B951B99008B18C9 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 414966362B951B99008B18C9 /* CodeScanner */; };
 		415684932B7C54FB0001C8E2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 415684922B7C54FB0001C8E2 /* README.md */; };
 		415E83152B91AD94001967EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 415E83142B91AD94001967EC /* GoogleService-Info.plist */; };
 		41948E7C2B5B3B5700ADD5D0 /* CalShareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41948E7B2B5B3B5700ADD5D0 /* CalShareApp.swift */; };
@@ -121,6 +122,7 @@
 				412F64192B7479FB005C68EA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				41066F472B75B2B5002780B9 /* FirebaseFirestoreSwift in Frameworks */,
 				41B6571F2B8A9F8F003D12ED /* FirebaseFirestore in Frameworks */,
+				414966372B951B99008B18C9 /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,10 +232,10 @@
 			children = (
 				237EC7542B902DE700F188C2 /* addFriendsPage.swift */,
 				231202972B8EADFD00BAF8E7 /* ContentViewPage.swift */,
-				4109D4B92B91BD4000A0304A /* HomePage.swift */,
 				231202952B8E554800BAF8E7 /* CreateCalendarPage.swift */,
 				231202932B8E552200BAF8E7 /* CreateViewGroupsPage.swift */,
 				4004B5612B8FE28B001416C9 /* EventListView.swift */,
+				4109D4B92B91BD4000A0304A /* HomePage.swift */,
 				12BA0CB32B86588F005FDF2E /* LoadingPage.swift */,
 				2312028F2B8E54D800BAF8E7 /* NotificationsPage.swift */,
 				12BA0CAF2B85B5F5005FDF2E /* RegisterPage.swift */,
@@ -284,6 +286,7 @@
 				41B6571A2B8A9F8F003D12ED /* FirebaseDatabase */,
 				41B6571C2B8A9F8F003D12ED /* FirebaseDatabaseSwift */,
 				41B6571E2B8A9F8F003D12ED /* FirebaseFirestore */,
+				414966362B951B99008B18C9 /* CodeScanner */,
 			);
 			productName = CalShare;
 			productReference = 41948E782B5B3B5700ADD5D0 /* CalShare.app */;
@@ -364,6 +367,7 @@
 			mainGroup = 41948E6F2B5B3B5700ADD5D0;
 			packageReferences = (
 				412F64112B7479FB005C68EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				414966352B951B99008B18C9 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = 41948E792B5B3B5700ADD5D0 /* Products */;
 			projectDirPath = "";
@@ -769,6 +773,14 @@
 				minimumVersion = 10.21.0;
 			};
 		};
+		414966352B951B99008B18C9 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -816,6 +828,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 412F64112B7479FB005C68EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAppCheck;
+		};
+		414966362B951B99008B18C9 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 414966352B951B99008B18C9 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
 		};
 		41B657122B8A9F8F003D12ED /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

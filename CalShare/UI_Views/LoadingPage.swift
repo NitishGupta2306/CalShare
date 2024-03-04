@@ -1,16 +1,10 @@
-//
-//  LoadingPage.swift
-//  CalShare
-//
-//  Created by Chitra Mukherjee on 2/21/24.
-//
-
 import SwiftUI
 
+// ROOT VIEW:
 struct LoadingPage: View {
     @State var userAuthTokenExists: Bool = false
-    @State var goHomePage: Bool = false
-    @State var goWelcomePage: Bool = false
+    @State var goContentViewPage: Bool = false
+    @State var goSignInPage: Bool = false
     var body: some View {
             ZStack {
                 backgroundColor
@@ -24,20 +18,20 @@ struct LoadingPage: View {
                     let authUser = try? AuthenticationHandler.shared.checkAuthenticatedUser()
                     userAuthTokenExists = authUser != nil
                     if userAuthTokenExists {
-                        goHomePage = true
+                        goContentViewPage = true
                     } else {
                         //otherwise, we are going to get the auth token from the user by prompting them for phone number
                         print("nobody logged in, go to welcome page ")
-                        goWelcomePage = true
+                        goSignInPage = true
                     }
                 }
             }
-            .navigationDestination(isPresented: $goHomePage){
+            .navigationDestination(isPresented: $goContentViewPage){
                 ContentViewPage()
                     .navigationBarBackButtonHidden(true)
 
             }
-            .navigationDestination(isPresented: $goWelcomePage){
+            .navigationDestination(isPresented: $goSignInPage){
                 SignInPage()
                     .navigationBarBackButtonHidden(true)
 

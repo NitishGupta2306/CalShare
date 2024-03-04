@@ -14,42 +14,10 @@
             filePath = "CalShare/DatabaseAPI/DataBaseViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "getGroupData(groupID:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "66E3004C-1DAD-47C2-AC40-037021D8132F - c5380c3fe31ea0dd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for CalShare.DBViewModel.getGroupData(groupID: Swift.String) async throws -&gt; CalShare.Group"
-                  moduleName = "CalShare"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nat/Desktop/CalShare/CalShare/DatabaseAPI/DataBaseViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "79"
-                  endingLineNumber = "79"
-                  offsetFromSymbolStart = "1420">
-               </Location>
-               <Location
-                  uuid = "66E3004C-1DAD-47C2-AC40-037021D8132F - eeea5b2dcc6942de"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for CalShare.DBViewModel.getGroupData(groupID: Swift.String) async throws -&gt; CalShare.Group"
-                  moduleName = "CalShare"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nat/Desktop/CalShare/CalShare/DatabaseAPI/DataBaseViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "79"
-                  endingLineNumber = "79"
-                  offsetFromSymbolStart = "140">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

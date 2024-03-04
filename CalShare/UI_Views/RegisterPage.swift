@@ -18,11 +18,12 @@ final class RegisterPageViewModel: ObservableObject{
         }
         
         try await AuthenticationHandler.shared.createrNewUser(email: email, pass: password)
+        
     }
 }
 
 struct RegisterPage: View {
-    @State var goHomePage: Bool = false
+    @State var goContentViewPage: Bool = false
     @State var goLogInPage: Bool = false
     @State var errorMsg = ""
     
@@ -112,9 +113,9 @@ struct RegisterPage: View {
                             Task{
                                 do{
                                     try await viewModel.signIn()
-                                    self.goHomePage.toggle()
+                                    self.goContentViewPage.toggle()
                                 } catch {
-                                    errorMsg = "This email is already linked to a user."
+                                    errorMsg = "Email used or Password not long enough"
                                     throw AuthenticationError.signUpError
                                 }
 
@@ -132,7 +133,13 @@ struct RegisterPage: View {
                     }
                 }
             }
-            .navigationDestination(isPresented: $goHomePage) {
+            .onChange(of: goContentViewPage, {
+                print("Asked for calendar access")
+                Task {
+                  await CalendarViewModel.shared.requestAccess()
+                }
+            })
+            .navigationDestination(isPresented: $goContentViewPage) {
                 ContentViewPage()
                     .navigationBarBackButtonHidden()
             }

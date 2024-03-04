@@ -55,8 +55,6 @@ struct ContentViewPage: View {
                     .frame(width:60, height: 60)
             }
             ToolbarItem(placement: .principal) {
-//                    Text("CalShare")
-//                        .foregroundStyle(Color("PastelOrange"))
                 Image("CalShare")
                     .resizable()
                     .frame(width: 130, height: 20)
