@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		12AD67832B96FA6E00116E9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12AD67822B96FA6E00116E9F /* GoogleService-Info.plist */; };
 		12AD67852B96FD7B00116E9F /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD67842B96FD7B00116E9F /* CalendarView.swift */; };
+		12AD67872B97E5B700116E9F /* EventListViewCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AD67862B97E5B700116E9F /* EventListViewCopy.swift */; };
 		12BA0CAC2B84FEC5005FDF2E /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA0CAB2B84FEC5005FDF2E /* SplashScreen.swift */; };
 		12BA0CB02B85B5F5005FDF2E /* RegisterPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA0CAF2B85B5F5005FDF2E /* RegisterPage.swift */; };
 		12BA0CB42B86588F005FDF2E /* LoadingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA0CB32B86588F005FDF2E /* LoadingPage.swift */; };
@@ -74,6 +75,7 @@
 /* Begin PBXFileReference section */
 		12AD67822B96FA6E00116E9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		12AD67842B96FD7B00116E9F /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		12AD67862B97E5B700116E9F /* EventListViewCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewCopy.swift; sourceTree = "<group>"; };
 		12BA0CAB2B84FEC5005FDF2E /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		12BA0CAF2B85B5F5005FDF2E /* RegisterPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPage.swift; sourceTree = "<group>"; };
 		12BA0CB32B86588F005FDF2E /* LoadingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPage.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				231202952B8E554800BAF8E7 /* CreateCalendarPage.swift */,
 				231202932B8E552200BAF8E7 /* CreateViewGroupsPage.swift */,
 				4004B5612B8FE28B001416C9 /* EventListView.swift */,
+				12AD67862B97E5B700116E9F /* EventListViewCopy.swift */,
 				4109D4B92B91BD4000A0304A /* HomePage.swift */,
 				12BA0CB32B86588F005FDF2E /* LoadingPage.swift */,
 				2312028F2B8E54D800BAF8E7 /* NotificationsPage.swift */,
@@ -428,6 +431,7 @@
 				12BA0CB02B85B5F5005FDF2E /* RegisterPage.swift in Sources */,
 				41B657212B8AA143003D12ED /* AuthenticationHandler.swift in Sources */,
 				4004B5622B8FE28B001416C9 /* EventListView.swift in Sources */,
+				12AD67872B97E5B700116E9F /* EventListViewCopy.swift in Sources */,
 				231202942B8E552200BAF8E7 /* CreateViewGroupsPage.swift in Sources */,
 				231202902B8E54D800BAF8E7 /* NotificationsPage.swift in Sources */,
 				401910552B8AB04B006EF454 /* CalendarViewModel.swift in Sources */,

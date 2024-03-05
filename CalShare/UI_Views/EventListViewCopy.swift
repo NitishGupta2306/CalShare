@@ -1,14 +1,15 @@
 //
-//  EventListView.swift
+//  EventListViewCopy.swift
 //  CalShare
 //
-//  Created by Drew Helbig on 2/28/24.
+//  Created by Chitra Mukherjee on 3/5/24.
 //
 
 import SwiftUI
 
-struct EventListView: View {
+struct EventListViewCopy: View {
     let colors: [Color] = [.red, .green, .blue]
+    @Binding var curDay: Date
 //Unix time:
 //
     
@@ -21,7 +22,7 @@ struct EventListView: View {
                              .padding()
                              .background(color)
                      }
-              Text(CalendarViewModel.shared.currentDay.formatted())
+              Text(curDay.formatted())
                  }
           /*
           ForEach(CalendarViewModel.shared.events) { idEvent in
@@ -58,5 +59,6 @@ struct EventListView: View {
 }
 
 #Preview {
-    EventListView()
+    EventListViewCopy(curDay: .constant(Date()))
 }
+

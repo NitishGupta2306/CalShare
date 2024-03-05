@@ -20,13 +20,15 @@ struct IdentifiableEvent: Identifiable {
     let store: EKEventStore
     var currentWeek: [Date] = []
     var currentDay: Date = Date()
-
+    var currentMonth: String = ""
+    
     init() {
         self.store = EKEventStore()
         self.events = []
         self.currentWeek = []
         self.currentDay = Date()
         fetchCurrentWeek()
+        currentMonth = self.extractDate(date: currentDay, format: "MMMM")
     }
       
     func requestAccess() async {
