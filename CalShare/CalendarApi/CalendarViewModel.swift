@@ -57,6 +57,10 @@ struct IdentifiableEvent: Identifiable {
         CalendarViewModel.shared.fetchEvents(interval: .weekOfMonth, startDate: Date(), calendars: nil)
     }
     
+    func fetchCurrentDayEvents(day: Date) {
+        CalendarViewModel.shared.fetchEvents(interval: .day, startDate: day, calendars: nil)
+    }
+    
     func convertDataToInt() -> [Double]{
         var unixTimeEvents: [Double] = []
         

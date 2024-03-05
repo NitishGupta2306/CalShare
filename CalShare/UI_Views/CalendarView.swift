@@ -48,6 +48,10 @@ struct CalendarView: View {
                     .contentShape(Capsule())
                     .onTapGesture {
                         print("clicked")
+                        CalendarViewModel.shared.fetchCurrentDayEvents(day: day) //the events list is updated
+                        for ev in CalendarViewModel.shared.events {
+                            print(ev.event.title)
+                        }
                         //we will be updating the current day here
                         withAnimation {
                             CalendarViewModel.shared.currentDay = day
