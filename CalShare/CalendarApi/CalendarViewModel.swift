@@ -14,14 +14,19 @@ struct IdentifiableEvent: Identifiable {
 }
 
 @MainActor class CalendarViewModel: ObservableObject {
-    static let shared = CalendarViewModel()
+    static var shared = CalendarViewModel()
     
     var events: [IdentifiableEvent]
     let store: EKEventStore
+    var currentWeek: [Date] = []
+    var currentDay: Date = Date()
 
     init() {
         self.store = EKEventStore()
         self.events = []
+        self.currentWeek = []
+        self.currentDay = Date()
+        fetchCurrentWeek()
     }
       
     func requestAccess() async {
@@ -74,6 +79,37 @@ struct IdentifiableEvent: Identifiable {
         } else {
           return false
         }
+    }
+    
+    func fetchCurrentWeek() {
+        let today = Date()
+        let calendar = Calendar.current
+        
+        let week = calendar.dateInterval(of:.weekOfMonth, for: today)
+        
+        guard let firstWeekDay = week?.start else {
+            return
+        }
+        
+        (0...6).forEach { day in
+            if let weekday = calendar.date(byAdding:.day, value: day, to: firstWeekDay) {
+                currentWeek.append(weekday)
+            }
+            
+        }
+    }
+    
+    func extractDate(date: Date, format: String) -> String{
+        let formatter = DateFormatter()
+        
+        formatter.dateFormat = format
+        return formatter.string(from: date)
+    }
+    
+    //check if the current day is today
+    func verifyIsToday(date: Date) -> Bool {
+        let calendar = Calendar.current
+        return calendar.isDate(currentDay, inSameDayAs: date)
     }
         
 }

@@ -8,12 +8,29 @@
 import SwiftUI
 
 struct EventListView: View {
+    let colors: [Color] = [.red, .green, .blue]
 //Unix time:
 //
     
   var body: some View {
       ScrollView {
+          Text("hello")
+          VStack {
+                     ForEach(colors, id: \.self) { color in
+                         Text(color.description.capitalized)
+                             .padding()
+                             .background(color)
+                     }
+                 }
+          /*
           ForEach(CalendarViewModel.shared.events) { idEvent in
+              Button {
+                  print(idEvent)
+              }
+              label : {
+                  Text(idEvent.event.title)
+              }
+              /*
             VStack(alignment: .center) {
                   Text("Event: \(idEvent.event.title)").bold()
                   Text("Date: \(formatDate(idEvent.event.startDate, format: "MM d, yyyy"))")
@@ -26,7 +43,9 @@ struct EventListView: View {
               .foregroundStyle(.black)
               .clipShape(RoundedRectangle(cornerRadius: 5))
               .padding([.leading, .trailing, .bottom], 20)
+               */
             }
+           */
         }
     }
   
