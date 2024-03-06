@@ -47,7 +47,7 @@ struct IdentifiableEvent: Identifiable {
         
         CalendarViewModel.shared.events = fetchedEvents.map{ IdentifiableEvent(event: $0) }
         
-        createFreeTimeSlotEvents()
+        createFreeTimeSlotEvents(startEndTimes: convertDataToDouble())
     }
 
     func fetchCurrentWeekEvents(){
@@ -67,6 +67,19 @@ struct IdentifiableEvent: Identifiable {
         return unixTimeEvents
     }
     
+    func convertFreeTimesToDouble() -> [Double]{
+        var unixTimeEvents: [Double] = []
+        
+        for currEvent in CalendarViewModel.shared.eventsToDisplay {
+            let st = currEvent.event.startDate.timeIntervalSince1970
+            let et = currEvent.event.endDate.timeIntervalSince1970
+            
+            unixTimeEvents.append(st)
+            unixTimeEvents.append(et)
+        }
+        return unixTimeEvents
+    }
+    
     func getWeekStartAndEndTime() -> (Double, Double) {
         let now = Date()
         let calendar = Calendar.current
@@ -77,9 +90,6 @@ struct IdentifiableEvent: Identifiable {
         if let endOfWeek = calendar.date(byAdding: .second, value: Int(interval), to: startOfWeek){
             let startOfWeekSince1970 = startOfWeek.timeIntervalSince1970
             let endOfWeekSince1970 = endOfWeek.timeIntervalSince1970
-            
-            print("Start of the week: \(startOfWeekSince1970)")
-            print("End of the week: \(endOfWeekSince1970)")
             
             return (startOfWeekSince1970, endOfWeekSince1970)
         }
@@ -123,8 +133,30 @@ struct IdentifiableEvent: Identifiable {
         } else {
             takenTimeSlots.append((earliestStart, latestEnd))
         }
-        
+                
         return takenTimeSlots
+    }
+    
+    func timeSlotContainsMidnight(timeSlot: (Double, Double)) -> ((Double, Double), (Double, Double)) {
+        let oneDay: Double = 24 * 60 * 60
+        let startEnd = getWeekStartAndEndTime()
+        let midNight = [startEnd.0 + oneDay, startEnd.0 + 2 * oneDay,
+                        startEnd.0 + 3 * oneDay, startEnd.0 + 4 * oneDay,
+                        startEnd.0 + 5 * oneDay, startEnd.0 + 6 * oneDay,
+                        startEnd.0 + 7 * oneDay]
+        
+        var newTimeSlots: [(Double, Double)] = []
+        
+        for time in midNight {
+            if time < timeSlot.1 && time > timeSlot.0 {
+                newTimeSlots.append((timeSlot.0, time - 1))
+                newTimeSlots.append((time, timeSlot.1))
+                
+                return ((timeSlot.0, time - 1), (time, timeSlot.1))
+            }
+        }
+        
+        return ((0,0),(0,0))
     }
     
     func createTimeIntervals(interevalInMinutes: Double = 24 * 60, freeTimeSlot: (Double, Double)) -> [(Double, Double)] {
@@ -134,20 +166,28 @@ struct IdentifiableEvent: Identifiable {
         
         var nextInterval = freeTimeSlot.0
         
-        if Int(totalTimeIntervals) > 0 {
-            
-            for _ in 1...Int(ceil(totalTimeIntervals)) {
+        for _ in 1...Int(ceil(totalTimeIntervals)) {
+                            
+            if nextInterval + secondsInterval <= freeTimeSlot.1 {
+                let midNightIntervals = timeSlotContainsMidnight(timeSlot: (nextInterval, nextInterval + secondsInterval))
                 
-                if nextInterval + secondsInterval <= freeTimeSlot.1 {
-                    timeIntervals.append((nextInterval, nextInterval + secondsInterval - 60)) // - 60 is just for readability when time intervals are days should be removed if any other time interval is used
+                if midNightIntervals.0.0 == 0 {
+                    timeIntervals.append((nextInterval, nextInterval + secondsInterval - 1))
                     nextInterval += secondsInterval
                 } else {
-                    timeIntervals.append((nextInterval, freeTimeSlot.1))
+                    timeIntervals += [midNightIntervals.0]
+                    nextInterval = midNightIntervals.1.0
                 }
                 
+            } else {
+                let midNightIntervals = timeSlotContainsMidnight(timeSlot: (nextInterval, freeTimeSlot.1))
+
+                if midNightIntervals.0.0 == 0 {
+                    timeIntervals.append((nextInterval, freeTimeSlot.1))
+                } else {
+                    timeIntervals += [midNightIntervals.0, midNightIntervals.1]
+                }
             }
-        } else {
-            timeIntervals.append(freeTimeSlot)
         }
         
         return timeIntervals
@@ -158,7 +198,6 @@ struct IdentifiableEvent: Identifiable {
         var freeTimeSlots: [(Double, Double)] = []
         let takenTimeSlots = findTakenTimeSlots(times: times)
         let startEnd = getWeekStartAndEndTime()
-        let oneDay: Double = 24 * 60 * 60
         
         if takenTimeSlots.count > 1 {
             for i in 0...(takenTimeSlots.count - 2) {
@@ -183,9 +222,9 @@ struct IdentifiableEvent: Identifiable {
         return freeTimeSlots
     }
     
-    func createFreeTimeSlotEvents() {
+    func createFreeTimeSlotEvents(startEndTimes: [Double]) {
         
-        let freeTimeSlots = findFreeTimeSlots(times: convertDataToDouble())
+        let freeTimeSlots = findFreeTimeSlots(times: startEndTimes)
         var newEvents: [IdentifiableEvent] = []
         var numEvents = 1
         

@@ -15,9 +15,9 @@ struct EventListView: View {
       ScrollView {
           ForEach(viewModel.eventsToDisplay) { idEvent in
             VStack(alignment: .center) {
-                  Text("\(idEvent.event.title)").bold()
-                  Text("Date: \(formatDate(idEvent.event.startDate, format: "MM d, yyyy"))")
-                  Text("\(formatDate(idEvent.event.startDate)) - \(formatDate(idEvent.event.endDate))")
+                Text("\(formatDate(idEvent.event.startDate, format: "EEE"))").bold()
+                Text("\(formatDate(idEvent.event.startDate, format: "MM-d-yyyy"))")
+                Text("\(formatDate(idEvent.event.startDate)) - \(formatDate(idEvent.event.endDate))")
             }
               .multilineTextAlignment(.center)
               .frame(maxWidth: .infinity)
