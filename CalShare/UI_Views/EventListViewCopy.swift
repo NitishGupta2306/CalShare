@@ -15,15 +15,12 @@ struct EventListViewCopy: View {
     
   var body: some View {
       ScrollView {
-          Text("hello")
           VStack {
-                     ForEach(colors, id: \.self) { color in
-                         Text(color.description.capitalized)
-                             .padding()
-                             .background(color)
-                     }
               Text(curDay.formatted())
-                 }
+              ForEach(CalendarViewModel.shared.getEventNames(), id: \.self) { ev_name in
+                  Text(ev_name)
+              }
+          }
           /*
           ForEach(CalendarViewModel.shared.events) { idEvent in
               Button {

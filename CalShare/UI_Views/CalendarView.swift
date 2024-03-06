@@ -24,7 +24,7 @@ struct CalendarView: View {
                             ForEach(CalendarViewModel.shared.currentWeek, id: \.self) {day in
                                 
                                 VStack (spacing: 10){
-                                    
+                
                                     Text(CalendarViewModel.shared.extractDate(date: day, format: "dd"))
                                         .font(.custom(fontTwo, size: 15.0))
                                         .fontWeight(.semibold)
@@ -46,6 +46,11 @@ struct CalendarView: View {
                                 .background(
                                     ZStack {
                                         if CalendarViewModel.shared.verifyIsToday(date: day) {
+                                            Capsule()
+                                                .fill(Color("PastelOrange"))
+                                                .matchedGeometryEffect(id: "CURRENTDAY", in: animation)
+                                        }
+                                        if day == curDay {
                                             Capsule()
                                                 .fill(Color("PastelOrange"))
                                                 .matchedGeometryEffect(id: "CURRENTDAY", in: animation)

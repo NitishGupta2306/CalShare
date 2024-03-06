@@ -117,5 +117,14 @@ struct IdentifiableEvent: Identifiable {
         let calendar = Calendar.current
         return calendar.isDate(currentDay, inSameDayAs: date)
     }
+    
+    func getEventNames() -> [String] {
+        //returns a string array of event names
+        var res: [String] = []
+        for ev in self.events {
+            res.append(ev.event.title ?? "")
+        }
+        return res
+    }
         
 }
