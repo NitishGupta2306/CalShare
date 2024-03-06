@@ -8,18 +8,17 @@
 import SwiftUI
 
 struct EventListView: View {
-//Unix time:
-//
     
-  var body: some View {
+    @ObservedObject var viewModel = CalendarViewModel.shared
+    
+    var body: some View {
       ScrollView {
-          ForEach(CalendarViewModel.shared.events) { idEvent in
+          ForEach(viewModel.eventsToDisplay) { idEvent in
             VStack(alignment: .center) {
-                  Text("Event: \(idEvent.event.title)").bold()
+                  Text("\(idEvent.event.title)").bold()
                   Text("Date: \(formatDate(idEvent.event.startDate, format: "MM d, yyyy"))")
-                  Text("Start Time: \(formatDate(idEvent.event.startDate))")
-                  Text("End Time: \(formatDate(idEvent.event.endDate))")
-              }
+                  Text("\(formatDate(idEvent.event.startDate)) - \(formatDate(idEvent.event.endDate))")
+            }
               .multilineTextAlignment(.center)
               .frame(maxWidth: .infinity)
               .background(Color("PastelOrange"))
@@ -29,12 +28,13 @@ struct EventListView: View {
             }
         }
     }
-  
+    
     private func formatDate(_ date: Date, format: String = "h:mm a") -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = format
         return formatter.string(from: date)
     }
+
 }
 
 #Preview {

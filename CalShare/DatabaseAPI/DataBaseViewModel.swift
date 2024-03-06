@@ -30,7 +30,7 @@ class DBViewModel {
         
         Task{
             do{
-                let calData = await CalendarViewModel.shared.convertDataToInt()
+                let calData = await CalendarViewModel.shared.convertDataToDouble()
                 var groupData = try await getGroupData(groupID: groupID)
                 let currUser = try AuthenticationHandler.shared.checkAuthenticatedUser()
                 
@@ -109,7 +109,7 @@ class DBViewModel {
         
         do {
             
-            let calData = await CalendarViewModel.shared.convertDataToInt()
+            let calData = await CalendarViewModel.shared.convertDataToDouble()
             let currUser = try AuthenticationHandler.shared.checkAuthenticatedUser()
             
             let ref = try await db.collection(env).addDocument(data: [
