@@ -3,16 +3,15 @@
 //  CalShare
 //
 //  Created by Chitra Mukherjee on 3/5/24.
+// How to add event blocks in calendar: https://stackoverflow.com/questions/76213682/create-a-daily-timeline-calendar-in-swiftui
 //
 
 import SwiftUI
 
 struct EventListViewCopy: View {
-    let colors: [Color] = [.red, .green, .blue]
+    let frameHeight: CGFloat = 50
+    let textWidth: CGFloat = 40
     @Binding var curDay: Date
-//Unix time:
-//
-    
   var body: some View {
       VStack {
           Text(curDay.formatted())
@@ -21,66 +20,67 @@ struct EventListViewCopy: View {
           }
       }
       ScrollView {
-          ZStack {
-              VStack {
+          ZStack (alignment: .topLeading) {
+              VStack (alignment: .leading) {
                   HStack {
                       Text("\(12) am")
-                          .frame(width: 40, alignment: .leading)
+                          .frame(width: textWidth, alignment: .leading)
                           .font(.custom(fontTwo, size: 14.0))
                           .foregroundColor(Color("TextColor"))
                           .fontWeight(.regular)
                       Color("PastelGray")
                           .frame(height: 1)
                   }
-                  .frame(height: 50)
+                  .frame(height: frameHeight)
                   ForEach(1..<11) { hour in
                       HStack {
                           Text("\(hour) am")
-                              .frame(width: 40, alignment: .leading)
+                              .frame(width: textWidth, alignment: .leading)
                               .font(.custom(fontTwo, size: 14.0))
                               .foregroundColor(Color("TextColor"))
                               .fontWeight(.regular)
                           Color("PastelGray")
                               .frame(height: 1)
                       }
-                      .frame(height: 50)
+                      .frame(height: frameHeight)
                   }
                   HStack {
                       Text("12 pm")
-                          .frame(width: 40, alignment: .leading)
+                          .frame(width: textWidth, alignment: .leading)
                           .font(.custom(fontTwo, size: 14.0))
                           .foregroundColor(Color("TextColor"))
                           .fontWeight(.regular)
                       Color("PastelGray")
                           .frame(height: 1)
                   }
-                  .frame(height: 50)
+                  .frame(height: frameHeight)
                   ForEach(1..<12) { hour in
                       HStack {
                           Text("\(hour) pm")
-                              .frame(width: 40, alignment: .leading)
+                              .frame(width: textWidth, alignment: .leading)
                               .font(.custom(fontTwo, size: 14.0))
                               .foregroundColor(Color("TextColor"))
                               .fontWeight(.regular)
                           Color("PastelGray")
                               .frame(height: 1)
                       }
-                      .frame(height: 50)
+                      .frame(height: frameHeight)
                   }
               }
               
               VStack (alignment: .leading) {
                   Text("Event")
               }
-              .frame(maxWidth: .infinity, alignment: .leading)
+              .frame(maxWidth: 310, alignment: .leading)
               .padding(4)
-              .frame(height: 80, alignment: .top)
+              .frame(height: textWidth * 1.5, alignment: .leading)
+              //the above frame shows the duration width
               .background(
                 RoundedRectangle(cornerRadius: 8)
-                    .fill(.teal).opacity(0.5)
+                    .fill(Color("PastelOrange")).opacity(0.5)
               )
-              .padding(.trailing, 30)
-              .offset(x: 30, y: 30 + 24)
+              .padding(4)
+              .offset(x: textWidth, y: textWidth / 2)
           }
         }
       .padding()
