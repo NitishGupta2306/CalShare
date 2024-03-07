@@ -14,38 +14,76 @@ struct EventListViewCopy: View {
 //
     
   var body: some View {
-      ScrollView {
-          VStack {
-              Text(curDay.formatted())
-              ForEach(CalendarViewModel.shared.getEventNames(), id: \.self) { ev_name in
-                  Text(ev_name)
-              }
+      VStack {
+          Text(curDay.formatted())
+          ForEach(CalendarViewModel.shared.getEventNames(), id: \.self) { ev_name in
+              Text(ev_name)
           }
-          /*
-          ForEach(CalendarViewModel.shared.events) { idEvent in
-              Button {
-                  print(idEvent)
+      }
+      ScrollView {
+          ZStack {
+              VStack {
+                  HStack {
+                      Text("\(12) am")
+                          .frame(width: 40, alignment: .leading)
+                          .font(.custom(fontTwo, size: 14.0))
+                          .foregroundColor(Color("TextColor"))
+                          .fontWeight(.regular)
+                      Color("PastelGray")
+                          .frame(height: 1)
+                  }
+                  .frame(height: 50)
+                  ForEach(1..<11) { hour in
+                      HStack {
+                          Text("\(hour) am")
+                              .frame(width: 40, alignment: .leading)
+                              .font(.custom(fontTwo, size: 14.0))
+                              .foregroundColor(Color("TextColor"))
+                              .fontWeight(.regular)
+                          Color("PastelGray")
+                              .frame(height: 1)
+                      }
+                      .frame(height: 50)
+                  }
+                  HStack {
+                      Text("12 pm")
+                          .frame(width: 40, alignment: .leading)
+                          .font(.custom(fontTwo, size: 14.0))
+                          .foregroundColor(Color("TextColor"))
+                          .fontWeight(.regular)
+                      Color("PastelGray")
+                          .frame(height: 1)
+                  }
+                  .frame(height: 50)
+                  ForEach(1..<12) { hour in
+                      HStack {
+                          Text("\(hour) pm")
+                              .frame(width: 40, alignment: .leading)
+                              .font(.custom(fontTwo, size: 14.0))
+                              .foregroundColor(Color("TextColor"))
+                              .fontWeight(.regular)
+                          Color("PastelGray")
+                              .frame(height: 1)
+                      }
+                      .frame(height: 50)
+                  }
               }
-              label : {
-                  Text(idEvent.event.title)
+              
+              VStack (alignment: .leading) {
+                  Text("Event")
               }
-              /*
-            VStack(alignment: .center) {
-                  Text("Event: \(idEvent.event.title)").bold()
-                  Text("Date: \(formatDate(idEvent.event.startDate, format: "MM d, yyyy"))")
-                  Text("Start Time: \(formatDate(idEvent.event.startDate))")
-                  Text("End Time: \(formatDate(idEvent.event.endDate))")
-              }
-              .multilineTextAlignment(.center)
-              .frame(maxWidth: .infinity)
-              .background(Color("PastelOrange"))
-              .foregroundStyle(.black)
-              .clipShape(RoundedRectangle(cornerRadius: 5))
-              .padding([.leading, .trailing, .bottom], 20)
-               */
-            }
-           */
+              .frame(maxWidth: .infinity, alignment: .leading)
+              .padding(4)
+              .frame(height: 80, alignment: .top)
+              .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(.teal).opacity(0.5)
+              )
+              .padding(.trailing, 30)
+              .offset(x: 30, y: 30 + 24)
+          }
         }
+      .padding()
     }
   
     private func formatDate(_ date: Date, format: String = "h:mm a") -> String {
