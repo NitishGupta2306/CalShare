@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import EventKit
 
 struct EventListViewCopy: View {
     let frameHeight: CGFloat = 50
@@ -17,6 +18,10 @@ struct EventListViewCopy: View {
           Text(curDay.formatted())
           ForEach(CalendarViewModel.shared.getEventNames(), id: \.self) { ev_name in
               Text(ev_name)
+          }
+          
+          ForEach(CalendarViewModel.shared.convertDataToInt(), id: \.self) { date_info in
+              Text("Time: \(date_info)")
           }
       }
       ScrollView {
@@ -73,7 +78,7 @@ struct EventListViewCopy: View {
               }
               .frame(maxWidth: 310, alignment: .leading)
               .padding(4)
-              .frame(height: textWidth * 1.5, alignment: .leading)
+              .frame(height: textWidth * 1.5 * 1.5, alignment: .leading)
               //the above frame shows the duration width
               .background(
                 RoundedRectangle(cornerRadius: 8)
@@ -91,6 +96,26 @@ struct EventListViewCopy: View {
         formatter.dateFormat = format
         return formatter.string(from: date)
     }
+    
+    private func eventCell(curEv: EKEvent) -> some View {
+        let duration = curEv.startDate.timeIntervalSince(curEv.endDate)
+        let height = duration / 60 / 60 * frameHeight
+        return VStack(alignment: .leading) {
+                Text(curEv.title)
+                }
+        .frame(maxWidth: 310, alignment: .leading)
+        .padding(4)
+        .frame(height: textWidth * 1.5 * duration, alignment: .leading)
+        //the above frame shows the duration width
+        .background(
+          RoundedRectangle(cornerRadius: 8)
+              .fill(Color("PastelOrange")).opacity(0.5)
+        )
+        .padding(4)
+        .offset(x: textWidth, y: textWidth / 2)
+
+        }
+            
 }
 
 #Preview {

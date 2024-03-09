@@ -69,9 +69,10 @@ struct IdentifiableEvent: Identifiable {
         for currEvent in CalendarViewModel.shared.events {
             let st = currEvent.event.startDate.timeIntervalSince1970
             let et = currEvent.event.endDate.timeIntervalSince1970
-            
+            let duration = currEvent.event.endDate.timeIntervalSince(currEvent.event.startDate)
             unixTimeEvents.append(st)
             unixTimeEvents.append(et)
+            unixTimeEvents.append(duration / 60 / 60)
         }
         return unixTimeEvents
     }
