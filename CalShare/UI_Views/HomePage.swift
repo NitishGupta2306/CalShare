@@ -106,10 +106,14 @@ struct HomePage: View {
 
                         Button {
                             Task{
-                               try await DBViewModel.shared.updateCurrUserData()
+                                print("inside")
+                                let holder = try await DBViewModel.shared.getUserDataFromUsersInGroup(groupID: "0sQVzaOc41VyXQrAuuMH")
+                                
+                                print("preholder")
+                                print(holder)
                             }
                         } label: {
-                          Text("Update current Data")
+                          Text("getuserdatafromusersingroup")
                             .frame(maxWidth: .infinity)
                             .frame(height: 40)
                             .font(.system(size: 20))
@@ -119,6 +123,7 @@ struct HomePage: View {
                             .padding([.leading, .trailing], 20)
                             .padding(.bottom, 50)
                         }
+                        
                     }
                 }
                 .navigationDestination(isPresented: $goToSecondHomePage) {

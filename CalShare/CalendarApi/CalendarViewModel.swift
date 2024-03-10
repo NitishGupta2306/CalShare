@@ -47,12 +47,16 @@ struct IdentifiableEvent: Identifiable {
 
         guard let interval = Calendar.current.dateInterval(of: interval, for: startDate)
         else { print("An error occured while creating a calendar interval."); return }
+        
+        print(interval)
 
         let predicate = CalendarViewModel.shared.store.predicateForEvents(withStart: interval.start, end: interval.end, calendars: calendars)
 
         let fetchedEvents = CalendarViewModel.shared.store.events(matching: predicate).sorted(by: {$0.startDate < $1.startDate})
         
         CalendarViewModel.shared.events = fetchedEvents.map{ IdentifiableEvent(event: $0) }
+        
+        print(CalendarViewModel.shared.events)
         
         createFreeTimeSlotEvents(startEndTimes: convertDataToDouble())
     }

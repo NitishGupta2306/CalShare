@@ -89,18 +89,24 @@ class DBViewModel {
         let env = "Users"
         var users: [User] = []
         
-        let groupDataRef = self.db.collection(env).document(groupID)
+        let groupDataRef = self.db.collection("Groups").document(groupID)
         let groupData = try await groupDataRef.getDocument(as: Group.self)
-        
+            
         let validUserIDs: [String] = getNonEmptyUIDsInGroup(group: groupData)
         
         let docRef = db.collection(env).whereField(FieldPath.documentID(), in: validUserIDs)
         do {
             let querySnapshot = try await docRef.getDocuments()
+
             for document in querySnapshot.documents {
-                let user = try document.data(as: User.self)
-                users.append(user)
+                do{
+                    let user = try document.data(as: User.self)
+                    users.append(user)
+                } catch {
+                     print(GroupError.getUserDataFail)
+                }
             }
+            print(users)
             return users
         } catch {
             throw GroupError.getUsersInGroupFail
