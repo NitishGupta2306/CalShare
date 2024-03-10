@@ -13,11 +13,15 @@ import FirebaseFirestoreSwift
 class DBViewModel {
     static let shared = DBViewModel()
     var db: Firestore
+    var userCache: [String: User]
+    var groupCache: [String: Group]
     
     // TODO get groups user is in through mem or db
     init() {
         //FirebaseApp.configure()
         self.db = Firestore.firestore()
+        self.userCache = [:]
+        self.groupCache = [:]
     }
     
     // Will now overwrite any data that is already in db
