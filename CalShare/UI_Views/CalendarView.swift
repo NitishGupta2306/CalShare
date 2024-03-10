@@ -73,23 +73,9 @@ struct CalendarView: View {
                   }
               }
               
-              showEventCells(curEvs: CalendarViewModel.shared.events)
-              /*
-              Tester event block
-              VStack (alignment: .leading) {
-                  Text("Event")
+              ForEach(CalendarViewModel.shared.events) { idEvent in
+                  eventCell(curEv: idEvent.event)
               }
-              .frame(maxWidth: 310, alignment: .leading)
-              .padding(4)
-              .frame(height: textWidth * 1.5 * 1.5, alignment: .leading)
-              //the above frame shows the duration width
-              .background(
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(Color("PastelOrange")).opacity(0.5)
-              )
-              .padding(4)
-              .offset(x: textWidth, y: textWidth / 2)
-               */
           }
         }
       .padding()
@@ -102,30 +88,27 @@ struct CalendarView: View {
     }
     
     func eventCell(curEv: EKEvent) -> some View {
-        /*
-        if curEvs.count == 0 {
-            return VStack (alignment: .leading) {
-                Text("Event")
-            }
-            .frame(maxWidth: 310, alignment: .leading)
-            .frame(height: frameHeight+7, alignment: .leading)
-            //the above frame shows the duration width
-            .background(
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(Color("PastelOrange")).opacity(0.5)
-            )
-            .offset(x: textWidth + 8, y: ((frameHeight + 15) / 2 - 7) + frameHeight + 8)
-        }
-        */
-        //let curDay = formatDate(curEv.startDate, format: "")
         let durationSecs = curEv.endDate.timeIntervalSince(curEv.startDate)
         let durationHr = durationSecs / 60 / 60
         let initialOffset = (frameHeight + 15) / 2 - 7
         let frameOffsetHeight = frameHeight + 8
         print("\(curEv.title) and \(curEv.endDate)")
+        
+        let calendar = Calendar.current
+        var startCalendarDate = calendar.dateComponents([.day, .year, .month], from: curEv.startDate)
+        startCalendarDate.hour = 0
+        startCalendarDate.minute = 0
+        var durationSinceMidnight = 0.0
+        if let date = calendar.date(from: startCalendarDate) {
+            print("test date \(date.formatted())")
+            durationSinceMidnight = curEv.startDate.timeIntervalSince(date) / 60 / 60
+            print("test duration\(durationSinceMidnight)")
+        }
+        
         return VStack(alignment: .leading) {
             Text(curEv.title)
             Text("\(durationHr)")
+            Text("\(durationSinceMidnight)")
         }
         .frame(maxWidth: 310, alignment: .leading)
         .frame(height: frameHeight+7, alignment: .top)
@@ -133,50 +116,18 @@ struct CalendarView: View {
             RoundedRectangle(cornerRadius: 8)
                 .fill(Color("PastelOrange")).opacity(0.5)
         )
-        .offset(x: textWidth + 8, y: initialOffset + (frameOffsetHeight * durationHr))
+        .offset(x: textWidth + 8, y: initialOffset + (frameOffsetHeight * durationHr)*durationSinceMidnight)
     }
     
+    //unused function currently
     private func showEventCells(curEvs: [IdentifiableEvent]) -> some View {
-        return VStack {
+        return VStack (alignment: .leading) {
             ForEach(curEvs) { idEvent in
                 eventCell(curEv: idEvent.event)
             }
         }
     }
     
-    /*
-    private func eventCell(curEvs: [IdentifiableEvent]) -> some View {
-        if curEvs.count == 0 {
-            return VStack (alignment: .leading) {
-                Text("Event")
-            }
-            .frame(maxWidth: 310, alignment: .leading)
-            .frame(height: textWidth * 1.5, alignment: .leading)
-            //the above frame shows the duration width
-            .background(
-              RoundedRectangle(cornerRadius: 8)
-                  .fill(Color("PastelOrange")).opacity(0.5)
-            )
-            .offset(x: textWidth, y: frameHeight * 1.5)
-        }
-        let curEv = curEvs[0].event
-        let duration = curEv.endDate.timeIntervalSince(curEv.startDate)
-        let height = (duration / 60 / 60)
-        let offset_amt = 0
-        return VStack(alignment: .leading) {
-                 Text(curEv.title)
-                 }
-                .frame(maxWidth: 310, alignment: .leading)
-                .padding(4)
-                .frame(height: textWidth * 1.5 * height, alignment: .leading)
-             //the above frame shows the duration width
-                .background(
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(Color("PastelOrange")).opacity(0.5)
-                )
-                .offset(x: textWidth, y: (frameHeight / 2))
-        }
-       */
 }
 #Preview {
     CalendarView(curDay: .constant(Date()))
