@@ -24,6 +24,21 @@ class DBViewModel {
         self.groupCache = [:]
     }
     
+    
+    // Will now overwrite any data that is already in db
+    func newUserFireStore(uid: String) async throws {
+        let env = "Users"
+        let emptyArr : [Double] = []
+        do {
+            try await db.collection(env).document(uid).setData(
+                ["Events" : emptyArr]
+            )
+        } catch {
+            throw GroupError.updateCurrUserData
+        }
+    }
+    
+    
     // Will now overwrite any data that is already in db
     func updateCurrUserData() async throws {
         let env = "Users"
@@ -32,7 +47,7 @@ class DBViewModel {
             let calData = await CalendarViewModel.shared.convertDataToDouble()
             
             let docRef = db.collection(env).document(currUser.uid)
-            try await docRef.updateData(
+            try await docRef.setData(
                 ["Events" : calData]
             )
         } catch {
@@ -42,42 +57,29 @@ class DBViewModel {
 
     func addUserToGroup(groupID: String) async throws{
         let env = "Groups"
-        Task{
-            do{
-                var groupData = try await getGroupData(groupID: groupID)
-                let currUser = try AuthenticationHandler.shared.checkAuthenticatedUser()
-                
-                let userID = currUser.uid
-                let currGroupRef = db.collection(env).document(groupID)
-                
-                if (userInGroup(UID: userID, group: groupData)) {throw GroupError.userAlreadyInGroup}
-                
-                let emptyUser = getFirstEmptyUser(group: groupData)
-                if (emptyUser == "") {throw GroupError.tooManyUsersInGroup}
-                
-                try await currGroupRef.updateData(
-                    [emptyUser : userID]
-                )
-                print("Successfully added user to group")
-                
-            }
-            catch{
-                throw GroupError.setGroupDataFail
-            }
+        do{
+            
+            let docRef = self.db.collection(env).document(groupID)
+            let groupData = try await docRef.getDocument(as: Group.self)
+            
+            let currUser = try AuthenticationHandler.shared.checkAuthenticatedUser()
+            
+            let userID = currUser.uid
+            let currGroupRef = db.collection(env).document(groupID)
+            
+            if (userInGroup(UID: userID, group: groupData)) {throw GroupError.userAlreadyInGroup}
+            
+            let emptyUser = getFirstEmptyUser(group: groupData)
+            if (emptyUser == "") {throw GroupError.tooManyUsersInGroup}
+            
+            try await currGroupRef.updateData(
+                [emptyUser : userID]
+            )
+            print("Successfully added user to group")
+            
         }
-    }
-    
-    // TODO: Have it work with local "cache" ie check if client has fetched the group before
-    // Should return array of 1 item bc groupIds are unique
-    func getGroupData(groupID: String) async throws -> Group {
-        let env = "Groups"
-        let docRef = db.collection(env).document(groupID)
-        do {
-            let groupData =  try await docRef.getDocument(as: Group.self)
-            return groupData
-        } catch {
-            print("Could not get group data of group: " + groupID)
-            throw GroupError.getGroupDataError
+        catch{
+            throw GroupError.setGroupDataFail
         }
     }
     
@@ -86,9 +88,11 @@ class DBViewModel {
     func getUserDataFromUsersInGroup(groupID: String) async throws -> [User] {
         let env = "Users"
         var users: [User] = []
-        let groupData = try await getGroupData(groupID: groupID)
         
-        var validUserIDs: [String] = getNonEmptyUIDsInGroup(group: groupData)
+        let groupDataRef = self.db.collection(env).document(groupID)
+        let groupData = try await groupDataRef.getDocument(as: Group.self)
+        
+        let validUserIDs: [String] = getNonEmptyUIDsInGroup(group: groupData)
         
         let docRef = db.collection(env).whereField(FieldPath.documentID(), in: validUserIDs)
         do {
@@ -186,8 +190,6 @@ class DBViewModel {
         let env = "Groups"
         
         do {
-            
-            let calData = await CalendarViewModel.shared.convertDataToDouble()
             let currUser = try AuthenticationHandler.shared.checkAuthenticatedUser()
             
             let ref = try await db.collection(env).addDocument(data: [
@@ -201,29 +203,6 @@ class DBViewModel {
                 "User7" : ""
             ])
             try await updateCurrUserData()
-            print("Document added with ID: \(ref.documentID)")
-            return ref.documentID
-        } catch {
-            throw GroupError.createGroupFail
-        }
-    }
-    
-    // IF YOU WISH TO USE THIS FUNCTION, DO NOT LOSE THE GROUPID IT RETURNS BECAUSE THEN THE GROUPID/GROUP WILL BE LOST
-    // Will have to add a user to this group with the other function to not lose it
-    func createNewGroup_DO_NOT_USE_THIS_FUNCTION() async throws -> String {
-        let env = "Groups"
-        
-        do {
-            let ref = try await db.collection(env).addDocument(data: [
-                "User0" : "",
-                "User1" : "",
-                "User2" : "",
-                "User3" : "",
-                "User4" : "",
-                "User5" : "",
-                "User6" : "",
-                "User7" : ""
-            ])
             print("Document added with ID: \(ref.documentID)")
             return ref.documentID
         } catch {
@@ -253,6 +232,52 @@ class DBViewModel {
             group.User6 == UID ||
             group.User7 == UID
     }
+    
+    // SHOULD BE UNUSED: CAN CAUSE CRASHES
+    
+    /*
+    // TODO: Have it work with local "cache" ie check if client has fetched the group before
+    // Should return array of 1 item bc groupIds are unique
+    func getGroupData(groupID: String) async throws -> Group {
+        let env = "Groups"
+        let docRef = self.db.collection(env).document(groupID)
+        
+        Task{
+            do {
+                let groupData =  try await docRef.getDocument(as: Group.self)
+                return groupData
+            } catch {
+                print("Could not get group data of group: " + groupID)
+                throw GroupError.getGroupDataError
+            }
+        }
+        throw GroupError.getGroupDataError
+    }
+    
+    // IF YOU WISH TO USE THIS FUNCTION, DO NOT LOSE THE GROUPID IT RETURNS BECAUSE THEN THE GROUPID/GROUP WILL BE LOST
+    // Will have to add a user to this group with the other function to not lose it
+    func createNewGroup_DO_NOT_USE_THIS_FUNCTION() async throws -> String {
+        let env = "Groups"
+        
+        do {
+            let ref = try await db.collection(env).addDocument(data: [
+                "User0" : "",
+                "User1" : "",
+                "User2" : "",
+                "User3" : "",
+                "User4" : "",
+                "User5" : "",
+                "User6" : "",
+                "User7" : ""
+            ])
+            print("Document added with ID: \(ref.documentID)")
+            return ref.documentID
+        } catch {
+            throw GroupError.createGroupFail
+        }
+    }
+     */
+    
 
 }
 

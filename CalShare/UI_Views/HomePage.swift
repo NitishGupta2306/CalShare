@@ -88,6 +88,37 @@ struct HomePage: View {
                             .padding([.leading, .trailing], 20)
                             .padding(.bottom, 50)
                         }
+                        Button {
+                            Task{
+                                try await DBViewModel.shared.addUserToGroup(groupID: "Test")
+                            }
+                        } label: {
+                          Text("add user to group")
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 40)
+                            .font(.system(size: 20))
+                            .foregroundColor(.black)
+                            .background(Color("PastelOrange"))
+                            .clipShape(RoundedRectangle(cornerRadius: 5.0))
+                            .padding([.leading, .trailing], 20)
+                            .padding(.bottom, 50)
+                        }
+
+                        Button {
+                            Task{
+                               try await DBViewModel.shared.updateCurrUserData()
+                            }
+                        } label: {
+                          Text("Update current Data")
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 40)
+                            .font(.system(size: 20))
+                            .foregroundColor(.black)
+                            .background(Color("PastelOrange"))
+                            .clipShape(RoundedRectangle(cornerRadius: 5.0))
+                            .padding([.leading, .trailing], 20)
+                            .padding(.bottom, 50)
+                        }
                     }
                 }
                 .navigationDestination(isPresented: $goToSecondHomePage) {

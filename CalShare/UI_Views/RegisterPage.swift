@@ -12,11 +12,7 @@ final class RegisterPageViewModel: ObservableObject{
     @Published var email = ""
     @Published var password = ""
     
-    func signIn() async throws{
-        guard !email.isEmpty, password.count > 7 else{
-            throw AuthenticationError.signUpError
-        }
-        
+    func signIn() async throws{        
         try await AuthenticationHandler.shared.createrNewUser(email: email, pass: password)
         
     }

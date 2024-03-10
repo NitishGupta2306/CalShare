@@ -17,6 +17,11 @@ final class AuthenticationHandler {
     func createrNewUser(email: String, pass: String) async throws -> AuthResponseDetails{
         // Asynchrnous createUser from FirebaseAuth
         let AuthResp = try await Auth.auth().createUser(withEmail: email, password: pass)
+        
+        // Needs to wait for Firebase to load, hence seperate Task.
+        Task{
+            try await DBViewModel.shared.newUserFireStore(uid: AuthResp.user.uid)
+        }
         return AuthResponseDetails(uid: AuthResp.user.uid, email: AuthResp.user.email)
     }
     
