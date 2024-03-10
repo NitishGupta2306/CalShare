@@ -15,32 +15,9 @@ struct HomePageCopy: View {
         NavigationStack {
             ZStack {
                 VStack {
-                    HStack {
-                        //WILL NEED TO CHANGE THIS to take the groups and put them here
-                        Image(systemName: "person.3.fill")
-                            .font(.system(size: 30))
-                            .foregroundColor(Color("PastelOrange"))
-                            .padding(.leading, 10)
-                        
-                        Image(systemName: "person.3.fill")
-                            .foregroundColor(Color("PastelOrange"))
-                            .padding(.leading, 10)
-                            .font(.system(size: 30))
-                        
-                        Image(systemName: "person.3.fill")
-                            .foregroundColor(Color("PastelOrange"))
-                            .padding(.leading, 10)
-                            .font(.system(size: 30))
-                        
-                        Image(systemName: "calendar.badge.plus")
-                            .foregroundColor(Color("PastelOrange"))
-                            .padding(.leading, 10)
-                            .font(.system(size: 30))
-                    }
                     Text(CalendarViewModel.shared.currentMonth)
                         .font(.custom(fontTwo, size: 30.0))
                         .foregroundColor(Color("TextColor"))
-                        .padding(.top, 15)
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 10) {
