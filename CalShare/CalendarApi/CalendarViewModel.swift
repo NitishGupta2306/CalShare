@@ -48,8 +48,6 @@ struct IdentifiableEvent: Identifiable {
         guard let interval = Calendar.current.dateInterval(of: interval, for: startDate)
         else { print("An error occured while creating a calendar interval."); return }
         
-        print(interval)
-
         let predicate = CalendarViewModel.shared.store.predicateForEvents(withStart: interval.start, end: interval.end, calendars: calendars)
 
         let fetchedEvents = CalendarViewModel.shared.store.events(matching: predicate).sorted(by: {$0.startDate < $1.startDate})
@@ -177,30 +175,32 @@ struct IdentifiableEvent: Identifiable {
         
         var nextInterval = freeTimeSlot.0
         
-        for _ in 1...Int(ceil(totalTimeIntervals)) {
-                            
-            if nextInterval + secondsInterval <= freeTimeSlot.1 {
-                let midNightIntervals = timeSlotContainsMidnight(timeSlot: (nextInterval, nextInterval + secondsInterval))
-                
-                if midNightIntervals.0.0 == 0 {
-                    timeIntervals.append((nextInterval, nextInterval + secondsInterval - 1))
-                    nextInterval += secondsInterval
+        if (totalTimeIntervals > 0){
+            for _ in 1...Int(ceil(totalTimeIntervals)) {
+                                
+                if nextInterval + secondsInterval <= freeTimeSlot.1 {
+                    let midNightIntervals = timeSlotContainsMidnight(timeSlot: (nextInterval, nextInterval + secondsInterval))
+                    
+                    if midNightIntervals.0.0 == 0 {
+                        timeIntervals.append((nextInterval, nextInterval + secondsInterval - 1))
+                        nextInterval += secondsInterval
+                    } else {
+                        timeIntervals += [midNightIntervals.0]
+                        nextInterval = midNightIntervals.1.0
+                    }
+                    
                 } else {
-                    timeIntervals += [midNightIntervals.0]
-                    nextInterval = midNightIntervals.1.0
-                }
-                
-            } else {
-                let midNightIntervals = timeSlotContainsMidnight(timeSlot: (nextInterval, freeTimeSlot.1))
+                    let midNightIntervals = timeSlotContainsMidnight(timeSlot: (nextInterval, freeTimeSlot.1))
 
-                if midNightIntervals.0.0 == 0 {
-                    timeIntervals.append((nextInterval, freeTimeSlot.1))
-                } else {
-                    timeIntervals += [midNightIntervals.0, midNightIntervals.1]
+                    if midNightIntervals.0.0 == 0 {
+                        timeIntervals.append((nextInterval, freeTimeSlot.1))
+                    } else {
+                        timeIntervals += [midNightIntervals.0, midNightIntervals.1]
+                    }
                 }
             }
         }
-        
+
         return timeIntervals
     }
     
