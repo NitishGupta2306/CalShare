@@ -90,7 +90,7 @@ struct HomePage: View {
                         }
                         Button {
                             Task{
-                                try await DBViewModel.shared.addUserToGroup(groupID: "Test")
+                                try await DBViewModel.shared.addUserToGroup(groupID: "63X2HL2LEL0f9aZFTd83")
                             }
                         } label: {
                           Text("add user to group")
@@ -103,14 +103,28 @@ struct HomePage: View {
                             .padding([.leading, .trailing], 20)
                             .padding(.bottom, 50)
                         }
+                        
+                        Button {
+                            Task{
+                                try await DBViewModel.shared.updateCurrUserData()
+                            }
+                        } label: {
+                          Text("update calendar data")
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 40)
+                            .font(.system(size: 20))
+                            .foregroundColor(.black)
+                            .background(Color("PastelOrange"))
+                            .clipShape(RoundedRectangle(cornerRadius: 5.0))
+                            .padding([.leading, .trailing], 20)
+                            .padding(.bottom, 50)
+                        }
 
                         Button {
                             Task{
-                                print("inside")
-                                let holder = try await DBViewModel.shared.getUserDataFromUsersInGroup(groupID: "0sQVzaOc41VyXQrAuuMH")
+                                print("getuserdatafromusersingroup button has been pressed")
+                                try await DBViewModel.shared.getUserDataFromUsersInGroup(groupID: "XLPZk5kprr9imdPKz3Gi")
                                 
-                                print("preholder")
-                                print(holder)
                             }
                         } label: {
                           Text("getuserdatafromusersingroup")

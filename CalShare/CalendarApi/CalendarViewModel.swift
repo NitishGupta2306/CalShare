@@ -54,8 +54,6 @@ struct IdentifiableEvent: Identifiable {
         
         CalendarViewModel.shared.events = fetchedEvents.map{ IdentifiableEvent(event: $0) }
         
-        print(CalendarViewModel.shared.events)
-        
         createFreeTimeSlotEvents(startEndTimes: convertDataToDouble())
     }
 
