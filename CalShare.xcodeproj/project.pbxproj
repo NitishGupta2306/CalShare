@@ -30,9 +30,6 @@
 		41066F4B2B75B2B5002780B9 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 41066F4A2B75B2B5002780B9 /* FirebaseStorageCombine-Community */; };
 		4109D4BA2B91BD4000A0304A /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4109D4B92B91BD4000A0304A /* HomePage.swift */; };
 		410CBB092B9D5B6400F833D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 410CBB082B9D5B6400F833D9 /* GoogleService-Info.plist */; };
-		410CBB0C2B9D5C8200F833D9 /* GoogleAppMeasurement in Frameworks */ = {isa = PBXBuildFile; productRef = 410CBB0B2B9D5C8200F833D9 /* GoogleAppMeasurement */; };
-		410CBB0E2B9D5C8200F833D9 /* GoogleAppMeasurementOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 410CBB0D2B9D5C8200F833D9 /* GoogleAppMeasurementOnDeviceConversion */; };
-		410CBB102B9D5C8200F833D9 /* GoogleAppMeasurementWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 410CBB0F2B9D5C8200F833D9 /* GoogleAppMeasurementWithoutAdIdSupport */; };
 		412F64132B7479FB005C68EA /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 412F64122B7479FB005C68EA /* FirebaseAnalytics */; };
 		412F64152B7479FB005C68EA /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 412F64142B7479FB005C68EA /* FirebaseAnalyticsOnDeviceConversion */; };
 		412F64172B7479FB005C68EA /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 412F64162B7479FB005C68EA /* FirebaseAnalyticsSwift */; };
@@ -125,16 +122,13 @@
 				412F64132B7479FB005C68EA /* FirebaseAnalytics in Frameworks */,
 				41B6571D2B8A9F8F003D12ED /* FirebaseDatabaseSwift in Frameworks */,
 				41B6571B2B8A9F8F003D12ED /* FirebaseDatabase in Frameworks */,
-				410CBB0C2B9D5C8200F833D9 /* GoogleAppMeasurement in Frameworks */,
 				412F64152B7479FB005C68EA /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
-				410CBB0E2B9D5C8200F833D9 /* GoogleAppMeasurementOnDeviceConversion in Frameworks */,
 				41B657192B8A9F8F003D12ED /* FirebaseAuth in Frameworks */,
 				412F641B2B7479FB005C68EA /* FirebaseAppCheck in Frameworks */,
 				412F64192B7479FB005C68EA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				41066F472B75B2B5002780B9 /* FirebaseFirestoreSwift in Frameworks */,
 				41B6571F2B8A9F8F003D12ED /* FirebaseFirestore in Frameworks */,
 				414966372B951B99008B18C9 /* CodeScanner in Frameworks */,
-				410CBB102B9D5C8200F833D9 /* GoogleAppMeasurementWithoutAdIdSupport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,9 +296,6 @@
 				41B6571C2B8A9F8F003D12ED /* FirebaseDatabaseSwift */,
 				41B6571E2B8A9F8F003D12ED /* FirebaseFirestore */,
 				414966362B951B99008B18C9 /* CodeScanner */,
-				410CBB0B2B9D5C8200F833D9 /* GoogleAppMeasurement */,
-				410CBB0D2B9D5C8200F833D9 /* GoogleAppMeasurementOnDeviceConversion */,
-				410CBB0F2B9D5C8200F833D9 /* GoogleAppMeasurementWithoutAdIdSupport */,
 			);
 			productName = CalShare;
 			productReference = 41948E782B5B3B5700ADD5D0 /* CalShare.app */;
@@ -386,7 +377,6 @@
 			packageReferences = (
 				412F64112B7479FB005C68EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				414966352B951B99008B18C9 /* XCRemoteSwiftPackageReference "CodeScanner" */,
-				410CBB0A2B9D5C8200F833D9 /* XCRemoteSwiftPackageReference "GoogleAppMeasurement" */,
 			);
 			productRefGroup = 41948E792B5B3B5700ADD5D0 /* Products */;
 			projectDirPath = "";
@@ -789,14 +779,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		410CBB0A2B9D5C8200F833D9 /* XCRemoteSwiftPackageReference "GoogleAppMeasurement" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:google/GoogleAppMeasurement.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.22.1;
-			};
-		};
 		412F64112B7479FB005C68EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -835,21 +817,6 @@
 		41066F4A2B75B2B5002780B9 /* FirebaseStorageCombine-Community */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = "FirebaseStorageCombine-Community";
-		};
-		410CBB0B2B9D5C8200F833D9 /* GoogleAppMeasurement */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 410CBB0A2B9D5C8200F833D9 /* XCRemoteSwiftPackageReference "GoogleAppMeasurement" */;
-			productName = GoogleAppMeasurement;
-		};
-		410CBB0D2B9D5C8200F833D9 /* GoogleAppMeasurementOnDeviceConversion */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 410CBB0A2B9D5C8200F833D9 /* XCRemoteSwiftPackageReference "GoogleAppMeasurement" */;
-			productName = GoogleAppMeasurementOnDeviceConversion;
-		};
-		410CBB0F2B9D5C8200F833D9 /* GoogleAppMeasurementWithoutAdIdSupport */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 410CBB0A2B9D5C8200F833D9 /* XCRemoteSwiftPackageReference "GoogleAppMeasurement" */;
-			productName = GoogleAppMeasurementWithoutAdIdSupport;
 		};
 		412F64122B7479FB005C68EA /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
