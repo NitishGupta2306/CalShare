@@ -10,6 +10,7 @@ import SwiftUI
 struct HomePageCopy: View {
     @Namespace var animation
     @State var curDay: Date = Date()
+    @State var displayBusy: Bool = true
     
     var body: some View {
         NavigationStack {
@@ -60,16 +61,17 @@ struct HomePageCopy: View {
                                 .contentShape(Capsule())
                                 .onTapGesture {
                                     print("clicked")
-                                    CalendarViewModel.shared.fetchCurrentDayEvents(day: day) //the events list is updated
+                                    //CalendarViewModel.shared.fetchCurrentDayEvents(day: day) //the events list is updated
+                                    /*
                                     for ev in CalendarViewModel.shared.events {
                                         print(ev.event.title ?? "")
                                     }
+                                    */
                                     //we will be updating the current day here
                                     withAnimation {
                                         CalendarViewModel.shared.currentDay = day
                                         curDay = day
                                     }
-                                    print(CalendarViewModel.shared.currentDay)
                                 }
                             }
                         }
