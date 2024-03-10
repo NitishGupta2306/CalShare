@@ -25,10 +25,9 @@ class DBViewModel {
         let env = "Users"
         do {
             let currUser = try AuthenticationHandler.shared.checkAuthenticatedUser()
-            let docRef = db.collection(env).document(currUser.uid)
-            
             let calData = await CalendarViewModel.shared.convertDataToDouble()
             
+            let docRef = db.collection(env).document(currUser.uid)
             try await docRef.updateData(
                 ["Events" : calData]
             )
@@ -64,6 +63,7 @@ class DBViewModel {
         }
     }
     
+    // TODO: Have it work with local "cache" ie check if client has fetched the group before
     // Should return array of 1 item bc groupIds are unique
     func getGroupData(groupID: String) async throws -> Group {
         let env = "Groups"
@@ -77,10 +77,12 @@ class DBViewModel {
         }
     }
     
+    // TODO: Have it work with local "cache" ie check if client has fectched the users already
     // Will return array of data of all users in group
-    func getUsersInGroup(groupData: Group) async throws -> [User] {
+    func getUserDataFromUsersInGroup(groupID: String) async throws -> [User] {
         let env = "Users"
         var users: [User] = []
+        let groupData = try await getGroupData(groupID: groupID)
         
         var validUserIDs: [String] = getNonEmptyUIDsInGroup(group: groupData)
         
@@ -123,6 +125,15 @@ class DBViewModel {
         if (group.User6 == "") {return "User6"}
         if (group.User7 == "") {return "User7"}
         return ""
+    }
+    
+    // Will return list of all the events of a user, meant to be used in conjunction with above
+    func getEventsOfUsers(users: [User]) -> [Double] {
+        var events: [Double] = []
+        for user in users {
+            events.append(contentsOf: user.events)
+        }
+        return events
     }
     
     // Will return data of a single user
