@@ -15,7 +15,8 @@ struct CalendarView: View {
     @Binding var curDay: Date
   var body: some View {
       VStack {
-          Text(curDay.formatted())
+          //Text(curDay.formatted())
+          /*
           ForEach(CalendarViewModel.shared.getEventNames(), id: \.self) { ev_name in
               Text(ev_name)
           }
@@ -23,6 +24,7 @@ struct CalendarView: View {
           ForEach(CalendarViewModel.shared.convertDataToDouble(), id: \.self) { date_info in
               Text("Time: \(date_info)")
           }
+          */
       }
       ScrollView {
           ZStack (alignment: .topLeading) {
@@ -72,10 +74,24 @@ struct CalendarView: View {
                       .frame(height: frameHeight)
                   }
               }
+              //we will display all of the events on top of the zstack here
               
               ForEach(CalendarViewModel.shared.events) { idEvent in
                   eventCell(curEv: idEvent.event)
               }
+              /*
+              Practice
+              VStack(alignment: .leading) {
+                  Text("Event Test")
+              }
+              .frame(maxWidth: 310, alignment: .leading)
+              .frame(height: (frameHeight+7)*1.5, alignment: .top)
+              .background(
+                  RoundedRectangle(cornerRadius: 8)
+                      .fill(Color("PastelOrange")).opacity(0.5)
+              )
+              .offset(x: textWidth + 8, y: ((frameHeight + 15) / 2 - 7) + ((frameHeight + 8) * 16))
+              */
           }
         }
       .padding()
@@ -103,29 +119,21 @@ struct CalendarView: View {
             print("test date \(date.formatted())")
             durationSinceMidnight = curEv.startDate.timeIntervalSince(date) / 60 / 60
             print("test duration\(durationSinceMidnight)")
+            print("\(curEv.startDate.timeIntervalSince(curDay) / 60 / 60)")
         }
         
-        return VStack(alignment: .leading) {
+        return VStack(alignment: .center) {
             Text(curEv.title)
             Text("\(durationHr)")
             Text("\(durationSinceMidnight)")
         }
         .frame(maxWidth: 310, alignment: .leading)
-        .frame(height: frameHeight+7, alignment: .top)
+        .frame(height: (frameHeight+7) * durationHr, alignment: .top)
         .background(
             RoundedRectangle(cornerRadius: 8)
                 .fill(Color("PastelOrange")).opacity(0.5)
         )
-        .offset(x: textWidth + 8, y: initialOffset + (frameOffsetHeight * durationHr)*durationSinceMidnight)
-    }
-    
-    //unused function currently
-    private func showEventCells(curEvs: [IdentifiableEvent]) -> some View {
-        return VStack (alignment: .leading) {
-            ForEach(curEvs) { idEvent in
-                eventCell(curEv: idEvent.event)
-            }
-        }
+        .offset(x: textWidth + 8, y: initialOffset + (frameOffsetHeight * durationSinceMidnight))
     }
     
 }

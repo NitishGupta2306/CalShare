@@ -37,21 +37,10 @@ struct HomePageCopy: View {
                             .padding(.leading, 10)
                             .font(.system(size: 30))
                     }
-                    Button {
-                        print("We fetched shared calendar data!")
-                        CalendarViewModel.shared.fetchCurrentWeekEvents()
-                    } label: {
-                      Text("Request Calendar Data")
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 40)
-                        .font(.system(size: 20))
-                        .foregroundColor(.black)
-                        .background(Color("PastelOrange"))
-                        .clipShape(RoundedRectangle(cornerRadius: 5.0))
-                    }
                     Text(CalendarViewModel.shared.currentMonth)
                         .font(.custom(fontTwo, size: 30.0))
                         .foregroundColor(Color("TextColor"))
+                        .padding(.top, 15)
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 10) {
