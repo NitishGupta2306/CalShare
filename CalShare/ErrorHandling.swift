@@ -31,6 +31,7 @@ struct GroupError: Error {
     static let deleteGroupFail = AuthenticationError(errorCode: "delete_group_fail", message: "Could not delete group")
     static let tooManyUsersInGroup = AuthenticationError(errorCode: "too_many_users_in_group", message: "Could not delete group")
     static let userAlreadyInGroup = AuthenticationError(errorCode: "user_already_in_group", message: "User is already in the group")
-    
-
+    static let getUserDataFail = AuthenticationError(errorCode: "get_group_data_fail", message: "Could not fetch user data of that user")
+    static let getUsersInGroupFail = AuthenticationError(errorCode: "get_users_in_group_fail", message: "Could not fetch data of users in that group")
+    static let updateCurrUserData = AuthenticationError(errorCode: "update_curr_user_data", message: "Could not update the curr user's data")
 }
