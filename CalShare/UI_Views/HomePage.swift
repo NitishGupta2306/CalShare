@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomePage: View {
-    @State var addCal: Bool = false
+    @State var goToSecondHomePage: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -60,11 +60,25 @@ struct HomePage: View {
                             .padding([.leading, .trailing], 20)
                             .padding(.bottom, 50)
                         }
+                        
+                        Button {
+                            self.goToSecondHomePage.toggle()
+                        } label: {
+                          Text("Go to Calendar")
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 40)
+                            .font(.system(size: 20))
+                            .foregroundColor(.black)
+                            .background(Color("PastelOrange"))
+                            .clipShape(RoundedRectangle(cornerRadius: 5.0))
+                            .padding([.leading, .trailing], 20)
+                            .padding(.bottom, 50)
+                        }
                     }
                 }
-                .navigationDestination(isPresented: $addCal) {
-                    CreateCalendarPage()
-                        .navigationBarBackButtonHidden()
+                .navigationDestination(isPresented: $goToSecondHomePage) {
+                    HomePageCopy()
+                        //.navigationBarBackButtonHidden()
                 }
                 .onTapGesture {
                     //Dismisses the keyboard if you click away

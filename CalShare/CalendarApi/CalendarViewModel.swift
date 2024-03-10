@@ -19,10 +19,17 @@ struct IdentifiableEvent: Identifiable {
     @Published var eventsToDisplay: [IdentifiableEvent] = []
     var events: [IdentifiableEvent] = []
     let store: EKEventStore
+    var currentWeek: [Date] = []
+    var currentDay: Date = Date()
+    var currentMonth: String = ""
 
     init() {
         self.store = EKEventStore()
         self.events = []
+        self.currentWeek = []
+        self.currentDay = Date()
+        fetchCurrentWeek()
+        currentMonth = self.extractDate(date: currentDay, format: "MMMM")
     }
       
     func requestAccess() async {
@@ -257,5 +264,49 @@ struct IdentifiableEvent: Identifiable {
           return false
         }
     }
+    
+    func fetchCurrentWeek() {
+            let today = Date()
+            let calendar = Calendar.current
+            
+            let week = calendar.dateInterval(of:.weekOfMonth, for: today)
+            
+            guard let firstWeekDay = week?.start else {
+                return
+            }
+            
+            (0...6).forEach { day in
+                if let weekday = calendar.date(byAdding:.day, value: day, to: firstWeekDay) {
+                    currentWeek.append(weekday)
+                }
+                
+            }
+    }
+    
+    func extractDate(date: Date, format: String) -> String {
+            let formatter = DateFormatter()
+            
+            formatter.dateFormat = format
+            return formatter.string(from: date)
+    }
+    
+    //check if the current day is today
+    func verifyIsToday(date: Date) -> Bool {
+            let calendar = Calendar.current
+            return calendar.isDate(currentDay, inSameDayAs: date)
+    }
+    
+    func getEventNames() -> [String] {
+            //returns a string array of event names
+            var res: [String] = []
+            for ev in self.events {
+                res.append(ev.event.title ?? "")
+            }
+            return res
+    }
+    
+    func fetchCurrentDayEvents(day: Date) {
+            CalendarViewModel.shared.fetchEvents(interval: .day, startDate: day, calendars: nil)
+        }
         
 }
