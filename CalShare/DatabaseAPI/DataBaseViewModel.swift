@@ -12,48 +12,50 @@ import FirebaseFirestoreSwift
 
 class DBViewModel {
     static let shared = DBViewModel()
-    var UID: String?
-    var groups: [String]
     var db: Firestore
     
     // TODO get groups user is in through mem or db
     init() {
         //FirebaseApp.configure()
         self.db = Firestore.firestore()
-        self.groups = []
     }
     
-    // <Completed: Works> TODO: get calendar data and format it properly. Move to own function
-    func addUserToGroup(groupID: String) async{
-        let env = "Groups"
+    // Will now overwrite any data that is already in db
+    func updateCurrUserData() async throws {
+        let env = "Users"
+        do {
+            let currUser = try AuthenticationHandler.shared.checkAuthenticatedUser()
+            let docRef = db.collection(env).document(currUser.uid)
+            
+            let calData = await CalendarViewModel.shared.convertDataToDouble()
+            
+            try await docRef.updateData(
+                ["Events" : calData]
+            )
+        } catch {
+            throw GroupError.updateCurrUserData
+        }
+    }
 
-        
+    func addUserToGroup(groupID: String) async throws{
+        let env = "Groups"
         Task{
             do{
-                let calData = await CalendarViewModel.shared.convertDataToDouble()
                 var groupData = try await getGroupData(groupID: groupID)
                 let currUser = try AuthenticationHandler.shared.checkAuthenticatedUser()
-                
-                //appending new user data
-                groupData.Events.append(contentsOf: calData)
                 
                 let userID = currUser.uid
                 let currGroupRef = db.collection(env).document(groupID)
                 
-                if (groupData.NumOfUsers >= 8) {
-                    throw GroupError.tooManyUsersInGroup
-                } else if userInGroup(UID: userID, group: groupData) {
-                    throw GroupError.userAlreadyInGroup
-                }
+                if (userInGroup(UID: userID, group: groupData)) {throw GroupError.userAlreadyInGroup}
                 
-                groupData.NumOfUsers += 1
-                // Desyncing issue when multiple users add to db at around the same time. ie multiple users pulling at same time will be old data. Each user will overwrite entire array.
+                let emptyUser = getFirstEmptyUser(group: groupData)
+                if (emptyUser == "") {throw GroupError.tooManyUsersInGroup}
+                
                 try await currGroupRef.updateData(
-                    ["User" + String(groupData.NumOfUsers - 1) : userID,
-                     "NumOfUsers" : groupData.NumOfUsers,
-                     "Events" : groupData.Events]
+                    [emptyUser : userID]
                 )
-                print("Successfully added user data")
+                print("Successfully added user to group")
                 
             }
             catch{
@@ -72,6 +74,67 @@ class DBViewModel {
         } catch {
             print("Could not get group data of group: " + groupID)
             throw GroupError.getGroupDataError
+        }
+    }
+    
+    // Will return array of data of all users in group
+    func getUsersInGroup(groupData: Group) async throws -> [User] {
+        let env = "Users"
+        var users: [User] = []
+        
+        var validUserIDs: [String] = getNonEmptyUIDsInGroup(group: groupData)
+        
+        let docRef = db.collection(env).whereField(FieldPath.documentID(), in: validUserIDs)
+        do {
+            let querySnapshot = try await docRef.getDocuments()
+            for document in querySnapshot.documents {
+                let user = try document.data(as: User.self)
+                users.append(user)
+            }
+            return users
+        } catch {
+            throw GroupError.getUsersInGroupFail
+        }
+        
+    }
+    
+    func getNonEmptyUIDsInGroup(group: Group) -> [String] {
+        var nonEmptyUIDS: [String] = []
+        if (group.User0 != "") {nonEmptyUIDS.append(group.User0)}
+        if (group.User1 != "") {nonEmptyUIDS.append(group.User1)}
+        if (group.User2 != "") {nonEmptyUIDS.append(group.User2)}
+        if (group.User3 != "") {nonEmptyUIDS.append(group.User3)}
+        if (group.User4 != "") {nonEmptyUIDS.append(group.User4)}
+        if (group.User5 != "") {nonEmptyUIDS.append(group.User5)}
+        if (group.User6 != "") {nonEmptyUIDS.append(group.User6)}
+        if (group.User7 != "") {nonEmptyUIDS.append(group.User7)}
+        
+        return nonEmptyUIDS
+    }
+    
+    // Will return the first empty user in the group or empty if all full
+    func getFirstEmptyUser(group: Group) -> String {
+        if (group.User0 == "") {return "User0"}
+        if (group.User1 == "") {return "User1"}
+        if (group.User2 == "") {return "User2"}
+        if (group.User3 == "") {return "User3"}
+        if (group.User4 == "") {return "User4"}
+        if (group.User5 == "") {return "User5"}
+        if (group.User6 == "") {return "User6"}
+        if (group.User7 == "") {return "User7"}
+        return ""
+    }
+    
+    // Will return data of a single user
+    func getUserData(userID: String) async throws -> User {
+        let env = "Users"
+        let docref = db.collection(env).document(userID)
+        do {
+            let userData = try await docref.getDocument(as: User.self)
+            return userData
+        } catch {
+            print("Could not get user data of user: "+userID)
+            throw GroupError.getUserDataFail
         }
     }
     
@@ -113,8 +176,6 @@ class DBViewModel {
             let currUser = try AuthenticationHandler.shared.checkAuthenticatedUser()
             
             let ref = try await db.collection(env).addDocument(data: [
-                "Events" : calData,
-                "NumOfUsers" : 1,
                 "User0" : currUser.uid,
                 "User1" : "",
                 "User2" : "",
@@ -124,6 +185,7 @@ class DBViewModel {
                 "User6" : "",
                 "User7" : ""
             ])
+            try await updateCurrUserData()
             print("Document added with ID: \(ref.documentID)")
             return ref.documentID
         } catch {
@@ -138,8 +200,6 @@ class DBViewModel {
         
         do {
             let ref = try await db.collection(env).addDocument(data: [
-                "Events" : [],
-                "NumOfUsers" : 0,
                 "User0" : "",
                 "User1" : "",
                 "User2" : "",
@@ -182,12 +242,12 @@ class DBViewModel {
 }
 
 struct User: Codable {
-    var events: [Int]
+    @DocumentID var id: String? = ""
+    var events: [Double]
 }
 
 struct Group: Codable {
     @DocumentID var id: String? = ""
-    var NumOfUsers: Int = 0
     var User0: String = ""
     var User1: String = ""
     var User2: String = ""
@@ -196,5 +256,4 @@ struct Group: Codable {
     var User5: String = ""
     var User6: String = ""
     var User7: String = ""
-    var Events: [Double] = []
 }
