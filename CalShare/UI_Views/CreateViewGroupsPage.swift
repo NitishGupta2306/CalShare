@@ -31,44 +31,26 @@ struct CreateViewGroupsPage: View {
                 ZStack {
                     VStack {
                         Spacer()
-                        Text("Calendars")
+                        Text("Create or Join New Group!")
                             .font(.custom(fontTwo, size: 30.0))
                             .foregroundColor(Color("PastelGray"))
                             .fontWeight(.regular)
                         
-                        HStack { //WILL NEED TO CHANGE THIS to take the groups and put them here
-                            Image(systemName: "person.3.fill")
-                                .font(.system(size: 30))
-                                .foregroundColor(Color("PastelOrange"))
-                                .padding(.leading, 10)
-                            
-                            Image(systemName: "person.3.fill")
-                                .foregroundColor(Color("PastelOrange"))
-                                .padding(.leading, 10)
-                                .font(.system(size: 30))
-                            
-                            Image(systemName: "person.3.fill")
-                                .foregroundColor(Color("PastelOrange"))
-                                .padding(.leading, 10)
-                                .font(.system(size: 30))
-                            
-                            Button {
-                                print("Add Calendar")
-                                self.addCal.toggle()
-                            } label: {
-                                Image(systemName: "calendar.badge.plus")
-                                    .foregroundColor(Color("PastelOrange"))
-                                    .padding(.leading, 10)
-                                    .font(.system(size: 30))
-                            }
-                            
-                        }
-                        .padding()
-                        
+                        Spacer()
+                        /*
                         Text("Scan QR to add group")
                             .font(.custom(fontTwo, size: 30.0))
                             .foregroundColor(Color("PastelGray"))
                             .fontWeight(.regular)
+                         */
+                        
+                        if let generatedQRImage = generatedQRImage {
+                            Image(uiImage: generatedQRImage)
+                                .resizable()
+                                .interpolation(.none)
+                                .scaledToFit()
+                                .frame(width: 200, height: 200)
+                        }
                         
                         
                         //GENERATES A NEW GROUP ID EVERY SINGLE TIME THIS BUTTON IS PRESSED
@@ -102,15 +84,6 @@ struct CreateViewGroupsPage: View {
                             .foregroundColor(Color("PastelBeige"))
                             .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
                             .frame(width: 400, height: 100)
-                        }
-
-                        
-                        if let generatedQRImage = generatedQRImage {
-                            Image(uiImage: generatedQRImage)
-                                .resizable()
-                                .interpolation(.none)
-                                .scaledToFit()
-                                .frame(width: 200, height: 200)
                         }
                         
                         Button(action: {
