@@ -139,7 +139,7 @@ struct CreateViewGroupsPage: View {
                                 .onAppear {
                                     Task {
                                         if let scannedString = scannedString{
-                                            await DBViewModel.shared.addUserToGroup(groupID: scannedString)
+                                            try await DBViewModel.shared.addUserToGroup(groupID: scannedString)
                                         }
                                         scanQR = false
                                     }

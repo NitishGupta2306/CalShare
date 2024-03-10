@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		120F67252B9C717B0069EB11 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 120F67242B9C717B0069EB11 /* GoogleService-Info.plist */; };
+		120F67272B9C73A50069EB11 /* HomePageCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120F67262B9C73A50069EB11 /* HomePageCopy.swift */; };
+		120F67292B9CB0210069EB11 /* CodeCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120F67282B9CB0210069EB11 /* CodeCopy.swift */; };
+		120F672B2B9CB2590069EB11 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120F672A2B9CB2590069EB11 /* CalendarView.swift */; };
 		12BA0CAC2B84FEC5005FDF2E /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA0CAB2B84FEC5005FDF2E /* SplashScreen.swift */; };
 		12BA0CB02B85B5F5005FDF2E /* RegisterPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA0CAF2B85B5F5005FDF2E /* RegisterPage.swift */; };
 		12BA0CB42B86588F005FDF2E /* LoadingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA0CB32B86588F005FDF2E /* LoadingPage.swift */; };
@@ -34,7 +38,6 @@
 		414966342B93B06B008B18C9 /* DataBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414966332B93B06B008B18C9 /* DataBaseViewModel.swift */; };
 		414966372B951B99008B18C9 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 414966362B951B99008B18C9 /* CodeScanner */; };
 		415684932B7C54FB0001C8E2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 415684922B7C54FB0001C8E2 /* README.md */; };
-		415E83152B91AD94001967EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 415E83142B91AD94001967EC /* GoogleService-Info.plist */; };
 		41948E7C2B5B3B5700ADD5D0 /* CalShareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41948E7B2B5B3B5700ADD5D0 /* CalShareApp.swift */; };
 		41948E802B5B3B5800ADD5D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41948E7F2B5B3B5800ADD5D0 /* Assets.xcassets */; };
 		41948E832B5B3B5800ADD5D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41948E822B5B3B5800ADD5D0 /* Preview Assets.xcassets */; };
@@ -71,6 +74,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		120F67242B9C717B0069EB11 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		120F67262B9C73A50069EB11 /* HomePageCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageCopy.swift; sourceTree = "<group>"; };
+		120F67282B9CB0210069EB11 /* CodeCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeCopy.swift; sourceTree = "<group>"; };
+		120F672A2B9CB2590069EB11 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		12BA0CAB2B84FEC5005FDF2E /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		12BA0CAF2B85B5F5005FDF2E /* RegisterPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPage.swift; sourceTree = "<group>"; };
 		12BA0CB32B86588F005FDF2E /* LoadingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPage.swift; sourceTree = "<group>"; };
@@ -88,7 +95,6 @@
 		4109D4B92B91BD4000A0304A /* HomePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		414966332B93B06B008B18C9 /* DataBaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseViewModel.swift; sourceTree = "<group>"; };
 		415684922B7C54FB0001C8E2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
-		415E83142B91AD94001967EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		41948E782B5B3B5700ADD5D0 /* CalShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41948E7B2B5B3B5700ADD5D0 /* CalShareApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalShareApp.swift; sourceTree = "<group>"; };
 		41948E7F2B5B3B5800ADD5D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -188,7 +194,7 @@
 		41948E7A2B5B3B5700ADD5D0 /* CalShare */ = {
 			isa = PBXGroup;
 			children = (
-				415E83142B91AD94001967EC /* GoogleService-Info.plist */,
+				120F67242B9C717B0069EB11 /* GoogleService-Info.plist */,
 				2362356F2B8BBD4B00283D3D /* Info.plist */,
 				236235682B8BBCD400283D3D /* Fonts */,
 				41948E7B2B5B3B5700ADD5D0 /* CalShareApp.swift */,
@@ -236,12 +242,15 @@
 				231202932B8E552200BAF8E7 /* CreateViewGroupsPage.swift */,
 				4004B5612B8FE28B001416C9 /* EventListView.swift */,
 				4109D4B92B91BD4000A0304A /* HomePage.swift */,
+				120F67262B9C73A50069EB11 /* HomePageCopy.swift */,
 				12BA0CB32B86588F005FDF2E /* LoadingPage.swift */,
 				2312028F2B8E54D800BAF8E7 /* NotificationsPage.swift */,
 				12BA0CAF2B85B5F5005FDF2E /* RegisterPage.swift */,
 				231202912B8E54E700BAF8E7 /* SettingsPage.swift */,
 				41948EA52B5B3CF000ADD5D0 /* SignInPage.swift */,
 				12BA0CAB2B84FEC5005FDF2E /* SplashScreen.swift */,
+				120F67282B9CB0210069EB11 /* CodeCopy.swift */,
+				120F672A2B9CB2590069EB11 /* CalendarView.swift */,
 			);
 			path = UI_Views;
 			sourceTree = "<group>";
@@ -387,7 +396,7 @@
 			files = (
 				2362356E2B8BBD1300283D3D /* Poppins in Resources */,
 				41948E832B5B3B5800ADD5D0 /* Preview Assets.xcassets in Resources */,
-				415E83152B91AD94001967EC /* GoogleService-Info.plist in Resources */,
+				120F67252B9C717B0069EB11 /* GoogleService-Info.plist in Resources */,
 				41948E802B5B3B5800ADD5D0 /* Assets.xcassets in Resources */,
 				2362356C2B8BBD0400283D3D /* Seymour_One in Resources */,
 			);
@@ -425,7 +434,10 @@
 				12BA0CB02B85B5F5005FDF2E /* RegisterPage.swift in Sources */,
 				41B657212B8AA143003D12ED /* AuthenticationHandler.swift in Sources */,
 				4004B5622B8FE28B001416C9 /* EventListView.swift in Sources */,
+				120F672B2B9CB2590069EB11 /* CalendarView.swift in Sources */,
+				120F67272B9C73A50069EB11 /* HomePageCopy.swift in Sources */,
 				231202942B8E552200BAF8E7 /* CreateViewGroupsPage.swift in Sources */,
+				120F67292B9CB0210069EB11 /* CodeCopy.swift in Sources */,
 				231202902B8E54D800BAF8E7 /* NotificationsPage.swift in Sources */,
 				401910552B8AB04B006EF454 /* CalendarViewModel.swift in Sources */,
 				414966342B93B06B008B18C9 /* DataBaseViewModel.swift in Sources */,
@@ -595,10 +607,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CalShare/Preview Content\"";
-				DEVELOPMENT_TEAM = N3VN58J5QX;
+				DEVELOPMENT_TEAM = 69M6NQD75G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CalShare/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -627,10 +640,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CalShare/Preview Content\"";
-				DEVELOPMENT_TEAM = N3VN58J5QX;
+				DEVELOPMENT_TEAM = 69M6NQD75G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CalShare/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
