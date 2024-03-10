@@ -73,6 +73,16 @@ struct CalendarView: View {
                       }
                       .frame(height: frameHeight)
                   }
+                  HStack {
+                      Text("12 am")
+                          .frame(width: textWidth, alignment: .leading)
+                          .font(.custom(fontTwo, size: 14.0))
+                          .foregroundColor(Color("TextColor"))
+                          .fontWeight(.regular)
+                      Color("PastelGray")
+                          .frame(height: lineWidth)
+                  }
+                  .frame(height: frameHeight)
               }
               //we will display all of the events on top of the zstack here
               
