@@ -1,12 +1,4 @@
-//
-//  GroupsPage.swift
-//  CalShare
-//
-//  Created by Nitish Gupta on 3/10/24.
-//
-
 import SwiftUI
-
 
 struct GroupsPage: View {
     @State var usersGroupsID : [String] = []

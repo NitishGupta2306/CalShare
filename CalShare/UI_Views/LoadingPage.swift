@@ -1,6 +1,5 @@
 import SwiftUI
 
-// ROOT VIEW:
 struct LoadingPage: View {
     @State var userAuthTokenExists: Bool = false
     @State var goContentViewPage: Bool = false
@@ -20,7 +19,6 @@ struct LoadingPage: View {
                     if userAuthTokenExists {
                         goContentViewPage = true
                     } else {
-                        //otherwise, we are going to get the auth token from the user by prompting them for phone number
                         print("nobody logged in, go to welcome page ")
                         goSignInPage = true
                     }

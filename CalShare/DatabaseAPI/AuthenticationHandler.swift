@@ -1,24 +1,18 @@
-//
-//  AuthenticationHandler.swift
-//  CalShare
-//
-//  Created by Nitish Gupta on 2/14/24.
-//
-
 import Foundation
 import FirebaseAuth
 
 
 final class AuthenticationHandler {
     static let shared = AuthenticationHandler()
-    private init(){ }
+    
+    private init(){}
     
     @discardableResult
     func createrNewUser(email: String, pass: String) async throws -> AuthResponseDetails{
         // Asynchrnous createUser from FirebaseAuth
         let AuthResp = try await Auth.auth().createUser(withEmail: email, password: pass)
         
-        // Needs to wait for Firebase to load, hence seperate Task.
+        // Waiting for DB to load
         Task{
             try await DBViewModel.shared.newUserFireStore(uid: AuthResp.user.uid)
         }
@@ -57,7 +51,6 @@ final class AuthenticationHandler {
     
 }
 
-// Response from FireBaseAuth CreateUser.
 struct AuthResponseDetails{
     let uid : String
     let email : String?
@@ -67,5 +60,3 @@ struct AuthResponseDetails{
         self.email = email
     }
 }
-
-// Database Push

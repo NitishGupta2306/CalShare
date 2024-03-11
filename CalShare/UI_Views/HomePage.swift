@@ -1,10 +1,3 @@
-//
-//  HomePage.swift
-//  CalShare
-//
-//  Created by Chitra Mukherjee on 2/20/24.
-//
-
 import SwiftUI
 
 struct HomePage: View {
@@ -12,107 +5,13 @@ struct HomePage: View {
         NavigationStack {
                 ZStack {
                     VStack {
-                        HStack {
-                            //WILL NEED TO CHANGE THIS to take the groups and put them here
-                            Image(systemName: "person.3.fill")
-                                .font(.system(size: 30))
-                                .foregroundColor(Color("PastelOrange"))
-                                .padding(.leading, 10)
-                            
-                            Image(systemName: "person.3.fill")
-                                .foregroundColor(Color("PastelOrange"))
-                                .padding(.leading, 10)
-                                .font(.system(size: 30))
-                            
-                            Image(systemName: "person.3.fill")
-                                .foregroundColor(Color("PastelOrange"))
-                                .padding(.leading, 10)
-                                .font(.system(size: 30))
-                            
-                            Image(systemName: "calendar.badge.plus")
-                                .foregroundColor(Color("PastelOrange"))
-                                .padding(.leading, 10)
-                                .font(.system(size: 30))
-                        }
-                        /*
-                        Text("Home Page!")
-                            .font(.custom(fontTwo, size: 40))
-                            .foregroundColor(Color("TextColor"))
-                        */
-                        //EventListView()
+                        CalenarContentView()
                         
                         HStack {
-                            
                             Button {
                                 CalendarViewModel.shared.fetchCurrentWeekEvents()
                             } label: {
-                                Text("Request User Calendar Data")
-                                    .frame(maxWidth: .infinity)
-                                    .frame(height: 40)
-                                    .font(.system(size: 20))
-                                    .foregroundColor(.black)
-                                    .background(Color("PastelOrange"))
-                                    .clipShape(RoundedRectangle(cornerRadius: 5.0))
-                                    .padding([.leading, .trailing], 20)
-                                    .padding(.bottom, 50)
-                            }
-                            /*
-                             Button {
-                             Task {
-                             await CalendarViewModel.shared.requestAccess()
-                             }
-                             }
-                             label: {
-                             Text("Request Calendar Data Access")
-                             .frame(maxWidth: .infinity)
-                             .frame(height: 40)
-                             .font(.system(size: 20))
-                             .foregroundColor(.black)
-                             .background(Color("PastelOrange"))
-                             .clipShape(RoundedRectangle(cornerRadius: 5.0))
-                             .padding([.leading, .trailing], 20)
-                             }
-                             
-                             Button {
-                             self.goToSecondHomePage.toggle()
-                             } label: {
-                             Text("Go to Calendar")
-                             .frame(maxWidth: .infinity)
-                             .frame(height: 40)
-                             .font(.system(size: 20))
-                             .foregroundColor(.black)
-                             .background(Color("PastelOrange"))
-                             .clipShape(RoundedRectangle(cornerRadius: 5.0))
-                             .padding([.leading, .trailing], 20)
-                             .padding(.bottom, 50)
-                             }
-                             */
-                            Button {
-                                Task{
-                                    try await DBViewModel.shared.addUserToGroup(groupID: "Test")
-                                }
-                            } label: {
-                                Text("add user to group")
-                                    .frame(maxWidth: .infinity)
-                                    .frame(height: 40)
-                                    .font(.system(size: 20))
-                                    .foregroundColor(.black)
-                                    .background(Color("PastelOrange"))
-                                    .clipShape(RoundedRectangle(cornerRadius: 5.0))
-                                    .padding([.leading, .trailing], 20)
-                                    .padding(.bottom, 50)
-                            }
-                            
-                            Button {
-                                Task{
-                                    print("inside")
-                                    let holder = try await DBViewModel.shared.getUserDataFromUsersInGroup(groupID: "0sQVzaOc41VyXQrAuuMH")
-                                    CalendarViewModel.shared.createFreeTimeSlotEvents(startEndTimes: holder) //assuming holder is the array of doubles
-                                    print("preholder")
-                                    print(holder)
-                                }
-                            } label: {
-                                Text("getuserdatafromusersingroup")
+                                Text("Fetch Your Weeks Events!")
                                     .frame(maxWidth: .infinity)
                                     .frame(height: 40)
                                     .font(.system(size: 20))
@@ -123,8 +22,6 @@ struct HomePage: View {
                                     .padding(.bottom, 50)
                             }
                         }
-                        
-                        HomePageCopy()
                     }
                 }
                 .onTapGesture {

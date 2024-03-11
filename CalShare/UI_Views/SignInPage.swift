@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  CalShare
-//
-//  Created by Nitish Gupta on 1/19/24.
-//
-
 import SwiftUI
 
 @MainActor
@@ -14,10 +7,8 @@ final class SignInPageViewModel: ObservableObject{
     
     func signIn() async throws{
         guard !email.isEmpty, password.count > 7 else{
-            // error handling
             throw AuthenticationError.signInError
         }
-        
         try await AuthenticationHandler.shared.signInUser(email: email, pass: password)
     }
 }
@@ -131,7 +122,7 @@ struct SignInPage: View {
                 }
             }
             .navigationDestination(isPresented: $newUser) {
-                RegisterPage()
+                SignUpPage()
                     .navigationBarBackButtonHidden()
             }
             .navigationDestination(isPresented: $goHomePage) {

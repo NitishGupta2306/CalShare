@@ -1,10 +1,3 @@
-//
-//  SplashScreen.swift
-//  CalShare
-//
-//  Created by Chitra Mukherjee on 2/20/24.
-//
-
 import SwiftUI
 
 struct SplashScreen: View {
@@ -13,8 +6,6 @@ struct SplashScreen: View {
     var body: some View {
         NavigationStack {
             ZStack {
-//                backgroundColor
-//                    .ignoresSafeArea()
                 VStack {
                     Image("LogoImage")
                         .resizable()

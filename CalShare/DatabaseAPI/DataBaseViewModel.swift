@@ -1,10 +1,3 @@
-//
-//  DataBaseViewModel.swift
-//  CalShare
-//
-//  Created by Jonathan Vazquez on 3/1/24.
-//
-
 import Foundation
 import FirebaseCore
 import FirebaseFirestore
@@ -12,20 +5,18 @@ import FirebaseFirestoreSwift
 
 class DBViewModel {
     static let shared = DBViewModel()
+    
     var db: Firestore
     var userCache: [String: User]
     var groupCache: [String: Group]
     
-    // TODO get groups user is in through mem or db
     init() {
-        //FirebaseApp.configure()
         self.db = Firestore.firestore()
         self.userCache = [:]
         self.groupCache = [:]
     }
     
-    
-    // Will now overwrite any data that is already in db
+    // Adds new user, overwrites if the same UID exsists.
     func newUserFireStore(uid: String) async throws {
         let env = "Users"
         let emptyArr : [Double] = []
@@ -37,9 +28,8 @@ class DBViewModel {
             throw GroupError.updateCurrUserData
         }
     }
-    
-    
-    // Will now overwrite any data that is already in db
+
+    // Updates user's calendar data by overwritting.
     func updateCurrUserData() async throws {
         let env = "Users"
         do {
@@ -84,7 +74,7 @@ class DBViewModel {
     }
     
     // TODO: Have it work with local "cache" ie check if client has fectched the users already
-    // Will return array of data of all users in group
+    // Returns entire groups calendar data.
     func getUserDataFromUsersInGroup(groupID: String) async throws -> [Double] {
         let env = "Users"
         var usersData: [Double] = []
@@ -119,7 +109,8 @@ class DBViewModel {
         return usersData
     }
     
-    // Will return list of all the events of a user, meant to be used in conjunction with above
+    // HELPER FUNCTION: getUserDataFromUsersInGroup.
+    // returns list of all the events of a user.
     func getEventsOfUsers(users: [User]) -> [Double] {
         var events: [Double] = []
         for user in users {
@@ -141,6 +132,7 @@ class DBViewModel {
         }
     }
     
+    // Will return all GID's in which currUser is found.
     func getAllGroupsUserIsIn() async throws -> [Group] {
         do {
             var groupsUserIsIn: [Group] = []
@@ -169,7 +161,7 @@ class DBViewModel {
     }
     
     // Will create a new group and add the user that created it.
-    //  Will then return the groupID of the group that was made
+    // Will then return the groupID of the group that was made
     func createNewGroupAndAddCurrUser() async throws -> String {
         let env = "Groups"
         
@@ -265,8 +257,8 @@ struct Group: Codable {
     var User7: String = ""
 }
 
-
-// SHOULD BE UNUSED: CAN CAUSE CRASHES
+// WARNING: CODE BELOW CAN CAUSE CRASHES
+// DECOMITIONED DB CODE, MAY BE USEFUL LATER.
 
 /*
 // TODO: Have it work with local "cache" ie check if client has fetched the group before

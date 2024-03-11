@@ -1,14 +1,6 @@
-//
-//  EventListView.swift
-//  CalShare
-//
-//  Created by Drew Helbig on 2/28/24.
-//
-
 import SwiftUI
 
 struct EventListView: View {
-    
     @ObservedObject var viewModel = CalendarViewModel.shared
     
     var body: some View {

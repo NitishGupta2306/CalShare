@@ -1,29 +1,21 @@
-//
-//  RegisterPage.swift
-//  CalShare
-//
-//  Created by Chitra Mukherjee on 2/20/24.
-//
-
 import SwiftUI
 
 @MainActor
-final class RegisterPageViewModel: ObservableObject{
+final class SignUpPageViewModel: ObservableObject{
     @Published var email = ""
     @Published var password = ""
     
-    func signIn() async throws{        
+    func signUp() async throws{
         try await AuthenticationHandler.shared.createrNewUser(email: email, pass: password)
-        
     }
 }
 
-struct RegisterPage: View {
+struct SignUpPage: View {
     @State var goContentViewPage: Bool = false
     @State var goLogInPage: Bool = false
     @State var errorMsg = ""
     
-    @StateObject private var viewModel = RegisterPageViewModel()
+    @StateObject private var viewModel = SignUpPageViewModel()
     
     var body: some View {
         NavigationStack {
@@ -108,7 +100,7 @@ struct RegisterPage: View {
                         Button ("Get Started") {
                             Task{
                                 do{
-                                    try await viewModel.signIn()
+                                    try await viewModel.signUp()
                                     self.goContentViewPage.toggle()
                                 } catch {
                                     errorMsg = "Email used or Password not long enough"
@@ -169,5 +161,5 @@ struct RegisterPage: View {
 }
 
 #Preview {
-    RegisterPage()
+    SignUpPage()
 }

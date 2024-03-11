@@ -1,33 +1,23 @@
-//
-//  CreateViewGroupsPage.swift
-//  CalShare
-//
-//  Created by Shubhada Martha on 2/27/24.
-//
-
 import CoreImage
 import CodeScanner
 import CoreImage.CIFilterBuiltins
 
 import SwiftUI
 
-struct CreateViewGroupsPage: View {
-    @State var addCal: Bool = false
-    @State var addFriend: Bool = false
+struct GroupCreationPage: View {
     @State private var gotQR = false
     @State private var scanQR = false
     @State private var generatedQRImage: UIImage?
-//    let testString = "testString00123"
-//    let testScannedString = "testString00123"
     @State private var scannedString: String?
     @State private var generatedQR: String?
+    @State var addCal: Bool = false
+    @State var addFriend: Bool = false
     
     let context = CIContext()
     let filter = CIFilter.qrCodeGenerator()
     
     var body: some View {
         NavigationStack {
-            //GeometryReader { _ in
                 ZStack {
                     VStack {
                         Spacer()
@@ -37,12 +27,6 @@ struct CreateViewGroupsPage: View {
                             .fontWeight(.regular)
                         
                         Spacer()
-                        /*
-                        Text("Scan QR to add group")
-                            .font(.custom(fontTwo, size: 30.0))
-                            .foregroundColor(Color("PastelGray"))
-                            .fontWeight(.regular)
-                         */
                         
                         if let generatedQRImage = generatedQRImage {
                             Image(uiImage: generatedQRImage)
@@ -52,11 +36,9 @@ struct CreateViewGroupsPage: View {
                                 .frame(width: 200, height: 200)
                         }
                         
-                        
-                        //GENERATES A NEW GROUP ID EVERY SINGLE TIME THIS BUTTON IS PRESSED
+                        //Generates and pushes a new group to DB
                         Button(action: {
                             print("Generate QR")
-//                            self.generateQR.toggle()
                             Task {
                                 do {
                                     let generatedQR = try await DBViewModel.shared.createNewGroupAndAddCurrUser()
@@ -86,6 +68,7 @@ struct CreateViewGroupsPage: View {
                             .frame(width: 400, height: 100)
                         }
                         
+                        // Access Camera and allows currUser to join group linked to QRCode.
                         Button(action: {
                             print("Scan QR")
                             self.scanQR.toggle()
@@ -156,9 +139,7 @@ struct CreateViewGroupsPage: View {
         filter.message = Data(string.utf8)
         
         if let outputImage = filter.outputImage {
-            print("inside 1st if let")
             if let cgImage = context.createCGImage(outputImage, from: outputImage.extent) {
-                print("inside 2nd if let")
                 return UIImage(cgImage: cgImage)
             }
         }
@@ -169,5 +150,5 @@ struct CreateViewGroupsPage: View {
 }
 
 #Preview {
-    CreateViewGroupsPage()
+    GroupCreationPage()
 }

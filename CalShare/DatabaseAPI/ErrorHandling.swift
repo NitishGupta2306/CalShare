@@ -1,10 +1,3 @@
-//
-//  ErrorHandling.swift
-//  CalShare
-//
-//  Created by Nitish Gupta on 2/14/24.
-//
-
 import Foundation
 
 struct AuthenticationError: Error {

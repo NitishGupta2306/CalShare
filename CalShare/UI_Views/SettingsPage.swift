@@ -1,10 +1,3 @@
-//
-//  SettingsPage.swift
-//  CalShare
-//
-//  Created by Shubhada Martha on 2/27/24.
-//
-
 import SwiftUI
 
 @MainActor
@@ -12,6 +5,7 @@ final class SettingViewModel: ObservableObject{
     var email = ""
     var password = ""
     var errMsg = ""
+    
     func logOut(){
         Task{
             do{
@@ -45,12 +39,10 @@ final class SettingViewModel: ObservableObject{
             self.errMsg = "Not a valid password."
         }
     }
-    
 }
 
 struct SettingsPage: View {
     @StateObject private var viewModel = SettingViewModel()
-    
     @State var isSignedOut: Bool = false
     
     var body: some View {
@@ -59,16 +51,13 @@ struct SettingsPage: View {
                 VStack{
                     VStack(alignment: .leading, spacing: 5) {
                         List{
-                            // Logout Button
                             Button{
                                 viewModel.logOut()
                                 isSignedOut.toggle()
-                                
                             }label: {
                                 Text("Logout")
                             }
                             
-                            // Reset password
                             Button{
                                 Task{
                                     try await viewModel.resetPass()

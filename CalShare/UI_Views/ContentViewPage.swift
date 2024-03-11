@@ -1,10 +1,3 @@
-//
-//  ContentViewPage.swift
-//  CalShare
-//
-//  Created by Shubhada Martha on 2/27/24.
-//
-
 import SwiftUI
 
 let fontOne = "SeymourOne-Regular"
@@ -23,7 +16,7 @@ struct ContentViewPage: View {
                 }
                 .tag(0)
             
-            CreateViewGroupsPage()
+            GroupCreationPage()
                 .tabItem {
                     Image(systemName: "person.3.fill")
                         .symbolRenderingMode(.palette)

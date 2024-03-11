@@ -1,10 +1,3 @@
-//
-//  CalendarModel.swift
-//  CalShare
-//
-//  Created by Drew Helbig on 2/21/24.
-//
-
 import Foundation
 import EventKit
 
@@ -14,12 +7,14 @@ struct IdentifiableEvent: Identifiable {
 }
 
 @MainActor class CalendarViewModel: ObservableObject {
-    static let shared = CalendarViewModel()
+    //only used in EventListView
+    @Published var eventsToDisplay: [IdentifiableEvent] = []
     
-    @Published var eventsToDisplay: [IdentifiableEvent] = [] //only used in EventListView
+    static let shared = CalendarViewModel()
+    let store: EKEventStore
+
     var events: [IdentifiableEvent] = []
     var freeEvents: [IdentifiableEvent] = []
-    let store: EKEventStore
     var currentWeek: [Date] = []
     var currentDay: Date = Date()
     var currentMonth: String = ""

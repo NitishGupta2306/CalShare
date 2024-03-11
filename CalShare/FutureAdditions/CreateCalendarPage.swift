@@ -1,27 +1,19 @@
-//
-//  addFriendsPage.swift
-//  CalShare
-//
-//  Created by Shubhada Martha on 2/28/24.
-//
-
 import SwiftUI
 
-struct addFriendsPage: View {
+struct CreateCalendarPage: View {
     @State var cancel: Bool = false
     @State var addedFriend: Bool = false
     
     var body: some View {
         NavigationStack {
-            //GeometryReader { _ in
                 ZStack {
                     VStack {
-                        Text("Add Friends Page!")
+                        Text("Create Calendar Page!")
                             .font(Font.custom("fontTwo", size: 40))
                         .foregroundColor(Color("TextColor"))
                         
                         HStack {
-                            Button ("Add Friend") {
+                            Button ("Add Calendar") {
                                 //print("We are getting a new User and setting their information")
                                 self.addedFriend.toggle()
                             }
@@ -45,7 +37,6 @@ struct addFriendsPage: View {
                         }
                     }
                 }
-            //}
                 .navigationDestination(isPresented: $cancel) {
                     CreateViewGroupsPage()
                         .navigationBarBackButtonHidden()
@@ -80,6 +71,5 @@ struct addFriendsPage: View {
 }
 
 #Preview {
-    addFriendsPage()
+    CreateCalendarPage()
 }
-

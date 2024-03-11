@@ -1,16 +1,8 @@
-//
-//  NotificationsPage.swift
-//  CalShare
-//
-//  Created by Shubhada Martha on 2/27/24.
-//
-
 import SwiftUI
 
 struct NotificationsPage: View {
     var body: some View {
         NavigationStack {
-            //GeometryReader { _ in
                 ZStack {
                     VStack {
                         Text("Notifications Page!")
@@ -18,7 +10,6 @@ struct NotificationsPage: View {
                             .foregroundColor(Color("TextColor"))
                     }
                 }
-            //}
             .onTapGesture {
                 //Dismisses the keyboard if you click away
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
