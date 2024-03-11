@@ -46,7 +46,7 @@ struct HomePage: View {
                             Button {
                                 CalendarViewModel.shared.fetchCurrentWeekEvents()
                             } label: {
-                              Text("Request Calendar Data")
+                              Text("Request User Calendar Data")
                                 .frame(maxWidth: .infinity)
                                 .frame(height: 40)
                                 .font(.system(size: 20))
@@ -107,7 +107,7 @@ struct HomePage: View {
                                 Task{
                                     print("inside")
                                     let holder = try await DBViewModel.shared.getUserDataFromUsersInGroup(groupID: "0sQVzaOc41VyXQrAuuMH")
-                                    
+                                    CalendarViewModel.shared.createFreeTimeSlotEvents(startEndTimes: holder) //assuming holder is the array of doubles
                                     print("preholder")
                                     print(holder)
                                 }
@@ -122,6 +122,20 @@ struct HomePage: View {
                                 .padding([.leading, .trailing], 20)
                                 .padding(.bottom, 50)
                             }
+                        }
+                        
+                        Button {
+                            CalendarViewModel.shared.createFreeTimeSlotEvents(startEndTimes: <#T##[Double]#>)
+                        } label: {
+                            Text("Find Free Times")
+                              .frame(maxWidth: .infinity)
+                              .frame(height: 40)
+                              .font(.system(size: 20))
+                              .foregroundColor(.black)
+                              .background(Color("PastelOrange"))
+                              .clipShape(RoundedRectangle(cornerRadius: 5.0))
+                              .padding([.leading, .trailing], 20)
+                              .padding(.bottom, 50)
                         }
                         
                         HomePageCopy()
