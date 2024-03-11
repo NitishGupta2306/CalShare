@@ -110,9 +110,7 @@ class DBViewModel {
                     let doubleVal = Double(value.prefix(10)) ?? 0
                     usersData.append(doubleVal)
                 }
-                
-                print(usersData)
-    
+                    
             }
         } catch {
             print(GroupError.getGroupDataError)

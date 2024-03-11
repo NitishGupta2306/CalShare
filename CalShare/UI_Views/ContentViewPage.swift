@@ -31,7 +31,7 @@ struct ContentViewPage: View {
                 }
                 .tag(1)
             
-            NotificationsPage()
+            GroupsPage()
                 .tabItem {
                     Image(systemName: "bell.badge.fill")
                         .symbolRenderingMode(.palette)
