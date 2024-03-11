@@ -154,6 +154,7 @@ struct CalendarView: View {
                 .fill(Color("PastelOrange")).opacity(0.5)
         )
         .offset(x: textWidth + 8, y: initialOffset + (frameOffsetHeight * durationSinceMidnight))
+        .foregroundStyle(.black)
     }
     
 }

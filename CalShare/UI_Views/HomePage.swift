@@ -39,7 +39,7 @@ struct HomePage: View {
                             .font(.custom(fontTwo, size: 40))
                             .foregroundColor(Color("TextColor"))
                         */
-                        EventListView()
+                        //EventListView()
                         
                         HStack {
                             
@@ -123,6 +123,7 @@ struct HomePage: View {
                                 .padding(.bottom, 50)
                             }
                         }
+                        
                         HomePageCopy()
                     }
                 }

@@ -16,7 +16,7 @@ struct IdentifiableEvent: Identifiable {
 @MainActor class CalendarViewModel: ObservableObject {
     static let shared = CalendarViewModel()
     
-    @Published var eventsToDisplay: [IdentifiableEvent] = []
+    @Published var eventsToDisplay: [IdentifiableEvent] = [] //only used in EventListView
     var events: [IdentifiableEvent] = []
     var freeEvents: [IdentifiableEvent] = []
     let store: EKEventStore
@@ -313,39 +313,7 @@ struct IdentifiableEvent: Identifiable {
             }
             return res
     }
-    /*
-    func fetchCurrentDayEvents(day: Date) {
-        //this is called every time we click a day
-        
-        
-        CalendarViewModel.shared.fetchEvents(interval: .day, startDate: day, calendars: nil)
-        print(getEventNames())
-        createFreeTimeSlotEvents(startEndTimes: convertDataToDouble())
-        //filter eventsToDisplay by day
-        let todayFreeEvs = filterEventsByDayOfWeek(day: day)
-        self.freeEvents = todayFreeEvs
-        /*
-        let todayFree = self.eventsToDisplay.filter { ev in
-            if extractDate(date: ev.event.startDate, format: "EEE") == extractDate(date: day, format: "EEE") {
-                print(ev)
-                return true
-            } else {
-                return false
-            }
-        }
-        
-        CalendarViewModel.shared.freeEvents = todayFree
-        print(self.freeEvents)
-        print("Printing today's free events")
-        print(self.freeEvents.count)
-        for idEvent in self.freeEvents {
-            print("\(extractDate(date: idEvent.event.startDate, format: "EEE"))")
-            print("\(extractDate(date: idEvent.event.startDate, format: "MM-d-yyyy"))")
-            print("\(extractDate(date: idEvent.event.startDate, format: "h:mm a"))")
-        }
-        */
-    }
-    */
+    
     func filterEventsByDayOfWeek(day: Date) -> [IdentifiableEvent] {
         var calendar = Calendar.current
         calendar.timeZone = NSTimeZone.local
