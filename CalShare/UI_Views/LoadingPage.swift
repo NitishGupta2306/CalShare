@@ -14,12 +14,13 @@ struct LoadingPage: View {
             }
             .onAppear() {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    CalendarViewModel.shared.fetchCurrentWeekEvents()
+                    
                     let authUser = try? AuthenticationHandler.shared.checkAuthenticatedUser()
                     userAuthTokenExists = authUser != nil
                     if userAuthTokenExists {
                         goContentViewPage = true
                     } else {
-                        print("nobody logged in, go to welcome page ")
                         goSignInPage = true
                     }
                 }

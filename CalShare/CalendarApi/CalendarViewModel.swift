@@ -252,8 +252,8 @@ struct IdentifiableEvent: Identifiable {
         }
         
         DispatchQueue.main.async{
+            // Published variable
             CalendarViewModel.shared.eventsToDisplay = newEvents
-            //because published var
         }
         CalendarViewModel.shared.freeEvents = newEvents
         

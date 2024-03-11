@@ -38,11 +38,11 @@ struct CreateCalendarPage: View {
                     }
                 }
                 .navigationDestination(isPresented: $cancel) {
-                    CreateViewGroupsPage()
+                    GroupCreationPage()
                         .navigationBarBackButtonHidden()
                 }
                 .navigationDestination(isPresented: $addedFriend) {
-                    CreateViewGroupsPage()
+                    GroupCreationPage()
                         .navigationBarBackButtonHidden()
                 }
             .navigationBarTitleDisplayMode(.inline)

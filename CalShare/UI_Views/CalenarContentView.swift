@@ -50,7 +50,6 @@ struct CalenarContentView: View {
                                 )
                                 .contentShape(Capsule())
                                 .onTapGesture {
-                                    print("clicked")
                                     withAnimation {
                                         CalendarViewModel.shared.currentDay = day
                                         curDay = day

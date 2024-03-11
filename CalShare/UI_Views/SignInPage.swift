@@ -91,7 +91,6 @@ struct SignInPage: View {
                         }
                         
                         Button {
-                            print("Going to New User Page.")
                             self.newUser.toggle()
                         } label: {
                             Text("New User?")

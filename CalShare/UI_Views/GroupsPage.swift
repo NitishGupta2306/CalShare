@@ -15,9 +15,11 @@ struct GroupsPage: View {
                                 ForEach(1...numberGroups, id: \.self){ index in
                                     Button{
                                         Task{
-                                            usersInGroupCalData = try await DBViewModel.shared.getUserDataFromUsersInGroup(groupID: usersGroupsID[index-1])
-
-                                            // ADD TOGGLE TO MOVE TO CALENDAR VIEW AND SHOW THE FINAL CAL
+                                            usersInGroupCalData = 
+                                            try await DBViewModel.shared
+                                                .getUserDataFromUsersInGroup(groupID: usersGroupsID[index-1])
+                                            CalendarViewModel.shared
+                                                .createFreeTimeSlotEvents(startEndTimes: usersInGroupCalData)
                                         }
                                     }
                                     label: {
@@ -38,14 +40,17 @@ struct GroupsPage: View {
             .ignoresSafeArea(.keyboard)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .onAppear(perform: {
-                if usersGroupsID.isEmpty{
-                    Task{
-                        let usersGroups = try await DBViewModel.shared.getAllGroupsUserIsIn()
-                        for group in usersGroups{
-                            usersGroupsID.append(group.id ?? "")
+                Task{
+                    let usersGroups = try await DBViewModel.shared.getAllGroupsUserIsIn()
+                    for group in usersGroups{
+                        
+                        let GID = group.id ?? ""
+                        
+                        if !usersGroupsID.contains(GID){
+                            usersGroupsID.append(GID)
                         }
-                        numberGroups = usersGroupsID.count
                     }
+                    numberGroups = usersGroupsID.count
                 }
             })
         }

@@ -122,7 +122,7 @@ struct SignUpPage: View {
                 }
             }
             .onChange(of: goContentViewPage, {
-                print("Asked for calendar access")
+                print("Requested calendar access")
                 Task {
                   await CalendarViewModel.shared.requestAccess()
                 }

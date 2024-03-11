@@ -117,7 +117,7 @@ struct GroupCreationPage: View {
                     CodeScannerView(codeTypes: [.qr]) { response in
                         if case let .success(result) = response {
                             scannedString = result.string
-                            print(scannedString ?? "Not scanned")
+                            print(scannedString ?? "Error while scanning QR code.")
                         }
                         gotQR = true
                         scanQR = false
@@ -135,7 +135,6 @@ struct GroupCreationPage: View {
     }
     
     func generateQRCode(from string: String) -> UIImage {
-        print("comes into generateQRCode")
         filter.message = Data(string.utf8)
         
         if let outputImage = filter.outputImage {
@@ -144,7 +143,7 @@ struct GroupCreationPage: View {
             }
         }
         
-        print("didn't generateQRCode")
+        print("Error: couldn't generateQRCode")
         return UIImage(systemName: "xmark.circle") ?? UIImage()
     }
 }

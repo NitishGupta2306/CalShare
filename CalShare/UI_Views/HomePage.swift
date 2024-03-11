@@ -6,21 +6,21 @@ struct HomePage: View {
                 ZStack {
                     VStack {
                         CalenarContentView()
-                        
-                        HStack {
-                            Button {
-                                CalendarViewModel.shared.fetchCurrentWeekEvents()
-                            } label: {
-                                Text("Fetch Your Weeks Events!")
-                                    .frame(maxWidth: .infinity)
-                                    .frame(height: 40)
-                                    .font(.system(size: 20))
-                                    .foregroundColor(.black)
-                                    .background(Color("PastelOrange"))
-                                    .clipShape(RoundedRectangle(cornerRadius: 5.0))
-                                    .padding([.leading, .trailing], 20)
-                                    .padding(.bottom, 50)
+                        Button {
+                            CalendarViewModel.shared.fetchCurrentWeekEvents()
+                            Task{
+                                try await DBViewModel.shared.updateCurrUserData()
                             }
+                        } label: {
+                            Text("Push Your Weeks Events!")
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 40)
+                                .font(.system(size: 20))
+                                .foregroundColor(.black)
+                                .background(Color("PastelOrange"))
+                                .clipShape(RoundedRectangle(cornerRadius: 5.0))
+                                .padding([.leading, .trailing], 20)
+                                .padding(.bottom, 50)
                         }
                     }
                 }
