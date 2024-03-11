@@ -86,9 +86,18 @@ struct CalendarView: View {
               }
               //we will display all of the events on top of the zstack here
               
+              //test: to display busy events, change what event list we are iterating through here
+              ForEach(CalendarViewModel.shared.filterEventsByDayOfWeek(day: curDay)) { idEvent in
+                  eventCell(curEv: idEvent.event)
+                  //Text("\(formatDate(idEvent.event.startDate)) - \(formatDate(idEvent.event.endDate))")
+              }
+              
+              /*
               ForEach(CalendarViewModel.shared.events) { idEvent in
                   eventCell(curEv: idEvent.event)
+                  //Text("\(formatDate(idEvent.event.startDate)) - \(formatDate(idEvent.event.endDate))")
               }
+              */
               /*
               Practice
               VStack(alignment: .leading) {
@@ -116,9 +125,10 @@ struct CalendarView: View {
     func eventCell(curEv: EKEvent) -> some View {
         let durationSecs = curEv.endDate.timeIntervalSince(curEv.startDate)
         let durationHr = durationSecs / 60 / 60
+        print(durationHr)
         let initialOffset = (frameHeight + 15) / 2 - 7
         let frameOffsetHeight = frameHeight + 8
-        print("\(curEv.title) and \(curEv.endDate)")
+        print("\(curEv.title) and \(curEv.endDate) and \(curEv.startDate)")
         
         let calendar = Calendar.current
         var startCalendarDate = calendar.dateComponents([.day, .year, .month], from: curEv.startDate)
@@ -144,6 +154,7 @@ struct CalendarView: View {
                 .fill(Color("PastelOrange")).opacity(0.5)
         )
         .offset(x: textWidth + 8, y: initialOffset + (frameOffsetHeight * durationSinceMidnight))
+        .foregroundStyle(.black)
     }
     
 }

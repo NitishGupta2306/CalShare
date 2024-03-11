@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		120F67272B9C73A50069EB11 /* HomePageCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120F67262B9C73A50069EB11 /* HomePageCopy.swift */; };
-		120F67292B9CB0210069EB11 /* CodeCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120F67282B9CB0210069EB11 /* CodeCopy.swift */; };
 		120F672B2B9CB2590069EB11 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120F672A2B9CB2590069EB11 /* CalendarView.swift */; };
 		12BA0CAC2B84FEC5005FDF2E /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA0CAB2B84FEC5005FDF2E /* SplashScreen.swift */; };
 		12BA0CB02B85B5F5005FDF2E /* RegisterPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BA0CAF2B85B5F5005FDF2E /* RegisterPage.swift */; };
@@ -76,7 +75,6 @@
 
 /* Begin PBXFileReference section */
 		120F67262B9C73A50069EB11 /* HomePageCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageCopy.swift; sourceTree = "<group>"; };
-		120F67282B9CB0210069EB11 /* CodeCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeCopy.swift; sourceTree = "<group>"; };
 		120F672A2B9CB2590069EB11 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		12BA0CAB2B84FEC5005FDF2E /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		12BA0CAF2B85B5F5005FDF2E /* RegisterPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPage.swift; sourceTree = "<group>"; };
@@ -441,7 +439,6 @@
 				120F672B2B9CB2590069EB11 /* CalendarView.swift in Sources */,
 				120F67272B9C73A50069EB11 /* HomePageCopy.swift in Sources */,
 				231202942B8E552200BAF8E7 /* CreateViewGroupsPage.swift in Sources */,
-				120F67292B9CB0210069EB11 /* CodeCopy.swift in Sources */,
 				231202902B8E54D800BAF8E7 /* NotificationsPage.swift in Sources */,
 				401910552B8AB04B006EF454 /* CalendarViewModel.swift in Sources */,
 				414966342B93B06B008B18C9 /* DataBaseViewModel.swift in Sources */,
