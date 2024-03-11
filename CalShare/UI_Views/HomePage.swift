@@ -46,24 +46,7 @@ struct HomePage: View {
                             Button {
                                 CalendarViewModel.shared.fetchCurrentWeekEvents()
                             } label: {
-                              Text("Request User Calendar Data")
-                                .frame(maxWidth: .infinity)
-                                .frame(height: 40)
-                                .font(.system(size: 20))
-                                .foregroundColor(.black)
-                                .background(Color("PastelOrange"))
-                                .clipShape(RoundedRectangle(cornerRadius: 5.0))
-                                .padding([.leading, .trailing], 20)
-                                .padding(.bottom, 50)
-                            }
-                            /*
-                            Button {
-                                Task {
-                                    await CalendarViewModel.shared.requestAccess()
-                                }
-                            }
-                            label: {
-                                Text("Request Calendar Data Access")
+                                Text("Request User Calendar Data")
                                     .frame(maxWidth: .infinity)
                                     .frame(height: 40)
                                     .font(.system(size: 20))
@@ -71,38 +54,55 @@ struct HomePage: View {
                                     .background(Color("PastelOrange"))
                                     .clipShape(RoundedRectangle(cornerRadius: 5.0))
                                     .padding([.leading, .trailing], 20)
+                                    .padding(.bottom, 50)
                             }
-                            
-                            Button {
-                                self.goToSecondHomePage.toggle()
-                            } label: {
-                              Text("Go to Calendar")
-                                .frame(maxWidth: .infinity)
-                                .frame(height: 40)
-                                .font(.system(size: 20))
-                                .foregroundColor(.black)
-                                .background(Color("PastelOrange"))
-                                .clipShape(RoundedRectangle(cornerRadius: 5.0))
-                                .padding([.leading, .trailing], 20)
-                                .padding(.bottom, 50)
-                            }
+                            /*
+                             Button {
+                             Task {
+                             await CalendarViewModel.shared.requestAccess()
+                             }
+                             }
+                             label: {
+                             Text("Request Calendar Data Access")
+                             .frame(maxWidth: .infinity)
+                             .frame(height: 40)
+                             .font(.system(size: 20))
+                             .foregroundColor(.black)
+                             .background(Color("PastelOrange"))
+                             .clipShape(RoundedRectangle(cornerRadius: 5.0))
+                             .padding([.leading, .trailing], 20)
+                             }
+                             
+                             Button {
+                             self.goToSecondHomePage.toggle()
+                             } label: {
+                             Text("Go to Calendar")
+                             .frame(maxWidth: .infinity)
+                             .frame(height: 40)
+                             .font(.system(size: 20))
+                             .foregroundColor(.black)
+                             .background(Color("PastelOrange"))
+                             .clipShape(RoundedRectangle(cornerRadius: 5.0))
+                             .padding([.leading, .trailing], 20)
+                             .padding(.bottom, 50)
+                             }
                              */
                             Button {
                                 Task{
                                     try await DBViewModel.shared.addUserToGroup(groupID: "Test")
                                 }
                             } label: {
-                              Text("add user to group")
-                                .frame(maxWidth: .infinity)
-                                .frame(height: 40)
-                                .font(.system(size: 20))
-                                .foregroundColor(.black)
-                                .background(Color("PastelOrange"))
-                                .clipShape(RoundedRectangle(cornerRadius: 5.0))
-                                .padding([.leading, .trailing], 20)
-                                .padding(.bottom, 50)
+                                Text("add user to group")
+                                    .frame(maxWidth: .infinity)
+                                    .frame(height: 40)
+                                    .font(.system(size: 20))
+                                    .foregroundColor(.black)
+                                    .background(Color("PastelOrange"))
+                                    .clipShape(RoundedRectangle(cornerRadius: 5.0))
+                                    .padding([.leading, .trailing], 20)
+                                    .padding(.bottom, 50)
                             }
-
+                            
                             Button {
                                 Task{
                                     print("inside")
@@ -112,30 +112,16 @@ struct HomePage: View {
                                     print(holder)
                                 }
                             } label: {
-                              Text("getuserdatafromusersingroup")
-                                .frame(maxWidth: .infinity)
-                                .frame(height: 40)
-                                .font(.system(size: 20))
-                                .foregroundColor(.black)
-                                .background(Color("PastelOrange"))
-                                .clipShape(RoundedRectangle(cornerRadius: 5.0))
-                                .padding([.leading, .trailing], 20)
-                                .padding(.bottom, 50)
+                                Text("getuserdatafromusersingroup")
+                                    .frame(maxWidth: .infinity)
+                                    .frame(height: 40)
+                                    .font(.system(size: 20))
+                                    .foregroundColor(.black)
+                                    .background(Color("PastelOrange"))
+                                    .clipShape(RoundedRectangle(cornerRadius: 5.0))
+                                    .padding([.leading, .trailing], 20)
+                                    .padding(.bottom, 50)
                             }
-                        }
-                        
-                        Button {
-                            CalendarViewModel.shared.createFreeTimeSlotEvents(startEndTimes: <#T##[Double]#>)
-                        } label: {
-                            Text("Find Free Times")
-                              .frame(maxWidth: .infinity)
-                              .frame(height: 40)
-                              .font(.system(size: 20))
-                              .foregroundColor(.black)
-                              .background(Color("PastelOrange"))
-                              .clipShape(RoundedRectangle(cornerRadius: 5.0))
-                              .padding([.leading, .trailing], 20)
-                              .padding(.bottom, 50)
                         }
                         
                         HomePageCopy()
