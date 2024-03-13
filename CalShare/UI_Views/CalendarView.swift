@@ -71,7 +71,7 @@ struct CalendarView: View {
               
               //test: to display busy events, change what event list we are iterating through here
               ForEach(CalendarViewModel.shared.filterEventsByDayOfWeek(day: curDay)) { idEvent in
-                  eventCell(curEv: idEvent.event)
+                  eventCell(curEv: idEvent)
               }
           }
         }
@@ -84,30 +84,26 @@ struct CalendarView: View {
         return formatter.string(from: date)
     }
     
-    func eventCell(curEv: EKEvent) -> some View {
-        let durationSecs = curEv.endDate.timeIntervalSince(curEv.startDate)
+    func eventCell(curEv: IdentifiableEvent) -> some View {
+        let durationSecs = curEv.event.endDate.timeIntervalSince(curEv.event.startDate)
         let durationHr = durationSecs / 60 / 60
-        print(durationHr)
         let initialOffset = (frameHeight + 15) / 2 - 7
         let frameOffsetHeight = frameHeight + 8
-        print("\(curEv.title) and \(curEv.endDate) and \(curEv.startDate)")
-        
         let calendar = Calendar.current
-        var startCalendarDate = calendar.dateComponents([.day, .year, .month], from: curEv.startDate)
+        var startCalendarDate = calendar.dateComponents([.day, .year, .month], from: curEv.event.startDate)
+        
         startCalendarDate.hour = 0
         startCalendarDate.minute = 0
+        
         var durationSinceMidnight = 0.0
+        
         if let date = calendar.date(from: startCalendarDate) {
-            print("test date \(date.formatted())")
-            durationSinceMidnight = curEv.startDate.timeIntervalSince(date) / 60 / 60
-            print("test duration\(durationSinceMidnight)")
-            print("\(curEv.startDate.timeIntervalSince(curDay) / 60 / 60)")
+            durationSinceMidnight = curEv.event.startDate.timeIntervalSince(date) / 60 / 60
         }
         
         return VStack(alignment: .center) {
-            Text(curEv.title)
-            Text("\(durationHr)")
-            Text("\(durationSinceMidnight)")
+            Text(curEv.event.title)
+            Text(curEv.timeSlot)
         }
         .frame(maxWidth: 310, alignment: .leading)
         .frame(height: (frameHeight+7) * durationHr, alignment: .top)
