@@ -20,6 +20,20 @@ struct HomePage: View {
                                 .background(Color("PastelOrange"))
                                 .clipShape(RoundedRectangle(cornerRadius: 5.0))
                                 .padding([.leading, .trailing], 20)
+                                .padding(.bottom, 5)
+                        }
+                        
+                        Button {
+                            print(CalendarViewModel.shared.getNextFreeTime())
+                        } label: {
+                            Text("Get Free Time!")
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 40)
+                                .font(.system(size: 20))
+                                .foregroundColor(.black)
+                                .background(Color("PastelOrange"))
+                                .clipShape(RoundedRectangle(cornerRadius: 5.0))
+                                .padding([.leading, .trailing], 20)
                                 .padding(.bottom, 50)
                         }
                     }

@@ -83,7 +83,7 @@ struct GroupCreationPage: View {
                     }
                 }
                 .navigationDestination(isPresented: $genQR) {
-                    DisplayCodePage()
+                    //DisplayCodePage()
 //                        .navigationBarBackButtonHidden()
                 }
                 .sheet(isPresented: $scanQR) {
