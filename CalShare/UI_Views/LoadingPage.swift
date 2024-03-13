@@ -12,6 +12,8 @@ struct LoadingPage: View {
                     .progressViewStyle(CircularProgressViewStyle(tint:buttonColor))
                     .scaleEffect(CGSize(width: 2.0, height: 2.0))
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color("PastelBeige"))
             .onAppear() {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                     CalendarViewModel.shared.fetchCurrentWeekEvents()

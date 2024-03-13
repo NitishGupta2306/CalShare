@@ -7,14 +7,8 @@ import SwiftUI
 struct GroupCreationPage: View {
     @State private var gotQR = false
     @State private var scanQR = false
-    @State private var generatedQRImage: UIImage?
     @State private var scannedString: String?
-    @State private var generatedQR: String?
-    @State var addCal: Bool = false
-    @State var addFriend: Bool = false
-    
-    let context = CIContext()
-    let filter = CIFilter.qrCodeGenerator()
+    @State var genQR: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -28,27 +22,10 @@ struct GroupCreationPage: View {
                         
                         Spacer()
                         
-                        if let generatedQRImage = generatedQRImage {
-                            Image(uiImage: generatedQRImage)
-                                .resizable()
-                                .interpolation(.none)
-                                .scaledToFit()
-                                .frame(width: 200, height: 200)
-                        }
-                        
-                        //Generates and pushes a new group to DB
+                        //Goes to DisplayCodePage
                         Button(action: {
                             print("Generate QR")
-                            Task {
-                                do {
-                                    let generatedQR = try await DBViewModel.shared.createNewGroupAndAddCurrUser()
-                                    self.generatedQRImage = generateQRCode(from: "\(generatedQR)")
-                                    self.generatedQR = generatedQR
-                                } catch {
-                                    // Handle error
-                                    print("Error: \(error)")
-                                }
-                            }
+                            genQR = true
                             
                         }) {
                             HStack {
@@ -105,13 +82,9 @@ struct GroupCreationPage: View {
                         Spacer()
                     }
                 }
-                .navigationDestination(isPresented: $addCal) {
-                    CreateCalendarPage()
-                        .navigationBarBackButtonHidden()
-                }
-                .navigationDestination(isPresented: $addFriend) {
-                    addFriendsPage()
-                        .navigationBarBackButtonHidden()
+                .navigationDestination(isPresented: $genQR) {
+                    DisplayCodePage()
+//                        .navigationBarBackButtonHidden()
                 }
                 .sheet(isPresented: $scanQR) {
                     CodeScannerView(codeTypes: [.qr]) { response in
@@ -132,19 +105,6 @@ struct GroupCreationPage: View {
             .edgesIgnoringSafeArea(.all)
             .background(Color("PastelBeige"))
         }
-    }
-    
-    func generateQRCode(from string: String) -> UIImage {
-        filter.message = Data(string.utf8)
-        
-        if let outputImage = filter.outputImage {
-            if let cgImage = context.createCGImage(outputImage, from: outputImage.extent) {
-                return UIImage(cgImage: cgImage)
-            }
-        }
-        
-        print("Error: couldn't generateQRCode")
-        return UIImage(systemName: "xmark.circle") ?? UIImage()
     }
 }
 
