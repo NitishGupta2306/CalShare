@@ -96,9 +96,9 @@ struct DisplayQrPage: View {
                 .background(Color("PastelBeige"))
                 .task {
                     do {
-//                        let generatedQR = try await DBViewModel.shared.createNewGroupAndAddCurrUser()
-//                        self.generatedQRImage = generateQRCode(from: "\(generatedQR)")
-                        self.generatedQRImage = generateQRCode(from: "\(test)")
+                        let generatedQR = try await DBViewModel.shared.createNewGroupAndAddCurrUser()
+                        self.generatedQRImage = generateQRCode(from: "\(generatedQR)")
+                        //self.generatedQRImage = generateQRCode(from: "\(test)")
                         self.generatedQR = generatedQR
                     } catch {
                         // Handle error
