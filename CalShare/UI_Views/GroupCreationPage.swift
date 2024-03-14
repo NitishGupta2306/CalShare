@@ -105,7 +105,7 @@ struct GroupCreationPage: View {
                     }
                 }
                 .navigationDestination(isPresented: $genQR) {
-                    //DisplayCodePage()
+                    DisplayQrPage()
 //                        .navigationBarBackButtonHidden()
                 }
                 .sheet(isPresented: $scanQR) {
