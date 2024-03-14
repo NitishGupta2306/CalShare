@@ -96,6 +96,8 @@ struct GroupCreationPage: View {
                                 .onAppear {
                                     Task {
                                         if let scannedString = scannedString{
+                                            print(scannedString)
+                                            print("Pushed user?")
                                             try await DBViewModel.shared.addUserToGroup(groupID: scannedString)
                                         }
                                         scanQR = false
@@ -106,10 +108,6 @@ struct GroupCreationPage: View {
                         Spacer()
                     }
                 }
-//                .navigationDestination(isPresented: $genQR) {
-//                    DisplayQrPage()
-////                        .navigationBarBackButtonHidden()
-//                }
                 .sheet(isPresented: $scanQR) {
                     CodeScannerView(codeTypes: [.qr]) { response in
                         if case let .success(result) = response {

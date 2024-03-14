@@ -85,7 +85,13 @@ struct DisplayQrPage: View {
                             
                             //Displays the home page
                             Button(action: {
-                                print("Displays the Home Page")
+                                Task{
+                                    let usersInGroupCalData =
+                                    try await DBViewModel.shared
+                                        .getUserDataFromUsersInGroup(groupID: generatedQR ?? "")
+                                    CalendarViewModel.shared
+                                        .createFreeTimeSlotEvents(startEndTimes: usersInGroupCalData)
+                                }
                                 self.goHome = true
                             }) {
                                 HStack {
@@ -104,7 +110,9 @@ struct DisplayQrPage: View {
                             //                            .padding(20)
                         }
                         
-                        NavigationLink(destination: HomePage(), isActive: $goHome){}
+                        NavigationLink(destination: HomePage(), isActive: $goHome){
+                            
+                        }
                         
                         Spacer()
                         
@@ -121,7 +129,10 @@ struct DisplayQrPage: View {
                     do {
                         let generatedQR = try await DBViewModel.shared.createNewGroupAndAddCurrUser()
                         self.generatedQRImage = generateQRCode(from: "\(generatedQR)")
+<<<<<<< Updated upstream
 //                        self.generatedQRImage = generateQRCode(from: "\(test)")
+=======
+>>>>>>> Stashed changes
                         self.generatedQR = generatedQR
                     } catch {
                         // Handle error

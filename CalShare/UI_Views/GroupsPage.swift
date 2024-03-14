@@ -5,6 +5,8 @@ struct GroupsPage: View {
     @State var usersInGroupCalData: [Double] = []
     @State var numberGroups: Int = 0
     
+    @State var dataLoaded: Bool = false
+    
     var body: some View {
 //        NavigationStack {
             ZStack {
@@ -20,6 +22,7 @@ struct GroupsPage: View {
                                                 .getUserDataFromUsersInGroup(groupID: usersGroupsID[index-1])
                                             CalendarViewModel.shared
                                                 .createFreeTimeSlotEvents(startEndTimes: usersInGroupCalData)
+                                            dataLoaded = true
                                         }
                                     }
                                     label: {

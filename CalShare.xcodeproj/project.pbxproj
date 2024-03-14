@@ -59,6 +59,8 @@
 		41B6571D2B8A9F8F003D12ED /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 41B6571C2B8A9F8F003D12ED /* FirebaseDatabaseSwift */; };
 		41B6571F2B8A9F8F003D12ED /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 41B6571E2B8A9F8F003D12ED /* FirebaseFirestore */; };
 		41B657212B8AA143003D12ED /* AuthenticationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B657202B8AA143003D12ED /* AuthenticationHandler.swift */; };
+		41E3EC502BA287C7003FB84F /* DisplayQRPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E3EC4E2BA287C7003FB84F /* DisplayQRPage.swift */; };
+		41E3EC512BA287C7003FB84F /* DisplayCodePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E3EC4F2BA287C7003FB84F /* DisplayCodePage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +114,8 @@
 		41948EA52B5B3CF000ADD5D0 /* SignInPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInPage.swift; sourceTree = "<group>"; };
 		41B6570E2B8A9F33003D12ED /* ErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
 		41B657202B8AA143003D12ED /* AuthenticationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationHandler.swift; sourceTree = "<group>"; };
+		41E3EC4E2BA287C7003FB84F /* DisplayQRPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayQRPage.swift; sourceTree = "<group>"; };
+		41E3EC4F2BA287C7003FB84F /* DisplayCodePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayCodePage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +264,8 @@
 				120F672A2B9CB2590069EB11 /* CalendarView.swift */,
 				231202972B8EADFD00BAF8E7 /* ContentViewPage.swift */,
 				4004B5612B8FE28B001416C9 /* EventListView.swift */,
+				41E3EC4F2BA287C7003FB84F /* DisplayCodePage.swift */,
+				41E3EC4E2BA287C7003FB84F /* DisplayQRPage.swift */,
 				414B10092B9EC04E00B80B55 /* GroupCreationPage.swift */,
 				410492B22B9E648B003E9075 /* GroupsPage.swift */,
 				4109D4B92B91BD4000A0304A /* HomePage.swift */,
@@ -451,10 +457,12 @@
 				231202962B8E554800BAF8E7 /* CreateCalendarPage.swift in Sources */,
 				12BA0CB42B86588F005FDF2E /* LoadingPage.swift in Sources */,
 				231202922B8E54E700BAF8E7 /* SettingsPage.swift in Sources */,
+				41E3EC512BA287C7003FB84F /* DisplayCodePage.swift in Sources */,
 				4109D4BA2B91BD4000A0304A /* HomePage.swift in Sources */,
 				231202982B8EADFD00BAF8E7 /* ContentViewPage.swift in Sources */,
 				414B100C2B9EC11B00B80B55 /* SignUpPage.swift in Sources */,
 				12BA0CAC2B84FEC5005FDF2E /* SplashScreen.swift in Sources */,
+				41E3EC502BA287C7003FB84F /* DisplayQRPage.swift in Sources */,
 				410492B32B9E648B003E9075 /* GroupsPage.swift in Sources */,
 				41B657212B8AA143003D12ED /* AuthenticationHandler.swift in Sources */,
 				4004B5622B8FE28B001416C9 /* EventListView.swift in Sources */,

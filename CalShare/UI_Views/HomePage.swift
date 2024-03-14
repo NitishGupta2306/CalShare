@@ -18,7 +18,11 @@ struct HomePage: View {
                         
                         CalenarContentView()
                         Button {
-                            CalendarViewModel.shared.fetchCurrentWeekEvents()
+                            print("Requested calendar access")
+                            Task {
+                              await CalendarViewModel.shared.requestAccess()
+                              CalendarViewModel.shared.fetchCurrentWeekEvents()
+                            }
                             Task{
                                 try await DBViewModel.shared.updateCurrUserData()
                             }
