@@ -37,7 +37,7 @@ struct GroupCreationPage: View {
                                     
                                 }) {
                                     HStack {
-                                        Text("Generate QR")
+                                        Text("Generate")
                                             .font(.custom(fontTwo, size: 20.0))
                                             .foregroundColor(Color("PastelBeige"))
                                             .bold()
@@ -47,7 +47,7 @@ struct GroupCreationPage: View {
                                             .padding(.leading, 10)
                                             .font(.system(size: 75))
                                     }
-                                    .padding(.horizontal, 60)
+                                    .padding(.horizontal, 70)
                                     .padding(.vertical, 20)
                                     .background(Color("PastelOrange"))
                                     .foregroundColor(Color("PastelBeige"))
@@ -67,7 +67,7 @@ struct GroupCreationPage: View {
                             ZStack {
                                 // Access Camera and allows currUser to join group linked to QRCode.
                                 Button(action: {
-                                    print("Scan QR")
+                                    print("Scan")
                                     self.scanQR.toggle()
                                 }) {
                                     HStack {
