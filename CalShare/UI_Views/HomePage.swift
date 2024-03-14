@@ -1,10 +1,21 @@
 import SwiftUI
 
 struct HomePage: View {
+    //@State var numMem: Int = 1
+    
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
                 ZStack {
                     VStack {
+//                        HStack (alignment: .top){
+//                            Spacer()
+//                            Text("\(numMem)/7")
+//                                .font(.system(size: 30))
+//                                .bold()
+//                                .foregroundColor(Color("PastelOrange"))
+//                                .padding()
+//                        }
+                        
                         CalenarContentView()
                         Button {
                             CalendarViewModel.shared.fetchCurrentWeekEvents()
@@ -47,7 +58,7 @@ struct HomePage: View {
                 .background(Color("PastelBeige"))
         }
       
-    }
+//    }
       
 }
 

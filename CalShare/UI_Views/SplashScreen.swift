@@ -4,7 +4,7 @@ struct SplashScreen: View {
     @State private var isActive = false
 
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             ZStack {
                 VStack {
                     Image("LogoImage")
@@ -29,7 +29,7 @@ struct SplashScreen: View {
                     .navigationBarBackButtonHidden(true)
             }
         }
-    }
+//    }
 }
 
 #Preview {

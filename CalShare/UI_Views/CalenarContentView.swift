@@ -6,7 +6,7 @@ struct CalenarContentView: View {
     @State var displayBusy: Bool = true
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             ZStack {
                 VStack {
                     Text(CalendarViewModel.shared.currentMonth)
@@ -59,18 +59,18 @@ struct CalenarContentView: View {
                         }
                     }
                     .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .topBarLeading) {
-                            Image("LogoImage")
-                                .resizable()
-                                .frame(width:60, height: 60)
-                        }
-                        ToolbarItem(placement: .principal) {
-                            Image("CalShare")
-                                .resizable()
-                                .frame(width: 130, height: 20)
-                        }
-                    }
+//                    .toolbar {
+//                        ToolbarItem(placement: .topBarLeading) {
+//                            Image("LogoImage")
+//                                .resizable()
+//                                .frame(width:60, height: 60)
+//                        }
+//                        ToolbarItem(placement: .principal) {
+//                            Image("CalShare")
+//                                .resizable()
+//                                .frame(width: 130, height: 20)
+//                        }
+//                    }
                     CalendarView(curDay: $curDay)
                 }
             }
@@ -82,7 +82,7 @@ struct CalenarContentView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color("PastelBeige"))
         }
-    }
+//    }
 }
 
 #Preview {

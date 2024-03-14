@@ -10,20 +10,32 @@ struct DisplayQrPage: View {
     @State private var generatedQRImage: UIImage?
     @State private var generatedQR: String?
     @State var firstSlot: String = "No Available Time Slot"
+    @State var numMem: Int = 1
     let context = CIContext()
     let filter = CIFilter.qrCodeGenerator()
     
     @State private var test = "TestValue"
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
                 ZStack {
                     VStack {
-//                        Text("Group QR Code")
-//                            .font(.custom(fontTwo, size: 20.0))
-//                            .foregroundColor(Color("PastelGray"))
-//                            .fontWeight(.regular)
-//                            .padding(20)
+                        //                        Text("Group QR Code")
+                        //                            .font(.custom(fontTwo, size: 20.0))
+                        //                            .foregroundColor(Color("PastelGray"))
+                        //                            .fontWeight(.regular)
+                        //                            .padding(20)
+                        
+                        HStack (alignment: .top){
+                            Spacer()
+                            Text("\(numMem)/7")
+                                .font(.system(size: 35))
+                                .bold()
+                                .foregroundColor(Color("PastelOrange"))
+                                .padding(30)
+                        }
+                        
+                        Spacer()
                         
                         ZStack {
                             if let generatedQRImage = generatedQRImage {
@@ -34,60 +46,68 @@ struct DisplayQrPage: View {
                                     .frame(width: 250, height: 250)
                             }
                         }
+                        Spacer()
                         
-                        //Displays the first free time slot
-                        Button(action: {
-                            print("Displays the first free time slot")
-                            firstSlot = CalendarViewModel.shared.getNextFreeTime()
-                            print(firstSlot)
-                            
-                            self.firstFree = true
-                            
-                        }) {
-                            HStack {
-                                Text("First Available Slot")
-                                    .foregroundColor(Color("PastelBeige"))
-                                    .font(.custom(fontTwo, size: 20.0))
-                                    .bold()
+                        VStack {
+                            //Displays the first free time slot
+                            Button(action: {
+                                print("Displays the first free time slot")
+                                firstSlot = CalendarViewModel.shared.getNextFreeTime()
+                                print(firstSlot)
+                                
+                                self.firstFree = true
+                                
+                            }) {
+                                HStack {
+                                    Text("First Available Slot")
+                                        .foregroundColor(Color("PastelBeige"))
+                                        .font(.custom(fontTwo, size: 20.0))
+                                        .bold()
+                                }
+                                .padding(.horizontal, 88)
+                                .padding(.vertical, 20)
+                                .background(Color("PastelOrange"))
+                                .foregroundColor(Color("PastelBeige"))
+                                .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
+                                .frame(width: 348, height: 80)
                             }
-                            .padding(.horizontal, 88)
-                            .padding(.vertical, 20)
-                            .background(Color("PastelOrange"))
-                            .foregroundColor(Color("PastelBeige"))
-                            .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
-                            .frame(width: 348, height: 80)
-                        }
-                        .padding(20)
-                        .alert(isPresented: $firstFree) {
-                            Alert(
-                                title: Text("First Available Slot"),
-                                message: Text("\(firstSlot)"),
-                                dismissButton: .default(
-                                    Text("OK")
-                                        .foregroundColor(Color("PastelOrange"))
+                            //                            .padding(20)
+                            .alert(isPresented: $firstFree) {
+                                Alert(
+                                    title: Text("First Available Slot"),
+                                    message: Text("\(firstSlot)"),
+                                    dismissButton: .default(
+                                        Text("OK")
+                                            .foregroundColor(Color("PastelOrange"))
+                                    )
                                 )
-                            )
+                            }
+                            
+                            //Displays the home page
+                            Button(action: {
+                                print("Displays the Home Page")
+                                self.goHome = true
+                            }) {
+                                HStack {
+                                    Text("All Available Slots")
+                                        .foregroundColor(Color("PastelBeige"))
+                                        .font(.custom(fontTwo, size: 20.0))
+                                        .bold()
+                                }
+                                .padding(.horizontal, 90)
+                                .padding(.vertical, 20)
+                                .background(Color("PastelOrange"))
+                                .foregroundColor(Color("PastelBeige"))
+                                .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
+                                .frame(width: 350, height: 80)
+                            }
+                            //                            .padding(20)
                         }
                         
-                        //Displays the home page
-                        Button(action: {
-                            print("Displays the Home Page")
-                            //self.goHome = true
-                        }) {
-                            HStack {
-                                Text("All Available Slots")
-                                    .foregroundColor(Color("PastelBeige"))
-                                    .font(.custom(fontTwo, size: 20.0))
-                                    .bold()
-                            }
-                            .padding(.horizontal, 90)
-                            .padding(.vertical, 20)
-                            .background(Color("PastelOrange"))
-                            .foregroundColor(Color("PastelBeige"))
-                            .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
-                            .frame(width: 350, height: 80)
-                        }
-                        .padding(20)
+                        NavigationLink(destination: HomePage(), isActive: $goHome){}
+                        
+                        Spacer()
+                        
                     }
                 }
                 .onTapGesture {
@@ -99,9 +119,9 @@ struct DisplayQrPage: View {
                 .background(Color("PastelBeige"))
                 .task {
                     do {
-                        let generatedQR = try await DBViewModel.shared.createNewGroupAndAddCurrUser()
-                        self.generatedQRImage = generateQRCode(from: "\(generatedQR)")
-                        //self.generatedQRImage = generateQRCode(from: "\(test)")
+//                        let generatedQR = try await DBViewModel.shared.createNewGroupAndAddCurrUser()
+//                        self.generatedQRImage = generateQRCode(from: "\(generatedQR)")
+                        self.generatedQRImage = generateQRCode(from: "\(test)")
                         self.generatedQR = generatedQR
                     } catch {
                         // Handle error
@@ -120,11 +140,11 @@ struct DisplayQrPage: View {
                             .frame(width: 130, height: 20)
                     }
                 }
-                .navigationDestination(isPresented: $goHome) {
-                    HomePage()
-                        .navigationBarBackButtonHidden()
-                }
-        }
+//                .navigationDestination(isPresented: $goHome) {
+//                    HomePage()
+//                        .navigationBarBackButtonHidden()
+//                }
+//        }
       
     }
     

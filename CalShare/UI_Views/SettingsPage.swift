@@ -46,7 +46,7 @@ struct SettingsPage: View {
     @State var isSignedOut: Bool = false
     
     var body: some View {
-        NavigationStack{
+//        NavigationStack{
             ZStack{
                 VStack{
                     VStack(alignment: .leading, spacing: 5) {
@@ -68,7 +68,7 @@ struct SettingsPage: View {
                         }
                     }
                 }
-            }
+//            }
             .navigationDestination(isPresented: $isSignedOut) {
                 SignInPage()
                     .navigationBarBackButtonHidden()

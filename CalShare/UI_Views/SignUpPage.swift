@@ -18,7 +18,7 @@ struct SignUpPage: View {
     @StateObject private var viewModel = SignUpPageViewModel()
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             GeometryReader { _ in
                 ZStack {
                     VStack(alignment: .center) {
@@ -152,7 +152,7 @@ struct SignUpPage: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .edgesIgnoringSafeArea(.all)
             .background(Color("PastelBeige"))
-        }
+//        }
         .onTapGesture {
             //Dismisses the keyboard if you click away
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)

@@ -6,7 +6,7 @@ struct GroupsPage: View {
     @State var numberGroups: Int = 0
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             ZStack {
                 VStack{
                     VStack(alignment: .leading, spacing: 5){
@@ -54,7 +54,7 @@ struct GroupsPage: View {
                 }
             })
         }
-    }
+//    }
 }
 
 #Preview {

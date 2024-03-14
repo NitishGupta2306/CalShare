@@ -11,7 +11,7 @@ struct GroupCreationPage: View {
     @State var genQR: Bool = false
     
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
                 ZStack {
                     VStack (alignment: .leading) {
                         Spacer()
@@ -55,6 +55,8 @@ struct GroupCreationPage: View {
                                     .frame(width: 350, height: 80)
                                 }
                             }.padding(20)
+                        
+                            NavigationLink(destination: DisplayQrPage(), isActive: $genQR){}
                             
                             Text("Join New Group!")
                                 .font(.custom(fontTwo, size: 20.0))
@@ -104,10 +106,10 @@ struct GroupCreationPage: View {
                         Spacer()
                     }
                 }
-                .navigationDestination(isPresented: $genQR) {
-                    DisplayQrPage()
-//                        .navigationBarBackButtonHidden()
-                }
+//                .navigationDestination(isPresented: $genQR) {
+//                    DisplayQrPage()
+////                        .navigationBarBackButtonHidden()
+//                }
                 .sheet(isPresented: $scanQR) {
                     CodeScannerView(codeTypes: [.qr]) { response in
                         if case let .success(result) = response {
@@ -127,7 +129,7 @@ struct GroupCreationPage: View {
             .edgesIgnoringSafeArea(.all)
             .background(Color("PastelBeige"))
         }
-    }
+//    }
 }
 
 #Preview {

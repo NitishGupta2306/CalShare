@@ -6,13 +6,12 @@ struct LoadingPage: View {
     @State var goSignInPage: Bool = false
     var body: some View {
             ZStack {
-                backgroundColor
-                    .ignoresSafeArea()
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle(tint:buttonColor))
                     .scaleEffect(CGSize(width: 2.0, height: 2.0))
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .ignoresSafeArea()
             .background(Color("PastelBeige"))
             .onAppear() {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
