@@ -9,7 +9,7 @@ struct DisplayQrPage: View {
     @State var goHome = false
     @State private var generatedQRImage: UIImage?
     @State private var generatedQR: String?
-    @State var firstSlot: String = "Tuesday March 22nd 2:00 - 3:00PM"
+    @State var firstSlot: String = "No Available Time Slot"
     let context = CIContext()
     let filter = CIFilter.qrCodeGenerator()
     
@@ -38,6 +38,9 @@ struct DisplayQrPage: View {
                         //Displays the first free time slot
                         Button(action: {
                             print("Displays the first free time slot")
+                            firstSlot = CalendarViewModel.shared.getNextFreeTime()
+                            print(firstSlot)
+                            
                             self.firstFree = true
                             
                         }) {
