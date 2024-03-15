@@ -121,7 +121,6 @@ struct DisplayQrPage: View {
                         do {
                             let generatedQR = try await DBViewModel.shared.createNewGroupAndAddCurrUser()
                             self.generatedQRImage = generateQRCode(from: "\(generatedQR)")
-                            //                        self.generatedQRImage = generateQRCode(from: "\(test)")
                             self.generatedQR = generatedQR
                             isFirstLoad = false // Update the flag
                         } catch {
