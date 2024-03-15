@@ -11,21 +11,15 @@ struct DisplayQrPage: View {
     @State private var generatedQR: String?
     @State var firstSlot: String = "No Available Time Slot"
     @State var numMem: Int = 1
+    @State private var isFirstLoad = true
     let context = CIContext()
     let filter = CIFilter.qrCodeGenerator()
     
     @State private var test = "TestValue"
     
     var body: some View {
-//        NavigationStack {
                 ZStack {
                     VStack {
-                        //                        Text("Group QR Code")
-                        //                            .font(.custom(fontTwo, size: 20.0))
-                        //                            .foregroundColor(Color("PastelGray"))
-                        //                            .fontWeight(.regular)
-                        //                            .padding(20)
-                        
                         HStack (alignment: .top){
                             Spacer()
                             Text("\(numMem)/7")
@@ -71,7 +65,6 @@ struct DisplayQrPage: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 10.0, style: .continuous))
                                 .frame(width: 348, height: 80)
                             }
-                            //                            .padding(20)
                             .alert(isPresented: $firstFree) {
                                 Alert(
                                     title: Text("First Available Slot"),
@@ -110,9 +103,7 @@ struct DisplayQrPage: View {
                             //                            .padding(20)
                         }
                         
-                        NavigationLink(destination: HomePage(), isActive: $goHome){
-                            
-                        }
+                        NavigationLink(destination: HomePage(), isActive: $goHome){}
                         
                         Spacer()
                         
@@ -126,17 +117,17 @@ struct DisplayQrPage: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color("PastelBeige"))
                 .task {
-                    do {
-                        let generatedQR = try await DBViewModel.shared.createNewGroupAndAddCurrUser()
-                        self.generatedQRImage = generateQRCode(from: "\(generatedQR)")
-<<<<<<< Updated upstream
-//                        self.generatedQRImage = generateQRCode(from: "\(test)")
-=======
->>>>>>> Stashed changes
-                        self.generatedQR = generatedQR
-                    } catch {
-                        // Handle error
-                        print("Error: \(error)")
+                    if isFirstLoad {
+                        do {
+                            let generatedQR = try await DBViewModel.shared.createNewGroupAndAddCurrUser()
+                            self.generatedQRImage = generateQRCode(from: "\(generatedQR)")
+                            //                        self.generatedQRImage = generateQRCode(from: "\(test)")
+                            self.generatedQR = generatedQR
+                            isFirstLoad = false // Update the flag
+                        } catch {
+                            // Handle error
+                            print("Error: \(error)")
+                        }
                     }
                 }
                 .toolbar {
@@ -151,12 +142,6 @@ struct DisplayQrPage: View {
                             .frame(width: 130, height: 20)
                     }
                 }
-//                .navigationDestination(isPresented: $goHome) {
-//                    HomePage()
-//                        .navigationBarBackButtonHidden()
-//                }
-//        }
-      
     }
     
     func generateQRCode(from string: String) -> UIImage {
