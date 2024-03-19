@@ -4,7 +4,7 @@ import CoreImage.CIFilterBuiltins
 
 import SwiftUI
 
-struct DisplayQrPage: View {
+struct DisplayGroupQrPage: View {
     @State var firstFree = false
     @State var goHome = false
     @State private var generatedQRImage: UIImage?
@@ -15,7 +15,7 @@ struct DisplayQrPage: View {
     let context = CIContext()
     let filter = CIFilter.qrCodeGenerator()
     
-    @State private var test = "TestValue"
+    @State var groupID: String
     
     var body: some View {
                 ZStack {
@@ -119,7 +119,7 @@ struct DisplayQrPage: View {
                 .task {
                     if isFirstLoad {
                         do {
-                            let newQR = try await DBViewModel.shared.createNewGroupAndAddCurrUser() //Creates new Group ID
+                            let newQR = groupID
                             self.generatedQRImage = generateQRCode(from: "\(newQR)")
                             self.generatedQR = newQR
                             isFirstLoad = false // Update the flag
@@ -159,5 +159,5 @@ struct DisplayQrPage: View {
 }
 
 #Preview {
-    DisplayQrPage()
+    DisplayGroupQrPage(groupID: "")
 }

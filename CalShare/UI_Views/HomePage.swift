@@ -1,22 +1,12 @@
 import SwiftUI
 
 struct HomePage: View {
-    //@State var numMem: Int = 1
     @State var firstFree = false
         @State var firstSlot: String = "No Available Time Slot"
     
     var body: some View {
         ZStack {
             VStack {
-                //                        HStack (alignment: .top){
-                //                            Spacer()
-                //                            Text("\(numMem)/7")
-                //                                .font(.system(size: 30))
-                //                                .bold()
-                //                                .foregroundColor(Color("PastelOrange"))
-                //                                .padding()
-                //                        }
-                
                 CalenarContentView()
                 Button {
                     print("Requested calendar access")
