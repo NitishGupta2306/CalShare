@@ -16,16 +16,22 @@ struct IdentifiableEvent: Identifiable {
     let store: EKEventStore
     
     var events: [IdentifiableEvent] = []
-    var freeEvents: [IdentifiableEvent] = []
+    var allFreeEvents: [IdentifiableEvent] = []
     var currentWeek: [Date] = []
-    var currentDay: Date = Date()
+    @Published var currentDay: Date = Date()
     var currentMonth: String = ""
     var freeTimeCounter: Int
+    
+    @Published var isBusinessHours = true
+    
+    var noEarlierThan: Double = 9
+    var noLaterThan: Double = 17
+    var intervalInMinutes: Double = 1 * 60
     
     init() {
         self.store = EKEventStore()
         self.events = []
-        self.freeEvents = []
+        self.allFreeEvents = []
         self.currentWeek = []
         self.currentDay = Date()
         self.freeTimeCounter = 0
@@ -53,7 +59,6 @@ struct IdentifiableEvent: Identifiable {
         
         let fetchedEvents = CalendarViewModel.shared.store.events(matching: predicate).sorted(by: {$0.startDate < $1.startDate})
         
-        // Filter out all-day events
         let nonAllDayEvents = fetchedEvents.filter { !$0.isAllDay }
         
         CalendarViewModel.shared.events = nonAllDayEvents.map{ IdentifiableEvent(event: $0, timeSlot: "") }
@@ -170,9 +175,9 @@ struct IdentifiableEvent: Identifiable {
         return ((0,0),(0,0))
     }
     
-    func createTimeIntervals(interevalInMinutes: Double = 1 * 60, freeTimeSlot: (Double, Double)) -> [(Double, Double)] {
+    func createTimeIntervals(freeTimeSlot: (Double, Double)) -> [(Double, Double)] {
         var timeIntervals: [(Double, Double)] = []
-        let secondsInterval = interevalInMinutes * 60
+        let secondsInterval = self.intervalInMinutes * 60
         let totalTimeIntervals = (freeTimeSlot.1 - freeTimeSlot.0) / secondsInterval
         
         var nextInterval = freeTimeSlot.0
@@ -235,59 +240,11 @@ struct IdentifiableEvent: Identifiable {
         return freeTimeSlots
     }
     
-    func unixTimeToDouble(unixTimestamp: TimeInterval) -> Double {
-        let date = Date(timeIntervalSince1970: unixTimestamp)
-        var calendar = Calendar.current
-        calendar.timeZone = TimeZone(identifier: "America/Los_Angeles")!
+    func createFreeTimeSlotEvents(startEndTimes: [Double]) {
         
-        let components = calendar.dateComponents([.hour, .minute], from: date)
-        
-        guard let hours = components.hour,
-              let minutes = components.minute else {
-            return 0.0
-        }
-        
-        let decimalTime = Double(hours) + (Double(minutes) / 60.0)
-        return decimalTime
-    }
-    
-    func constrainToHours(timeSlots: [(Double, Double)], start: Double, end: Double) -> [(Double, Double)] {
-        
-        var constrainedTimeSlots: [(Double, Double)] = []
-        
-        for time in timeSlots {
-            var newTime = time
-            var startHour = unixTimeToDouble(unixTimestamp: newTime.0)
-            var endHour = unixTimeToDouble(unixTimestamp: newTime.1)
-            let oneHourInSeconds = 60.0 * 60.0
-            
-            //hack for daylight savings
-            if endHour == (59.0 / 60.0) {
-                endHour = 23 + (59.0 / 60.0)
-                newTime.1 -= oneHourInSeconds
-            } else if startHour == 1 {
-                startHour = 0
-                newTime.0 -= oneHourInSeconds
-            }
-                        
-            if startHour >= start && endHour <= end {
-                
-                constrainedTimeSlots.append(newTime)
-                
-            }
-        }
-        
-        return constrainedTimeSlots
-    }
-    
-    //noEarlierThan and noLaterThan are in 24 hour time ie 3 pm = 15
-    func createFreeTimeSlotEvents(startEndTimes: [Double], noEarlierThan: Double = 9, noLaterThan: Double = 17) {
-        
-        var freeTimeSlots = findFreeTimeSlots(times: startEndTimes)
+        let freeTimeSlots = findFreeTimeSlots(times: startEndTimes)
         var newEvents: [IdentifiableEvent] = []
         var numEvents = 1
-        
-        freeTimeSlots = constrainToHours(timeSlots: freeTimeSlots, start: noEarlierThan, end: noLaterThan)
         
         for time in freeTimeSlots {
             
@@ -314,10 +271,10 @@ struct IdentifiableEvent: Identifiable {
         }
         
         DispatchQueue.main.async{
-            // Published variable
             CalendarViewModel.shared.eventsToDisplay = newEvents
         }
-        CalendarViewModel.shared.freeEvents = newEvents
+        
+        CalendarViewModel.shared.allFreeEvents = newEvents
         
         CalendarViewModel.shared.freeTimeCounter = 0
     }
@@ -372,17 +329,24 @@ struct IdentifiableEvent: Identifiable {
             return res
     }
     
-    func filterEventsByDayOfWeek(day: Date) -> [IdentifiableEvent] {
+    func filterFreeEvents() -> [IdentifiableEvent] {
         var calendar = Calendar.current
         calendar.timeZone = NSTimeZone.local
         
-        let curDayNum = Calendar.current.component(.weekday, from: day)
+        let curDayNum = Calendar.current.component(.weekday, from: CalendarViewModel.shared.currentDay)
         
-        let filteredEvents = self.eventsToDisplay.filter { ev in
+        let filteredEvents = self.allFreeEvents.filter { ev in
             let eva = ev.event
             let weekday = calendar.component(.weekday, from: eva.startDate)
-            return weekday == curDayNum
+            let hourStart = calendar.component(.hour, from: eva.startDate)
+            let hourEnd = calendar.component(.hour, from: eva.endDate)
+            
+            return weekday == curDayNum && 
+                hourStart >= Int(self.noEarlierThan) &&
+                hourStart < Int(self.noLaterThan) &&
+                hourEnd <= Int(self.noLaterThan)
         }
+        
         return filteredEvents
     }
     
@@ -390,12 +354,12 @@ struct IdentifiableEvent: Identifiable {
         
         let freeTime: String = "No free times found :("
         
-        if CalendarViewModel.shared.freeEvents.count == 0 {
+        if CalendarViewModel.shared.allFreeEvents.count == 0 {
             return freeTime
         }
                 
         //allows for cycling through the freetime events
-        if CalendarViewModel.shared.freeTimeCounter + 1 >= CalendarViewModel.shared.freeEvents.count {
+        if CalendarViewModel.shared.freeTimeCounter + 1 >= CalendarViewModel.shared.allFreeEvents.count {
             
             CalendarViewModel.shared.freeTimeCounter = 0
             
@@ -405,7 +369,7 @@ struct IdentifiableEvent: Identifiable {
             
         }
         
-        return CalendarViewModel.shared.freeEvents[CalendarViewModel.shared.freeTimeCounter].timeSlot
+        return CalendarViewModel.shared.allFreeEvents[CalendarViewModel.shared.freeTimeCounter].timeSlot
     }
     
     private func formatDate(_ date: Date, format: String = "h:mm a") -> String {

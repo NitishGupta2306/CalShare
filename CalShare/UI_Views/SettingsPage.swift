@@ -43,10 +43,10 @@ final class SettingViewModel: ObservableObject{
 
 struct SettingsPage: View {
     @StateObject private var viewModel = SettingViewModel()
+    @ObservedObject private var calendarViewModel = CalendarViewModel.shared
     @State var isSignedOut: Bool = false
     
     var body: some View {
-//        NavigationStack{
             ZStack{
                 VStack{
                     VStack(alignment: .leading, spacing: 5) {
@@ -65,10 +65,21 @@ struct SettingsPage: View {
                             }label: {
                                 Text("Reset Password")
                             }
+                            Toggle(isOn: $calendarViewModel.isBusinessHours){
+                                Text(calendarViewModel.isBusinessHours ? "Business Hours" : "All Hours")
+                            }
+                            .onChange(of: calendarViewModel.isBusinessHours) {
+                                if calendarViewModel.isBusinessHours {
+                                    calendarViewModel.noEarlierThan = 9
+                                    calendarViewModel.noLaterThan = 17
+                                } else {
+                                    calendarViewModel.noEarlierThan = 0
+                                    calendarViewModel.noLaterThan = 24
+                                }
+                            }
                         }
                     }
                 }
-//            }
             .navigationDestination(isPresented: $isSignedOut) {
                 SignInPage()
                     .navigationBarBackButtonHidden()
