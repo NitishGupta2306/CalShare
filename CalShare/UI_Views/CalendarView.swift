@@ -69,8 +69,7 @@ struct CalendarView: View {
               }
               //we will display all of the events on top of the zstack here
               
-              //test: to display busy events, change what event list we are iterating through here
-              ForEach(CalendarViewModel.shared.filterEventsByDayOfWeek(day: curDay)) { idEvent in
+              ForEach(CalendarViewModel.shared.filterFreeEvents()) { idEvent in
                   eventCell(curEv: idEvent)
               }
           }
