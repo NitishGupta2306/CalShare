@@ -60,7 +60,6 @@ struct GroupCreationPage: View {
                 ZStack {
                     // Access Camera and allows currUser to join group linked to QRCode.
                     Button(action: {
-                        print("Scan")
                         self.scanQR.toggle()
                     }) {
                         HStack {
@@ -89,7 +88,6 @@ struct GroupCreationPage: View {
                             Task {
                                 if let scannedString = scannedString{
                                     print(scannedString)
-                                    print("Pushed user?")
                                     try await DBViewModel.shared.addUserToGroup(groupID: scannedString)
                                 }
                                 scanQR = false
@@ -104,14 +102,13 @@ struct GroupCreationPage: View {
             CodeScannerView(codeTypes: [.qr]) { response in
                 if case let .success(result) = response {
                     scannedString = result.string
-                    print(scannedString ?? "Error while scanning QR code.")
+                    print(scannedString ?? GroupError.QRCodeScanningError)
                 }
                 gotQR = true
                 scanQR = false
             }
         }
         .onTapGesture {
-            //Dismisses the keyboard if you click away
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
         .ignoresSafeArea(.keyboard)

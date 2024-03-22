@@ -45,7 +45,6 @@ struct DisplayQrPage: View {
                         VStack {
                             //Displays the first free time slot
                             Button(action: {
-                                print("Displays the first free time slot")
                                 firstSlot = CalendarViewModel.shared.getNextFreeTime()
                                 print(firstSlot)
                                 
@@ -53,7 +52,7 @@ struct DisplayQrPage: View {
                                 
                             }) {
                                 HStack {
-                                    Text("First Available Slot")
+                                    Text("Next Available Slot")
                                         .foregroundColor(Color("PastelBeige"))
                                         .font(.custom(fontTwo, size: 20.0))
                                         .bold()
@@ -67,7 +66,7 @@ struct DisplayQrPage: View {
                             }
                             .alert(isPresented: $firstFree) {
                                 Alert(
-                                    title: Text("First Available Slot"),
+                                    title: Text("Next Available Slot"),
                                     message: Text("\(firstSlot)"),
                                     dismissButton: .default(
                                         Text("OK")
@@ -122,7 +121,7 @@ struct DisplayQrPage: View {
                             let newQR = try await DBViewModel.shared.createNewGroupAndAddCurrUser() //Creates new Group ID
                             self.generatedQRImage = generateQRCode(from: "\(newQR)")
                             self.generatedQR = newQR
-                            isFirstLoad = false // Update the flag
+                            isFirstLoad = false
                         } catch {
                             // Handle error
                             print("Error: \(error)")
@@ -152,7 +151,7 @@ struct DisplayQrPage: View {
             }
         }
         
-        print("Error: couldn't generateQRCode")
+        print(GroupError.QRCodeGenerationError)
         return UIImage(systemName: "xmark.circle") ?? UIImage()
     }
       

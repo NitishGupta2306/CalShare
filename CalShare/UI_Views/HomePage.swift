@@ -32,13 +32,12 @@ struct HomePage: View {
                 
                 //Displays the first free time slot
                 Button {
-                    print("Displays the first free time slot")
                     firstSlot = CalendarViewModel.shared.getNextFreeTime()
                     print(firstSlot)
                     self.firstFree = true
                     
                 } label: {
-                    Text("First Available Slot")
+                    Text("Next Available Slot")
                         .frame(maxWidth: .infinity)
                         .frame(height: 40)
                         .font(.custom(fontTwo, size: 20.0))
@@ -51,7 +50,7 @@ struct HomePage: View {
                 }
                 .alert(isPresented: $firstFree) {
                     Alert(
-                        title: Text("First Available Slot"),
+                        title: Text("Next Available Slot"),
                         message: Text("\(firstSlot)"),
                         dismissButton: .default(
                             Text("OK")

@@ -1,10 +1,3 @@
-//
-//  CalShareApp.swift
-//  CalShare
-//
-//  Created by Nitish Gupta on 1/19/24.
-//
-
 import SwiftUI
 import FirebaseCore
 
@@ -23,7 +16,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct CalShareApp: App {
-  // register app delegate for Firebase setup
   @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
   var body: some Scene {
     WindowGroup {

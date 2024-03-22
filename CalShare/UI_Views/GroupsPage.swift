@@ -19,15 +19,13 @@ struct GroupsPage: View {
                             ForEach(1...numberGroups, id: \.self){ index in
                                 Button{
                                     Task{
-                                        print("index: ")
-                                        print(usersGroupsID[index-1])
                                         displayGroupQrPage = true
                                         selectedGroupID = usersGroupsID[index-1]
                                         
                                         usersInGroupCalData =
                                         try await DBViewModel.shared
                                             .getUserDataFromUsersInGroup(groupID: usersGroupsID[index-1])
-                                        print(usersGroupsID)
+                                        
                                         CalendarViewModel.shared
                                             .createFreeTimeSlotEvents(startEndTimes: usersInGroupCalData)
                                         dataLoaded = true

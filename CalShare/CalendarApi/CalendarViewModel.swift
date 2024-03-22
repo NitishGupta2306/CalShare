@@ -11,6 +11,8 @@ struct IdentifiableEvent: Identifiable {
 @MainActor class CalendarViewModel: ObservableObject {
     //only used in EventListView
     @Published var eventsToDisplay: [IdentifiableEvent] = []
+    @Published var currentDay: Date = Date()
+    @Published var isBusinessHours = true
     
     static let shared = CalendarViewModel()
     let store: EKEventStore
@@ -18,11 +20,8 @@ struct IdentifiableEvent: Identifiable {
     var events: [IdentifiableEvent] = []
     var allFreeEvents: [IdentifiableEvent] = []
     var currentWeek: [Date] = []
-    @Published var currentDay: Date = Date()
     var currentMonth: String = ""
     var freeTimeCounter: Int
-    
-    @Published var isBusinessHours = true
     
     var noEarlierThan: Double = 9
     var noLaterThan: Double = 17
@@ -45,7 +44,7 @@ struct IdentifiableEvent: Identifiable {
             try await CalendarViewModel.shared.store.requestFullAccessToEvents()
             
         } catch {
-            print("An error occured requesting calendar access.")
+            print(CalendarError.requestDataError)
         }
         
     }
@@ -53,7 +52,7 @@ struct IdentifiableEvent: Identifiable {
     func fetchEvents(interval: Calendar.Component, startDate: Date, calendars: [EKCalendar]?) {
         
         guard let interval = Calendar.current.dateInterval(of: interval, for: startDate)
-        else { print("An error occured while creating a calendar interval."); return }
+        else { print(CalendarError.calendarIntervalGenerationError); return }
         
         let predicate = CalendarViewModel.shared.store.predicateForEvents(withStart: interval.start, end: interval.end, calendars: calendars)
         

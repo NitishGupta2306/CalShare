@@ -45,7 +45,7 @@ struct DisplayGroupQrPage: View {
                         VStack {
                             //Displays the first free time slot
                             Button(action: {
-                                print("Displays the first free time slot")
+                                print("Displays the next free time slot")
                                 firstSlot = CalendarViewModel.shared.getNextFreeTime()
                                 print(firstSlot)
                                 
@@ -53,7 +53,7 @@ struct DisplayGroupQrPage: View {
                                 
                             }) {
                                 HStack {
-                                    Text("First Available Slot")
+                                    Text("Next Available Slot")
                                         .foregroundColor(Color("PastelBeige"))
                                         .font(.custom(fontTwo, size: 20.0))
                                         .bold()
@@ -67,7 +67,7 @@ struct DisplayGroupQrPage: View {
                             }
                             .alert(isPresented: $firstFree) {
                                 Alert(
-                                    title: Text("First Available Slot"),
+                                    title: Text("Next Available Slot"),
                                     message: Text("\(firstSlot)"),
                                     dismissButton: .default(
                                         Text("OK")
@@ -152,7 +152,7 @@ struct DisplayGroupQrPage: View {
             }
         }
         
-        print("Error: couldn't generateQRCode")
+        print(GroupError.QRCodeGenerationError)
         return UIImage(systemName: "xmark.circle") ?? UIImage()
     }
       
