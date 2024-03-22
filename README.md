@@ -32,7 +32,7 @@ Files Structure:
    - ```WriteViewModel.swift```
 3. DatabaseAPI
    - ```AuthenticationHandler.swift```: This file handles authentication processes such as changing the password stored in the database and  creating and signing in users.
-   - ```DataBaseViewModel.swift```: This file establishes accessing data from users and group IDs stored in the database.
+   - ```DataBaseViewModel.swift```: This file establishes accessing and modifying data from users and group IDs stored in the database.
    - ```ErrorHandling.swift```: This file contains various different error handling checks for the Group, Calendar, and Authentication.
 4. CalendarAPI
    - ```CalendarViewModel.swift```: This file creates the CalendarViewModel class with functions to extract weekly calendar data (Sunday-Saturday) from the user's synced Apple Calendar. The various methods fetch and request data from the user, format the Event data, and calculate free time slots. 
