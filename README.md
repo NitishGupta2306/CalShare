@@ -20,7 +20,8 @@ Calshare is an application focused on simplifying the user experience of calenda
 ## Code File Structure
 
 The main components of Calshare include our Database API, Apple Calendar API, and UI View Files.
-- Nitish Gupta and Jonathon Vazquez worked on database integration as well as code cleanup and adding users to shared calendars
+- Nitish Gupta worked on Database integration and testing, Authentication, and Error Handling. He also worked on code clean up.
+- Jonathon Vazquez worked on Database creation and integration with the app.
 - Andrew Helbig worked on the Calendar API, pulling events from the user, and the calculation and display of free event time slots
 - Shubhada Martin worked on the UI, the Navigation Bar, QR Code functionality, and designing the Figma
 - Chitra Mukherjee worked on the UI and displaying weekly free/busy events from the EventKit Calendar data in a weekly scroll view
